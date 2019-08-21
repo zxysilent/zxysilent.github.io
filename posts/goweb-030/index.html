@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <title>zxysilent</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+        <meta name="msvalidate.01" content="BA6009DC1D95902AC43052D430AA822D" />
+        <meta name="keywords" content="zxysilent,zxyslt,zxy" />
+        <meta name="description" content="zxysilent;zxysilent blog;zxyslt;zxyslt blog;" />
+        <meta name="google-site-verification" content="51J555Z28axR2us4ULmrJuBCizGyxgSMhhL2QGz0XOE" />
+        <link rel="icon" href="/imgs/logo.png" />
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="/index.xml" />
+<link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="zxysilent" />
+<link rel="canonical" href="https://blog.zxysilent.com/" />
+<link href="/css/all.css?v=1566365206" rel="stylesheet" type="text/css" data-ls="css_zxysilent" >
+    </head>
+    <body>
+        <nav id="sidebar">
+    <div class="wrap">
+        <div class="profile">
+            <a href="/"><img src="/imgs/logo.png" alt="zxysilent"/></a><span>zxysilent</span>
+        </div>
+        <ul class="naver">
+            
+                <li>
+                <a href="/" title=""><i class="iconfont icon-home"></i><span>首页</span></a> 
+            </li>
+            
+                <li>
+                <a href="/archives" title=""><i class="iconfont icon-archive"></i><span>归档</span></a> 
+            </li>
+            
+                <li>
+                <a href="/tags" title=""><i class="iconfont icon-tags"></i><span>标签</span></a> 
+            </li>
+            
+                <li>
+                <a href="/about" title=""><i class="iconfont icon-user"></i><span>关于</span></a> 
+            </li>
+            
+                <li>
+                <a href="/links" title=""><i class="iconfont icon-link"></i><span>友链</span></a> 
+            </li>
+            
+        </ul>
+        <div class="footer">
+            <a class="inline" rel="nofollow" target="_blank" href="https://github.com/zxysilent"><i class="iconfont icon-github-v" title="GitHub"></i></a>
+            <a class="inline" rel="nofollow" target="_blank" href="https://weibo.com/u/7072792903"><i class="iconfont icon-weibo" title="weibo"></i></a>
+            <a class="inline" href="/index.xml"><i class="iconfont icon-rss-v" title="RSS"></i></a>
+            <a class="inline" href="/search.html"><i class="iconfont icon-search" title="Search"></i></a>
+        </div>
+    </div>
+</nav>
+<div id="header">
+    <div class="btn-bar"><i></i></div>
+    <h1>
+        <a href="/">goweb-030-golang-程序结构</a>
+    </h1>
+    <a class="me" href="/about/"><img src="/imgs/logo.png" alt="zxysilent"/></a>
+</div>
+<div id="sidebar-mask"></div>
+
+        <div id="main">
+            <div id="page-post">
+                <article class="post detail">
+                    <div class="meta">
+                        <div class="date">07月16日, 2018</div>
+                        <div class="comment"><a href="#comments">930 Words</a></div>
+                    </div>
+                    <h1 class="title">goweb-030-golang-程序结构</h1>
+                    <div class="entry-content">
+                        
+                            <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#命名">命名</a>
+<ul>
+<li><a href="#关键字">关键字</a></li>
+</ul></li>
+<li><a href="#声明">声明</a></li>
+<li><a href="#变量">变量</a>
+<ul>
+<li><a href="#默认值">默认值</a></li>
+<li><a href="#xxx">xxx</a></li>
+<li><a href="#简短变量声明">简短变量声明</a></li>
+<li><a href="#指针">指针</a></li>
+<li><a href="#new函数">new函数</a></li>
+<li><a href="#生命周期">生命周期</a></li>
+</ul></li>
+<li><a href="#赋值">赋值</a>
+<ul>
+<li><a href="#元组赋值-略">元组赋值 略</a></li>
+</ul></li>
+<li><a href="#类型">类型</a></li>
+<li><a href="#包和文件">包和文件</a>
+<ul>
+<li><a href="#导入包">导入包</a></li>
+<li><a href="#包的初始化">包的初始化</a></li>
+</ul></li>
+<li><a href="#作用域-略">作用域 略</a></li>
+</ul></li>
+</ul>
+</nav>
+                        
+                        
+                        <h2 id="命名">命名</h2>
+
+<p>Go语言中的函数名、变量名、常量名、类型名、语句标号和包名等所有的命名，都遵循一个
+简单的命名规则：一个名字必须以一个字母（Unicode字母）或下划线开头，后面可以跟任意
+数量的字母、数字或下划线。大写字母和小写字母是不同的：<code>abc</code>和<code>aBc</code>是两个不
+同的名字。</p>
+
+<h3 id="关键字">关键字</h3>
+
+<pre><code class="language-go">break      default       func     interface   select
+case       defer         go       map         struct
+chan       else          goto     package     switch
+const      fallthrough   if       range       type
+continue   for           import   return      var
+</code></pre>
+
+<p>还有大约30多个预定义的名字，比如int和true等，主要对应内建的常量、类型和函数。</p>
+
+<pre><code>内建常量: true false iota nil
+
+内建类型: int int8 int16 int32 int64
+          uint uint8 uint16 uint32 uint64 uintptr
+          float32 float64 complex128 complex64
+          bool byte rune string error
+
+内建函数: make len cap new append copy close delete
+          complex real imag
+          panic recover
+</code></pre>
+
+<p>这些内部预先定义的名字并不是关键字，可以在定义中重新使用它们。</p>
+
+<h2 id="声明">声明</h2>
+
+<blockquote>
+<p>声明语句定义了程序的各种实体对象以及部分或全部的属性。</p>
+</blockquote>
+
+<ul>
+<li>Go语言主要有四种类型的声明语句：<code>var</code>、<code>const</code>、<code>type</code>和<code>func</code>，分别对应变量、常量、类型和函数实体对象的声明。</li>
+<li>一个Go语言编写的程序对应一个或多个以<code>.go</code>为文件后缀名的源文件中。<br /></li>
+<li>每个源文件以包的声明语句开始，说明该源文件是属于哪个包。<br /></li>
+<li>包声明语句之后是import语句导入依赖的其它包然后是包一级的类型、变量、常量、函数的声明语句。</li>
+
+<li><p>包一级的各种类型的声明语句的顺序无关紧要。</p>
+
+<pre><code class="language-go">//当前程序包名称
+package main
+
+//导入外部包
+import (
+	&quot;fmt&quot;
+)
+
+//常量
+const TEL = 18284151024
+
+//包级别变量
+var name = &quot;zxysilent&quot;
+
+// 新类型
+type Int int
+
+//结构体
+type S struct{}
+
+// 方法
+func (s S) Test() {}
+
+//接口
+type obj interface{}
+
+//函数
+func main() {
+	// 多个变量的声明
+	var a, b, c int
+	// 多个变量的赋值
+	a, b, c = 1, 2, 3
+	// 多个变量的声明同时赋值
+	var d, e, f int = 4, 5, 6
+	// 多个变量的省略类型的声明赋值(编译器推断类型)
+	var g, h, i = 7, 8, 9
+	fmt.Println(a, b, c, d, e, f, g, h, i)
+	fmt.Println(&quot;hello,word&quot;)
+}
+</code></pre></li>
+</ul>
+
+<h2 id="变量">变量</h2>
+
+<blockquote>
+<p>var声明语句可以创建一个特定类型的变量，然后给变量附加一个名字，并且设置变量的初始值。</p>
+</blockquote>
+
+<p>变量声明的一般语法如下：</p>
+
+<pre><code class="language-go">var 变量名字 类型 = 表达式
+</code></pre>
+
+<p>其中<strong>类型</strong>或<strong>= 表达式</strong>两个部分可以省略其中的一个。</p>
+
+<h3 id="默认值">默认值</h3>
+
+<ul>
+<li>数值类型变量对应的零值是0。</li>
+<li>布尔类型变量对应的零值是false 。</li>
+<li>字符串类型对应的零值是空字符串。</li>
+<li>接口或引用类型（包括slice、指针、map、chan和函数）变量对应的零值是nil。</li>
+<li>数组或结构体等聚合类型对应的零值是每个元素或字段都是对应该类型的零值。</li>
+</ul>
+
+<p>零值初始化机制可以确保每个声明的变量总是有一个良好定义的值，因此在Go语言中不存在未初始化的变量。</p>
+
+<pre><code class="language-go">var s string
+fmt.Println(s) // &quot;&quot;
+</code></pre>
+
+<h3 id="xxx">xxx</h3>
+
+<ul>
+<li>一个声明语句中同时声明一组变量，或用一组初始化表达式声明并初始化一组变量。</li>
+
+<li><p>如果省略每个变量的类型，将可以声明多个类型不同的变量（类型由初始化表达式推导）：</p>
+
+<pre><code class="language-go">var i, j, k int                 // int, int, int
+var b, f, s = true, 2.3, &quot;four&quot; // bool, float64, string
+</code></pre></li>
+</ul>
+
+<p>初始化表达式可以是字面量或任意的表达式。在包级别声明的变量会在main入口函数执行<strong>前</strong>完成初始化,局部变量将在声明语句被执行到的时候完成初始化。</p>
+
+<ul>
+<li><p>一组变量也可以通过调用一个函数，由函数返回的多个返回值初始化：</p>
+
+<pre><code class="language-go">var f, err = os.Open(&quot;filename&quot;) //打开文件
+</code></pre></li>
+</ul>
+
+<h3 id="简短变量声明">简短变量声明</h3>
+
+<p>在函数内部，有一种称为简短变量声明语句的形式可用于声明和初始化局部变量。<br />
+它以<code>名字 := 表达式</code>形式声明变量，变量的类型根据表达式来自动推导。</p>
+
+<pre><code class="language-go">package main
+
+import &quot;fmt&quot;
+
+func main() {
+	z := &quot;zxysilent&quot;
+	fmt.Println(z)
+}
+</code></pre>
+
+<p>简短变量声明被广泛用于大部分的局部变量的声明和初始化。
+var形式的声明语句往往是用于需要显式指定变量类型的地方，或者因为变量稍后会被重新赋值而初始值无关紧要的地方。</p>
+
+<pre><code class="language-go">i := 100                  // an int
+var boiling float64 = 100 // a float64
+var names []string
+var err error
+var p Point
+</code></pre>
+
+<p>简短变量声明语句也可以用来声明和初始化一组变量</p>
+
+<pre><code class="language-go">i, j := 0, 1
+</code></pre>
+
+<p><strong>✍</strong>
+<strong>:=</strong>是一个变量声明语句，而<strong>=</strong>是一个变量赋值操作。Ⓜ️做题面试才会考</p>
+
+<pre><code class="language-Go">i, j = j, i // 交换 i 和 j 的值
+</code></pre>
+
+<p>和普通var形式的变量声明语句一样，简短变量声明语句也可以用函数的返回值来声明和初始化变量，像下面的os.Open函数调用将返回两个值：</p>
+
+<pre><code class="language-go">f, err := os.Open(name)
+if err != nil {
+	return err
+}
+f.Close()
+</code></pre>
+
+<p>简短变量声明左边的变量可能并不是全部都是刚刚声明的。<br />
+如果有一些已经在<strong>相同的词法域</strong>声明过了，那么简短变量声明语句对这些已经声明过的变量就只有赋值行为了。</p>
+
+<pre><code class="language-go">in, err := os.Open(&quot;inputFile&quot;)
+// ...
+out, err := os.Create(&quot;outputFile&quot;)
+</code></pre>
+
+<p>简短变量声明语句只有对已经在同级词法域声明过的变量才和赋值操作语句等价，如果变量是在外部词法域声明的，那么简短变量声明语句将会在当前词法域重新声明一个新的变量</p>
+
+<h3 id="指针">指针</h3>
+
+<ul>
+<li>用<code>var x int</code>声明语句声明一个x变量那么<code>&amp;x</code>表达式将产生一个指向该整数变量的指针</li>
+<li>指针对应的数据类型是<code>*int</code>，指针被称之为“指向int类型的指针”。</li>
+<li>如果指针名字为<code>p</code>，那么就说“p指针指向变量<code>x</code>”，或者说“p指针保存了x变量的内存地址”。</li>
+
+<li><p>同时<code>*p</code>表达式对应p指针指向的变量的值。</p>
+
+<pre><code class="language-go">x := 1
+p := &amp;x         
+fmt.Println(*p) 
+*p = 2  
+fmt.Println(x)  
+</code></pre></li>
+</ul>
+
+<p>返回函数中局部变量的地址也是安全的。</p>
+
+<pre><code class="language-go">var p = f()
+
+func f() *int {
+	v := 1
+	return &amp;v
+}
+</code></pre>
+
+<p>指针包含了一个变量的地址，将指针作为参数调用函数，可以在函数中通过该指针来更新变量的值。</p>
+
+<pre><code class="language-go">func add(p *int) int{
+	*p++ 
+        return *p
+}
+
+v := 1
+add(&amp;v) 
+fmt.Println(add(&amp;v)) 
+</code></pre>
+
+<p>每次我们对一个变量取地址，或者复制指针，我们都是为原变量创建了新的别名。</p>
+
+<h3 id="new函数">new函数</h3>
+
+<p>另一个创建变量的方法是调用内建的new函数。 表达式<code>new(T)</code>将创建一个<code>T</code>类型的匿名变量，初始化为T类型的零值，然后返回变量<strong>地址</strong>，返回的指针类型为<code>*T</code>。</p>
+
+<pre><code class="language-go">p := new(int)   // p, *int 类型, 指向匿名的 int 变量
+fmt.Println(*p) // &quot;0&quot;
+*p = 2          // 设置 int 匿名变量的值为 2
+fmt.Println(*p) // &quot;2&quot;
+</code></pre>
+
+<p>用new创建变量和普通变量声明语句方式创建变量没有什么区别，<code>new</code>函数类似是一种语法糖，而不是一个新的基础概念。</p>
+
+<pre><code class="language-go">func newInt() *int {
+	return new(int)
+}
+
+func newInt() *int {
+	var dummy int
+	return &amp;dummy
+}
+</code></pre>
+
+<p>上面的两个函数有着相同的行为。<br />
+由于new只是一个预定义的函数，可以将new名字重新定义为别的类型。</p>
+
+<pre><code class="language-go">func f(old, new int) int {
+  return new - old
+}
+</code></pre>
+
+<p>new被定义为int类型的变量名，在函数内部是无法使用内置的new函数。</p>
+
+<h3 id="生命周期">生命周期</h3>
+
+<p>变量的生命周期指的是在程序运行期间变量有效存在的时间段。
+- 包一级声明的变量的生命周期和整个程序的运行周期是一致的。
+- 局部变量的生命周期则是动态的：每次从创建一个新变量的声明语句开始，直到该变量不再被引用为止，然后变量的存储空间可能被回收。
+- 函数的参数变量和返回值变量都是局部变量。</p>
+
+<pre><code class="language-go">package main
+
+import &quot;fmt&quot;
+
+var v = &quot;1.0&quot;
+
+func main() {
+	z := &quot;zxysilent&quot;
+	fmt.Println(z)
+	for i := 0; i &lt; 2; i++ {
+		fmt.Println(i)
+	}
+	fmt.Println(add(10, 20))
+}
+
+func add(a, b int) int {
+	return a + b
+}
+</code></pre>
+
+<p>编译器会自动选择在栈上还是在堆上分配局部变量的存储空间，不是由用var还是new声明变量的方式决定的。</p>
+
+<pre><code class="language-go">var global *int
+
+func f() {
+	var x int
+	x = 1
+	global = &amp;x
+}
+
+func g() {
+	y := new(int)
+	*y = 1
+}
+</code></pre>
+
+<h2 id="赋值">赋值</h2>
+
+<p>使用赋值语句可以更新一个变量的值</p>
+
+<pre><code>被赋值的变量 = 新值的表达式
+</code></pre>
+
+<pre><code class="language-go">x = 1                    // 命名变量的赋值
+*p = true                // 通过指针间接赋值
+person.name = &quot;bob&quot;      // 结构体字段赋值
+count[x] = count[x] * 10 // 数组、slice或map的元素赋值
+count[x] *= 100
+</code></pre>
+
+<p>数值变量也可以支持<code>++</code>递增和<code>--</code>递减<strong>语句</strong><br />
+❗️只能在后面</p>
+
+<pre><code class="language-go">v := 1
+v++    // 等价方式 v = v + 1；v 变成 2
+v--    // 等价方式 v = v - 1；v 变成 1
+</code></pre>
+
+<h3 id="元组赋值-略">元组赋值 略</h3>
+
+<ul>
+<li>元组赋值是另一种形式的赋值语句，它允许同时更新多个变量的值。</li>
+
+<li><p>在赋值之前，赋值语句右边的所有表达式将会先进行求值，然后再统一更新左边对应变量的值。</p>
+
+<pre><code class="language-go">x, y = y, x
+a[i], a[j] = a[j], a[i]
+//调用一个有多个返回值的函数
+f, err = os.Open(&quot;foo.txt&quot;) 
+</code></pre></li>
+</ul>
+
+<p>情况列举</p>
+
+<pre><code class="language-go">v, ok = m[key]        // map
+v, ok = x.(T)         // 断言
+v, ok = &lt;-ch          // channel 接收
+v = m[key]            // map查找，失败时返回零值
+v = x.(T)             // type断言，失败时panic异常
+v = &lt;-ch              // 管道接收，失败时返回零值（阻塞不算是失败）
+_, ok = m[key]        // map返回2个值
+_, ok = mm[&quot;&quot;], false // map返回1个值
+_ = mm[&quot;&quot;]            // map返回1个值
+</code></pre>
+
+<p>可以用下划线空白标识符<code>_</code>来丢弃不需要的值。</p>
+
+<pre><code class="language-go">_, err = io.Copy(dst, src) // 丢弃字节数
+_, ok = x.(T)              // 只检测类型，忽略具体值
+</code></pre>
+
+<h2 id="类型">类型</h2>
+
+<p>变量或表达式的类型定义了对应存储值的属性特征，它们在内部是如何表达的，是否支持一些操作符，以及它们自己关联的方法集等。在任何程序中都会存在一些变量有着相同的内部结构，但是却表示完全不同的概念✏️。</p>
+
+<pre><code class="language-go">type 类型名字 底层类型
+</code></pre>
+
+<p>类型声明语句一般出现在包一级，因此如果新创建的类型名字的首字符<strong>大写</strong>，则在包外部也可以使用。</p>
+
+<pre><code class="language-go">package main
+
+import (
+	&quot;fmt&quot;
+)
+
+// MyInt type 类型名字 底层类型
+type MyInt int
+
+func (i MyInt) String() string {
+	return fmt.Sprintf(&quot;myint:%d&quot;, i)
+}
+
+func main() {
+	var i MyInt //= 100
+	i = 100
+	fmt.Println(i)
+}
+</code></pre>
+
+<p>许多类型都会定义一个String方法，因为当使用fmt包的打印方法时，将会优先使用该类型对应的String方法返回的结果打印。</p>
+
+<h2 id="包和文件">包和文件</h2>
+
+<p>一个包的源代码保存在一个或多个以.go为文件后缀名的源文件中，通常一个包所在目录路径的后缀是包的导入路径。<br />
+目录结构<br />
+<img src="/imgs/post/20180716/upload_5a2c544d7fdf50069bc107ff35297f61.png" alt="alt" /></p>
+
+<p>⭐️ max</p>
+
+<pre><code class="language-go">package util
+
+//Max 大的一个
+func Max(a, b int) int {
+	if a &gt; b {
+		return a
+	}
+	return b
+}
+</code></pre>
+
+<p>⭐️ min</p>
+
+<pre><code class="language-go">package util
+
+//Min 小的一个
+func Min(a, b int) int {
+	if a &gt; b {
+		return b
+	}
+	return a
+}
+</code></pre>
+
+<p>⭐️ main</p>
+
+<pre><code class="language-go">package main
+
+import (
+	&quot;fmt&quot;
+	&quot;tmp/util&quot;
+)
+
+func main() {
+	a, b := 10, 20
+	fmt.Println(util.Min(a, b))
+	fmt.Println(util.Max(a, b))
+}
+</code></pre>
+
+<h3 id="导入包">导入包</h3>
+
+<ul>
+<li>Go语言程序中，每个包都有一个全局唯一的导入路径。</li>
+<li>一个导入路径代表一个目录中的一个或多个Go源文件。</li>
+</ul>
+
+<p>除了包的导入路径，每个包还有一个包名，包名一般是短小的名字（⚡️ 并不要求包名是唯一的），包名在包的声明处指定。
+一个包的名字和包的导入路径的最后一个字段相同。</p>
+
+<p>临时重命名</p>
+
+<pre><code class="language-go">package main
+
+import (
+	&quot;fmt&quot;
+	u &quot;tmp/util&quot;
+)
+
+func main() {
+	a, b := 10, 20
+	fmt.Println(u.Min(a, b))
+}
+</code></pre>
+
+<p>省掉包名</p>
+
+<pre><code class="language-go">package main
+
+import (
+	&quot;fmt&quot;
+	. &quot;tmp/util&quot;
+)
+
+func main() {
+	a, b := 10, 20
+	fmt.Println(Min(a, b))
+}
+</code></pre>
+
+<h3 id="包的初始化">包的初始化</h3>
+
+<p>包的初始化首先是解决包级变量的依赖顺序，然后按照包级变量声明出现的顺序依次初始化：</p>
+
+<pre><code class="language-go">var a = b + c // a 第三个初始化, 为 3
+var b = f()   // b 第二个初始化, 为 2, 通过调用 f (依赖c)
+var c = 1     // c 第一个初始化, 为 1
+
+func f() int { return c + 1 }
+</code></pre>
+
+<p>如果包中含有多个.go源文件，它们将按照发给编译器的顺序进行初始化，Go语言的构建工具首先会将.go文件根据文件名排序，然后依次调用编译器编译。
+ init函数会优先于main函数执行</p>
+
+<pre><code class="language-go">func init() { /* ... */ }
+</code></pre>
+
+<p>在每个文件中的init初始化函数，在程序开始执行时按照它们声明的顺序被自动调用</p>
+
+<p>✍min</p>
+
+<pre><code class="language-go">package util
+
+import (
+	&quot;fmt&quot;
+)
+
+func init() {
+	fmt.Println(&quot;init min&quot;)
+}
+
+//Min 小的一个
+func Min(a, b int) int {
+	if a &gt; b {
+		return b
+	}
+	return a
+}
+</code></pre>
+
+<p>结果<br />
+<img src="/imgs/post/20180716/upload_dec1426b7e10cc978b5122dbe81af62f.png" alt="alt" /></p>
+
+<p>init</p>
+
+<p><img src="/imgs/post/20180716/upload_ef96f0c2738ca9e195ecddd6f73abc33.png" alt="alt" /></p>
+
+<h2 id="作用域-略">作用域 略</h2>
+
+<ul>
+<li>预声明标识符的作用域为全域块。</li>
+<li>在顶级（即在任何函数之外）声明的表示常量、类型、变量或函数（而非方法）的标识符其作用域为该包块。</li>
+<li>已导入包的包名作用域为包含该导入声明的文件块。</li>
+<li>表示方法接收器、函数形参或返回值变量的标识符，其作用域为该函数体。</li>
+<li>在函数中声明为常量或变量的标识符，其作用域始于该函数中具体常量实现或变量实现ShortVarDecl表示短变量声明）的结尾，止于最内部包含块的结尾。</li>
+
+<li><p>在函数中声明为类型的标识符，其作用域始于该函数中具体类型实现的标识符，止于最内部包含块的结尾。</p>
+
+<pre><code class="language-go">func main() {
+	x := &quot;hello!&quot;
+	for i := 0; i &lt; len(x); i++ {
+		x := x[i]
+		if x != '!' {
+			x := x + 'A' - 'a'
+			fmt.Printf(&quot;%c&quot;, x) // &quot;HELLO&quot; 
+		}
+	}
+}
+</code></pre></li>
+</ul>
+                    </div>
+                    <p>本文链接：<a href="/posts/goweb-030/">/posts/goweb-030/</a></p>
+                    <p>-- <acronym title="End of File">EOF</acronym> --</p>
+                    <div class="post-info">
+                        <p>
+                            <code class="notebook">zxysilent</code>发表于<i> 2018-07-16 11:41:45</i>，
+                            
+                            
+                                添加「
+                                    
+                                        
+                                            <a href="http://example.org/tags/golang" data-tag="golang"><code class="notebook">golang</code></a>
+                                        
+                                            <a href="http://example.org/tags/goweb" data-tag="goweb"><code class="notebook">goweb</code></a>
+                                        
+                                    
+                                」标签，
+                            
+                            最后修改于<i> 2018-07-23 16:38:42</i>
+                        </p>
+                    </div>
+                </article>
+                <nav class="pagination">
+                    
+                        <a class="prev" href="http://example.org/posts/goweb-03/">«  goweb-03-golang</a>
+                    
+                    
+                        <a class="next" href="http://example.org/posts/goweb-031/"> goweb-031-golang-基础数据类型  »</a>
+                    
+                </nav>
+                
+            </div>
+                        
+<footer id="footer" class="inner">
+                &copy; 2019&nbsp;-&nbsp; zxysilent&nbsp;-&nbsp;<a target="_blank" rel="nofollow" class="external beian" href="http://www.miitbeian.gov.cn/">蜀ICP备16011344号-2</a
+                ><br />Powered by&nbsp;ThinkJS&nbsp;&amp;&nbsp;FireKyli<a target="_blank" rel="nofollow" class="external" href="https://zxysilent.org">n</a>
+                <span id="busuanzi_container_site_pv"
+                    >total:<span id="busuanzi_value_site_pv"></span><span id="busuanzi_container_page_pv">&nbsp;page:<span id="busuanzi_value_page_pv"></span></span
+                ></span>
+            </footer>
+        </div>
+        <script src="/js/theme.js" data-ls="js_zxysilent"></script>
+
+
+<script>
+    console.info("https://blog.zxysilent.com");
+</script>
+
+    </body>
+</html>

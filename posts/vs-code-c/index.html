@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <title>zxysilent</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+        <meta name="msvalidate.01" content="BA6009DC1D95902AC43052D430AA822D" />
+        <meta name="keywords" content="zxysilent,zxyslt,zxy" />
+        <meta name="description" content="zxysilent;zxysilent blog;zxyslt;zxyslt blog;" />
+        <meta name="google-site-verification" content="51J555Z28axR2us4ULmrJuBCizGyxgSMhhL2QGz0XOE" />
+        <link rel="icon" href="/imgs/logo.png" />
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="/index.xml" />
+<link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="zxysilent" />
+<link rel="canonical" href="https://blog.zxysilent.com/" />
+<link href="/css/all.css?v=1566365206" rel="stylesheet" type="text/css" data-ls="css_zxysilent" >
+    </head>
+    <body>
+        <nav id="sidebar">
+    <div class="wrap">
+        <div class="profile">
+            <a href="/"><img src="/imgs/logo.png" alt="zxysilent"/></a><span>zxysilent</span>
+        </div>
+        <ul class="naver">
+            
+                <li>
+                <a href="/" title=""><i class="iconfont icon-home"></i><span>首页</span></a> 
+            </li>
+            
+                <li>
+                <a href="/archives" title=""><i class="iconfont icon-archive"></i><span>归档</span></a> 
+            </li>
+            
+                <li>
+                <a href="/tags" title=""><i class="iconfont icon-tags"></i><span>标签</span></a> 
+            </li>
+            
+                <li>
+                <a href="/about" title=""><i class="iconfont icon-user"></i><span>关于</span></a> 
+            </li>
+            
+                <li>
+                <a href="/links" title=""><i class="iconfont icon-link"></i><span>友链</span></a> 
+            </li>
+            
+        </ul>
+        <div class="footer">
+            <a class="inline" rel="nofollow" target="_blank" href="https://github.com/zxysilent"><i class="iconfont icon-github-v" title="GitHub"></i></a>
+            <a class="inline" rel="nofollow" target="_blank" href="https://weibo.com/u/7072792903"><i class="iconfont icon-weibo" title="weibo"></i></a>
+            <a class="inline" href="/index.xml"><i class="iconfont icon-rss-v" title="RSS"></i></a>
+            <a class="inline" href="/search.html"><i class="iconfont icon-search" title="Search"></i></a>
+        </div>
+    </div>
+</nav>
+<div id="header">
+    <div class="btn-bar"><i></i></div>
+    <h1>
+        <a href="/">使用visual studio code 写c语言</a>
+    </h1>
+    <a class="me" href="/about/"><img src="/imgs/logo.png" alt="zxysilent"/></a>
+</div>
+<div id="sidebar-mask"></div>
+
+        <div id="main">
+            <div id="page-post">
+                <article class="post detail">
+                    <div class="meta">
+                        <div class="date">02月24日, 2019</div>
+                        <div class="comment"><a href="#comments">35 Words</a></div>
+                    </div>
+                    <h1 class="title">使用visual studio code 写c语言</h1>
+                    <div class="entry-content">
+                        
+                            <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#所需软件">所需软件</a></li>
+<li><a href="#安装-vscdoe">安装 vscdoe</a></li>
+<li><a href="#配置gcc">配置gcc</a></li>
+<li><a href="#安装c-c-插件">安装c/c++插件</a></li>
+<li><a href="#使用">使用</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+                        
+                        
+                        <h3 id="所需软件">所需软件</h3>
+
+<ul>
+<li><a href="https://code.visualstudio.com/#alt-downloads">vscode</a>
+推荐下载 <img src="/imgs/post/20190224/upload_d5c0164b43ed052f150a8a0086059ad5.png" alt="alt" /></li>
+<li><a href="https://mingw-w64.org">gcc(mingw64)</a> 官网下载略微复杂</li>
+<li><a href="https://pan.baidu.com/s/10rwyP_21nKeVN00aZXObKw">百度网盘下载gcc(mingw64)</a></li>
+</ul>
+
+<h3 id="安装-vscdoe">安装 vscdoe</h3>
+
+<ul>
+<li>选择合适的位置<br />
+<img src="/imgs/post/20190224/upload_d6ef14f44255bf12c06e1f7ce29ddf08.png" alt="alt" /></li>
+
+<li><p>最好都打上勾<br />
+<img src="/imgs/post/20190224/upload_e8515772ea8f048d26cee65e2a6a46fe.png" alt="alt" /></p>
+
+<h3 id="配置gcc">配置gcc</h3></li>
+
+<li><p>解压<code>mingw64</code> 放到一个不会删除的地方(最好不包含中文路径)<br />
+<img src="/imgs/post/20190224/upload_ba15d6fbf1811b8474a20a21831e2b2c.png" alt="alt" /></p></li>
+
+<li><p>添加环境变量<br />
+<img src="/imgs/post/20190224/upload_9f80acfbaac6bb7386543df0ad3a5cc0.png" alt="alt" /><br />
+<img src="/imgs/post/20190224/upload_40d606d0be029442f24eaae5d15445e2.png" alt="alt" />
+<img src="/imgs/post/20190224/upload_a75d2cbc5bca2fcc5829c1fa2264eb99.png" alt="alt" />
+&gt; 值就是刚刚解压路径下面的<code>bin</code>目录</p>
+
+<h3 id="安装c-c-插件">安装c/c++插件</h3></li>
+
+<li><p><img src="/imgs/post/20190224/upload_ad409bd16314b85ef2568ad2164e7ece.png" alt="alt" /></p>
+
+<h3 id="使用">使用</h3>
+
+<p><strong><a href="https://pan.baidu.com/s/10rwyP_21nKeVN00aZXObKw">视频步骤</a></strong></p></li>
+
+<li><p>新建一个目录并用<code>vscode</code>打开<br />
+<img src="/imgs/post/20190224/upload_2d3a52836ca0b9105ae0fe5071c3770b.png" alt="alt" /></p></li>
+
+<li><p>新建<code>.c</code>文件并写上代码<br />
+<img src="/imgs/post/20190224/upload_cf737b6bd9395769dac66288fd16f0d1.png" alt="alt" /></p></li>
+
+<li><p><code>vscode</code> 中 <code>ctrl+~</code>启动命令行或者当前目录中<code>shift</code>+ 鼠标右键启动命令行，通过命令<code>gcc 文件名.c</code> 例如<code>gcc .\main.c</code>生成<code>a.exe</code>可执行文件<br />
+<img src="/imgs/post/20190224/upload_47462cd6740324d37d883414f7db388d.png" alt="alt" /></p></li>
+
+<li><p>运行 <code>a.exe</code><br />
+<img src="/imgs/post/20190224/upload_51713ea7355158d6ab72b0b21ef1b1d9.png" alt="alt" /><br />
+<strong>提示</strong>输入文件名的时候 直接输入如<code>a.</code>+ tab键 就能自动输入好完整的路径  不用完整输入<code>.\a.exe</code>并且<code>cmd</code>命令行(windows10之前系统)不需要<code>.\</code></p></li>
+</ul>
+                    </div>
+                    <p>本文链接：<a href="/posts/vs-code-c/">/posts/vs-code-c/</a></p>
+                    <p>-- <acronym title="End of File">EOF</acronym> --</p>
+                    <div class="post-info">
+                        <p>
+                            <code class="notebook">zxysilent</code>发表于<i> 2019-02-24 13:45:34</i>，
+                            
+                            
+                                添加「
+                                    
+                                        
+                                            <a href="http://example.org/tags/clang" data-tag="clang"><code class="notebook">clang</code></a>
+                                        
+                                            <a href="http://example.org/tags/env" data-tag="env"><code class="notebook">env</code></a>
+                                        
+                                    
+                                」标签，
+                            
+                            最后修改于<i> 2019-02-24 14:35:17</i>
+                        </p>
+                    </div>
+                </article>
+                <nav class="pagination">
+                    
+                        <a class="prev" href="http://example.org/posts/jwt/">«  json web token</a>
+                    
+                    
+                        <a class="next" href="http://example.org/posts/install-nodejs/"> 安装nodejs  »</a>
+                    
+                </nav>
+                
+            </div>
+                        
+<footer id="footer" class="inner">
+                &copy; 2019&nbsp;-&nbsp; zxysilent&nbsp;-&nbsp;<a target="_blank" rel="nofollow" class="external beian" href="http://www.miitbeian.gov.cn/">蜀ICP备16011344号-2</a
+                ><br />Powered by&nbsp;ThinkJS&nbsp;&amp;&nbsp;FireKyli<a target="_blank" rel="nofollow" class="external" href="https://zxysilent.org">n</a>
+                <span id="busuanzi_container_site_pv"
+                    >total:<span id="busuanzi_value_site_pv"></span><span id="busuanzi_container_page_pv">&nbsp;page:<span id="busuanzi_value_page_pv"></span></span
+                ></span>
+            </footer>
+        </div>
+        <script src="/js/theme.js" data-ls="js_zxysilent"></script>
+
+
+<script>
+    console.info("https://blog.zxysilent.com");
+</script>
+
+    </body>
+</html>

@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <title>zxysilent</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+        <meta name="msvalidate.01" content="BA6009DC1D95902AC43052D430AA822D" />
+        <meta name="keywords" content="zxysilent,zxyslt,zxy" />
+        <meta name="description" content="zxysilent;zxysilent blog;zxyslt;zxyslt blog;" />
+        <meta name="google-site-verification" content="51J555Z28axR2us4ULmrJuBCizGyxgSMhhL2QGz0XOE" />
+        <link rel="icon" href="/imgs/logo.png" />
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="/index.xml" />
+<link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="zxysilent" />
+<link rel="canonical" href="https://blog.zxysilent.com/" />
+<link href="/css/all.css?v=1566365206" rel="stylesheet" type="text/css" data-ls="css_zxysilent" >
+    </head>
+    <body>
+        <nav id="sidebar">
+    <div class="wrap">
+        <div class="profile">
+            <a href="/"><img src="/imgs/logo.png" alt="zxysilent"/></a><span>zxysilent</span>
+        </div>
+        <ul class="naver">
+            
+                <li>
+                <a href="/" title=""><i class="iconfont icon-home"></i><span>首页</span></a> 
+            </li>
+            
+                <li>
+                <a href="/archives" title=""><i class="iconfont icon-archive"></i><span>归档</span></a> 
+            </li>
+            
+                <li>
+                <a href="/tags" title=""><i class="iconfont icon-tags"></i><span>标签</span></a> 
+            </li>
+            
+                <li>
+                <a href="/about" title=""><i class="iconfont icon-user"></i><span>关于</span></a> 
+            </li>
+            
+                <li>
+                <a href="/links" title=""><i class="iconfont icon-link"></i><span>友链</span></a> 
+            </li>
+            
+        </ul>
+        <div class="footer">
+            <a class="inline" rel="nofollow" target="_blank" href="https://github.com/zxysilent"><i class="iconfont icon-github-v" title="GitHub"></i></a>
+            <a class="inline" rel="nofollow" target="_blank" href="https://weibo.com/u/7072792903"><i class="iconfont icon-weibo" title="weibo"></i></a>
+            <a class="inline" href="/index.xml"><i class="iconfont icon-rss-v" title="RSS"></i></a>
+            <a class="inline" href="/search.html"><i class="iconfont icon-search" title="Search"></i></a>
+        </div>
+    </div>
+</nav>
+<div id="header">
+    <div class="btn-bar"><i></i></div>
+    <h1>
+        <a href="/">goweb-04-数据库</a>
+    </h1>
+    <a class="me" href="/about/"><img src="/imgs/logo.png" alt="zxysilent"/></a>
+</div>
+<div id="sidebar-mask"></div>
+
+        <div id="main">
+            <div id="page-post">
+                <article class="post detail">
+                    <div class="meta">
+                        <div class="date">07月22日, 2018</div>
+                        <div class="comment"><a href="#comments">491 Words</a></div>
+                    </div>
+                    <h1 class="title">goweb-04-数据库</h1>
+                    <div class="entry-content">
+                        
+                            <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#测试数据库">测试数据库</a></li>
+<li><a href="#命令行操作">命令行操作</a></li>
+<li><a href="#可视化工具navicat">可视化工具navicat</a>
+<ul>
+<li><a href="#select">select</a>
+<ul>
+<li><a href="#查询所有数据">查询所有数据</a></li>
+<li><a href="#查询部分列">查询部分列</a></li>
+<li><a href="#列别名">列别名</a></li>
+<li><a href="#where">Where</a></li>
+</ul></li>
+<li><a href="#insert">insert</a></li>
+<li><a href="#update">update</a></li>
+<li><a href="#delete">delete</a></li>
+<li><a href="#select步骤">SELECT步骤</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+                        
+                        
+                        <h2 id="测试数据库">测试数据库</h2>
+
+<p><code>mysql -V</code><br />
+<img src="/imgs/post/20180712/screenshot_1502450228763.png" alt="" /><br />
+<a href="http://pan.baidu.com/s/1kUAXwgv">测试数据</a>
+tip<code>source D:/news.sql;</code></p>
+
+<h2 id="命令行操作">命令行操作</h2>
+
+<ol>
+<li>连接命令
+<code>mysql -h host -P port  -u user -p password</code></li>
+<li>步骤 <code>win + r</code>-&gt;<code>cmd</code>-&gt;<code>mysql -u root -p enter</code>-&gt; <code>password</code><br />
+<img src="/imgs/post/20180712/screenshot_1502449944199.png" alt="" />
+<img src="/imgs/post/20180712/screenshot_1502449959964.png" alt="" /></li>
+<li>显示所有数据库<br />
+<code>show databases;</code><br />
+<img src="/imgs/post/20180712/screenshot_1502450071613.png" alt="" /></li>
+<li>指定要使用的数据库<br />
+<code>use news;</code><br />
+<img src="/imgs/post/20180712/screenshot_1502450164958.png" alt="" /></li>
+<li>显示所有的数据表<br />
+<code>show tables;</code><br />
+<img src="/imgs/post/20180712/screenshot_1502450435648.png" alt="" /></li>
+<li>执行sql<br />
+<img src="/imgs/post/20180712/screenshot_1502450501420.png" alt="" /></li>
+</ol>
+
+<p><strong>注意</strong></p>
+
+<blockquote>
+<p>其它sql语句都可以这样执行<br />
+并且接下来的所讲的都可以这样执行<br />
+但为了更方便的学习我们主要采用可视化工具方式教学</p>
+</blockquote>
+
+<h2 id="可视化工具navicat">可视化工具navicat</h2>
+
+<p>还原数据库<br />
+<img src="/imgs/post/20180720/upload_ccb8b04f1a3b89abb4f4777e48bfddb2.png" alt="alt" /></p>
+
+<p>打开运行<code>sql</code>语句界面<br />
+<img src="/imgs/post/20180720/upload_a2d91936c86ee81f54509765c70283d8.png" alt="alt" /></p>
+
+<h3 id="select">select</h3>
+
+<h4 id="查询所有数据">查询所有数据</h4>
+
+<pre><code>select * from article
+</code></pre>
+
+<p><img src="/imgs/post/20180712/screenshot_1502451531611.png" alt="" /></p>
+
+<h4 id="查询部分列">查询部分列</h4>
+
+<pre><code>SELECT id,title,author FROM article
+</code></pre>
+
+<p><img src="/imgs/post/20180712/screenshot_1502451773194.png" alt="" /></p>
+
+<h4 id="列别名">列别名</h4>
+
+<pre><code>SELECT id 编号,title as 标题,author FROM article
+</code></pre>
+
+<p><img src="/imgs/post/20180712/screenshot_1502451883782.png" alt="" />
+<img src="/imgs/post/20180712/screenshot_1502451912272.png" alt="" /></p>
+
+<h4 id="where">Where</h4>
+
+<ol>
+<li><p><strong>&gt;</strong></p>
+
+<pre><code>SELECT * FROM article WHERE id &gt;100
+</code></pre>
+
+<p><img src="/imgs/post/20180712/screenshot_1502503267828.png" alt="" /></p></li>
+
+<li><p><strong>&lt;</strong></p>
+
+<pre><code>SELECT * FROM article WHERE id &lt;10
+</code></pre>
+
+<p><img src="/imgs/post/20180712/screenshot_1502503217133.png" alt="" /></p></li>
+
+<li><p><strong>=</strong></p>
+
+<pre><code>SELECT * FROM article WHERE id =100
+</code></pre>
+
+<p><img src="/imgs/post/20180712/screenshot_1502503399115.png" alt="" /></p></li>
+
+<li><p>区间</p>
+
+<pre><code>SELECT * FROM article WHERE id &gt; 95 and id &lt;100
+SELECT * FROM article WHERE id BETWEEN 96 AND 99
+SELECT * FROM article WHERE id in(96,97,98,99)
+</code></pre>
+
+<p><img src="/imgs/post/20180712/screenshot_1502503794587.png" alt="" /></p></li>
+
+<li><p><strong>like</strong></p></li>
+</ol>
+
+<blockquote>
+<p>类型自动转换</p>
+</blockquote>
+
+<ol>
+<li><p>没有通配符</p>
+
+<pre><code>SELECT * FROM article WHERE id LIKE '90' 
+</code></pre>
+
+<p><img src="/imgs/post/20180712/screenshot_1502504290128.png" alt="" /></p></li>
+
+<li><p><code>_</code>通配符</p>
+
+<pre><code>SELECT * FROM article WHERE id LIKE '_1' 
+</code></pre>
+
+<p><img src="/imgs/post/20180712/screenshot_1502504557696.png" alt="" /></p></li>
+
+<li><p><code>%</code>通配符</p>
+
+<pre><code>SELECT * FROM article WHERE id LIKE '%1' 
+</code></pre>
+
+<p><img src="/imgs/post/20180712/screenshot_1502504587984.png" alt="" /></p></li>
+
+<li><p>Count &amp; Concat</p>
+
+<pre><code>SELECT count(*) FROM article WHERE id LIKE '%1' #%通配符
+</code></pre>
+
+<p><img src="/imgs/post/20180712/screenshot_1502507062019.png" alt="" /></p>
+
+<pre><code>SELECT * FROM article WHERE title = CONCAT('服务','指南')
+</code></pre>
+
+<p><img src="/imgs/post/20180712/screenshot_1502507298141.png" alt="" /></p></li>
+
+<li><p>Limit &amp; Top</p>
+
+<pre><code>SELECT * FROM article  limit 4 # 只查询前4条数据
+</code></pre>
+
+<p><img src="/imgs/post/20180712/screenshot_1502507624013.png" alt="" /></p>
+
+<pre><code>SELECT * FROM article  limit 2,4 # 第三条开始查询前4条数据
+</code></pre>
+
+<p><img src="/imgs/post/20180712/screenshot_1502507747804.png" alt="" /></p></li>
+
+<li><p>MSSQL</p>
+
+<pre><code>select * from Area
+</code></pre>
+
+<p><img src="/imgs/post/20180712/screenshot_1502519107517.png" alt="" /></p>
+
+<pre><code>select top 3 * from Area
+</code></pre>
+
+<p><img src="/imgs/post/20180712/screenshot_1502519235984.png" alt="" /></p></li>
+
+<li><p>Order by</p>
+
+<pre><code>SELECT * FROM article  ORDER by id DESC 
+</code></pre>
+
+<p><img src="/imgs/post/20180712/screenshot_1502518851092.png" alt="" /></p></li>
+
+<li><p>分页</p>
+
+<pre><code class="language-SQL">原始数据
+1   2   3   4   5   6   7   8   9   10  11 
+分页要求
+pageSize 4
+pageIndex 2
+
+limit 一个参数 or top
+1   2   3   4
+5   6   7   8
+9   10  11 
+
+目标分页数 
+5   6   7   8
+
+步骤 
+1   2   3   4   5   6   7   8 
+SELECT * FROM article LIMIT 8 #2*4
+
+8   7   6   5   4   3   2   1
+SELECT * FROM (SELECT * FROM article LIMIT 8) AS First ORDER BY id DESC 
+
+8   7   6   5
+SELECT * FROM (SELECT * FROM article LIMIT 8) AS First ORDER BY id DESC LIMIT 4
+
+5   6   7   8  
+SELECT * FROM (SELECT * FROM (SELECT * FROM article LIMIT 8) AS One ORDER BY id DESC LIMIT 4 ) AS Two ORDER BY id ASC
+
+</code></pre></li>
+</ol>
+
+<p><img src="/imgs/post/20180712/screenshot_1502519882481.png" alt="" /></p>
+
+<p><strong>Easy</strong></p>
+
+<pre><code>SELECT  * FROM article LIMIT 4,4
+</code></pre>
+
+<p><img src="/imgs/post/20180712/screenshot_1502521481331.png" alt="" /></p>
+
+<p><strong>More</strong></p>
+
+<pre><code>EXPLAIN SELECT  * FROM (SELECT * FROM (SELECT * FROM article LIMIT 8) AS One ORDER BY id DESC LIMIT 4 )AS Two ORDER BY id ASC
+</code></pre>
+
+<p><img src="/imgs/post/20180712/screenshot_1502520752305.png" alt="" /></p>
+
+<pre><code>EXPLAIN SELECT  * FROM article WHERE id= 3
+</code></pre>
+
+<p><img src="/imgs/post/20180712/screenshot_1502521401911.png" alt="" /></p>
+
+<h3 id="insert">insert</h3>
+
+<pre><code class="language-SQL">#要插入所有列
+INSERT INTO 表名称 VALUES (值1, 值2,....)
+#指定所要插入数据的列：
+INSERT INTO 表名称 (列1, 列2,...) VALUES (值1, 值2,....)
+</code></pre>
+
+<h3 id="update">update</h3>
+
+<pre><code class="language-SQL"># 更新指定数据
+UPDATE 表名称 SET 列名称 = 新值 WHERE 列名称 = 某值
+# 所有数据
+UPDATE 表名称 SET 列名称 = 新值 
+</code></pre>
+
+<h3 id="delete">delete</h3>
+
+<pre><code class="language-SQL"># 删除某些数据
+DELETE FROM 表名称 WHERE 列名称 = 值
+# 删除所有数据
+DELETE FROM 表名称
+DELETE * FROM 表名称
+</code></pre>
+
+<h3 id="select步骤">SELECT步骤</h3>
+
+<blockquote>
+<p>(8) SELECT
+(9)DISTINCT<br />
+(11)  <TOP_specification> <select_list><br />
+(1) FROM <left_table><br />
+(3)　<join_type> JOIN <right_table><br />
+(2)　 ON <join_condition><br />
+(4) WHERE <where_condition><br />
+(5) GROUP BY <group_by_list><br />
+(6) WITH {CUBE | ROLLUP}<br />
+(7) HAVING <having_condition><br />
+(10) ORDER BY <order_by_list></p>
+</blockquote>
+
+<p>每个步骤产生一个虚拟表，该虚拟表被用作下一个步骤的输入。<br />
+只有最后一步生成的表返回给调用者。如果没有某一子句，则跳过相应的步骤。<br />
+1. FROM:对FROM子句中的前两个表执行笛卡尔积，生成虚拟表VT1。
+2. ON:对VT1应用ON筛选器。只有那些使<join_condition>为真的行才被插入VT2。
+3. OUTER(JOIN):如果指定了OUTER JOIN，保留表中未找到匹配的行将作为外部行添加到VT2，生成VT3。如果FROM子句包含两个以上的表，则对上一个联接生成的结果表和下一个表重复执行步骤1到步骤3，直到 处理完所有的表为止。
+4. 对VT3应用WHERE筛选器。只有使<where_condition>为TRUE的行才被插入VT4。
+5. GROUP BY:按GROUP BY 子句中的列列表对VT4中的行分组，生成VT5。
+6. CUBE|ROLLUP:把超组插入VT5，生成VT6。
+7. HAVING:对VT6应用HAVING筛选器。只有使<having_condition>为TRUE的组才会被插入VT7。
+8. SELECT:处理SELECT列表，产生VT8。
+9. DISTINCT:将重复的行从VT8中移除，产生VT9。
+10. ORDER BY:将VT9中的行按ORDER BY子句中的列列表排序，生成一个有表(VC10)。
+11. TOP:从VC10的开始处选择指定数量或比例的行，生成表VT11,并返回给调用者。</p>
+                    </div>
+                    <p>本文链接：<a href="/posts/goweb-04/">/posts/goweb-04/</a></p>
+                    <p>-- <acronym title="End of File">EOF</acronym> --</p>
+                    <div class="post-info">
+                        <p>
+                            <code class="notebook">zxysilent</code>发表于<i> 2018-07-22 17:04:05</i>，
+                            
+                            
+                                添加「
+                                    
+                                        
+                                            <a href="http://example.org/tags/golang" data-tag="golang"><code class="notebook">golang</code></a>
+                                        
+                                            <a href="http://example.org/tags/goweb" data-tag="goweb"><code class="notebook">goweb</code></a>
+                                        
+                                    
+                                」标签，
+                            
+                            最后修改于<i> 2018-10-24 17:26:32</i>
+                        </p>
+                    </div>
+                </article>
+                <nav class="pagination">
+                    
+                        <a class="prev" href="http://example.org/posts/goweb-038/">«  goweb-038-常用包net&#43;http</a>
+                    
+                    
+                        <a class="next" href="http://example.org/posts/goweb-05/"> goweb-05-golang-操作数据库  »</a>
+                    
+                </nav>
+                
+            </div>
+                        
+<footer id="footer" class="inner">
+                &copy; 2019&nbsp;-&nbsp; zxysilent&nbsp;-&nbsp;<a target="_blank" rel="nofollow" class="external beian" href="http://www.miitbeian.gov.cn/">蜀ICP备16011344号-2</a
+                ><br />Powered by&nbsp;ThinkJS&nbsp;&amp;&nbsp;FireKyli<a target="_blank" rel="nofollow" class="external" href="https://zxysilent.org">n</a>
+                <span id="busuanzi_container_site_pv"
+                    >total:<span id="busuanzi_value_site_pv"></span><span id="busuanzi_container_page_pv">&nbsp;page:<span id="busuanzi_value_page_pv"></span></span
+                ></span>
+            </footer>
+        </div>
+        <script src="/js/theme.js" data-ls="js_zxysilent"></script>
+
+
+<script>
+    console.info("https://blog.zxysilent.com");
+</script>
+
+    </body>
+</html>

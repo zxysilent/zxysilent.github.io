@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <title>zxysilent</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+        <meta name="msvalidate.01" content="BA6009DC1D95902AC43052D430AA822D" />
+        <meta name="keywords" content="zxysilent,zxyslt,zxy" />
+        <meta name="description" content="zxysilent;zxysilent blog;zxyslt;zxyslt blog;" />
+        <meta name="google-site-verification" content="51J555Z28axR2us4ULmrJuBCizGyxgSMhhL2QGz0XOE" />
+        <link rel="icon" href="/imgs/logo.png" />
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="/index.xml" />
+<link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="zxysilent" />
+<link rel="canonical" href="https://blog.zxysilent.com/" />
+<link href="/css/all.css?v=1566365206" rel="stylesheet" type="text/css" data-ls="css_zxysilent" >
+    </head>
+    <body>
+        <nav id="sidebar">
+    <div class="wrap">
+        <div class="profile">
+            <a href="/"><img src="/imgs/logo.png" alt="zxysilent"/></a><span>zxysilent</span>
+        </div>
+        <ul class="naver">
+            
+                <li>
+                <a href="/" title=""><i class="iconfont icon-home"></i><span>首页</span></a> 
+            </li>
+            
+                <li>
+                <a href="/archives" title=""><i class="iconfont icon-archive"></i><span>归档</span></a> 
+            </li>
+            
+                <li>
+                <a href="/tags" title=""><i class="iconfont icon-tags"></i><span>标签</span></a> 
+            </li>
+            
+                <li>
+                <a href="/about" title=""><i class="iconfont icon-user"></i><span>关于</span></a> 
+            </li>
+            
+                <li>
+                <a href="/links" title=""><i class="iconfont icon-link"></i><span>友链</span></a> 
+            </li>
+            
+        </ul>
+        <div class="footer">
+            <a class="inline" rel="nofollow" target="_blank" href="https://github.com/zxysilent"><i class="iconfont icon-github-v" title="GitHub"></i></a>
+            <a class="inline" rel="nofollow" target="_blank" href="https://weibo.com/u/7072792903"><i class="iconfont icon-weibo" title="weibo"></i></a>
+            <a class="inline" href="/index.xml"><i class="iconfont icon-rss-v" title="RSS"></i></a>
+            <a class="inline" href="/search.html"><i class="iconfont icon-search" title="Search"></i></a>
+        </div>
+    </div>
+</nav>
+<div id="header">
+    <div class="btn-bar"><i></i></div>
+    <h1>
+        <a href="/">goweb-031-golang-基础数据类型</a>
+    </h1>
+    <a class="me" href="/about/"><img src="/imgs/logo.png" alt="zxysilent"/></a>
+</div>
+<div id="sidebar-mask"></div>
+
+        <div id="main">
+            <div id="page-post">
+                <article class="post detail">
+                    <div class="meta">
+                        <div class="date">07月16日, 2018</div>
+                        <div class="comment"><a href="#comments">518 Words</a></div>
+                    </div>
+                    <h1 class="title">goweb-031-golang-基础数据类型</h1>
+                    <div class="entry-content">
+                        
+                            <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#整型">整型</a></li>
+<li><a href="#浮点数">浮点数</a></li>
+<li><a href="#复数">复数</a></li>
+<li><a href="#布尔">布尔</a></li>
+<li><a href="#字符串">字符串</a>
+<ul>
+<li><a href="#字符串面值">字符串面值</a></li>
+<li><a href="#unicode">Unicode</a></li>
+<li><a href="#utf-8">UTF-8</a></li>
+<li><a href="#字符串和byte切片">字符串和Byte切片</a></li>
+<li><a href="#字符串和数字的转换">字符串和数字的转换</a></li>
+</ul></li>
+<li><a href="#常量">常量</a>
+<ul>
+<li><a href="#iota-常量生成器">iota 常量生成器</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+                        
+                        
+                        <p>所有的数据都是由比特组成</p>
+
+<h2 id="整型">整型</h2>
+
+<ul>
+<li>Go语言的数值类型包括几种不同大小的整数、浮点数和复数。</li>
+<li>每种数值类型都决定了对应的大小范围和是否支持正负符号。</li>
+<li>Go语言同时提供了有符号和无符号类型的整数运算。</li>
+</ul>
+
+<p>四种不同大小的有符号整数类型<code>int8</code>、<code>int16</code>、<code>int32</code>和<code>int64</code>，分别对应8、16、32、64bit大小，与此对应的是<code>uint8</code>、<code>uint16</code>、<code>uint32</code>和<code>uint64</code>四种无符号整数类型。</p>
+
+<p>✋还有两种一般对应特定CPU平台机器字大小的有符号和无符号整数<code>int</code>和<code>uint</code>,其中<code>int</code>是应用最广泛的数值类型。</p>
+
+<ul>
+<li>Unicode字符rune类型是和int32等价的类型，通常用于表示一个Unicode码点。</li>
+<li>byte是uint8类型的等价类型，byte类型一般用于强调数值是一个原始的数据而不是一个小的整数。</li>
+<li>无符号的整数类型uintptr，没有指定具体的bit大小但是足以容纳指针。</li>
+</ul>
+
+<p>❌ <code>int</code>和<code>int32</code>也是不同的类型，即使int的大小也是32bit。</p>
+
+<ol>
+<li>有符号整数采用2的补码形式表示，最高bit位用来表示符号位，一个n-bit的有符号数的值域是从<code>-2^(n-1)</code>到<code>2^(n-1)-1</code>。</li>
+<li>无符号整数的所有bit位都用于表示非负数，值域是<code>0</code>到<code>2^n-1</code>。<br />
+eg: int8类型整数的值域是从-128到127，而uint8类型整数的值域是从0到255。
+<br /></li>
+</ol>
+
+<p>算术运算、逻辑运算和比较运算的二元运算符，按照优先级递减的顺序排列：</p>
+
+<pre><code class="language-go">*      /      %      &lt;&lt;       &gt;&gt;     &amp;       &amp;^
++      -      |      ^
+==     !=     &lt;      &lt;=       &gt;      &gt;=
+&amp;&amp;
+||
+</code></pre>
+
+<p>二元运算符有五种优先级。在同一个优先级，使用左优先结合规则，但是使用括号可以明确优先顺序，使用括号也可以用于提升优先级，例如<code>mask &amp; (1 &lt;&lt; 28)</code>。</p>
+
+<p>⛲️逻辑表达式的结果是<strong>布尔</strong>类型。</p>
+
+<pre><code class="language-go">==    等于
+!=    不等于
+&lt;     小于
+&lt;=    小于等于
+&gt;     大于
+&gt;=    大于等于
+</code></pre>
+
+<p>⌛️ 一元的加法和减法运算符</p>
+
+<pre><code class="language-go">+      一元加法（无效果）
+-      负数
+</code></pre>
+
+<p>2️⃣<code>bit</code>位操作运算符
+前面4个操作运算符<strong>不区分</strong>是有符号还是无符号数</p>
+
+<pre><code class="language-go">&amp;      位运算 AND
+|      位运算 OR
+^      位运算 XOR
+&amp;^     位清空（AND NOT）
+&lt;&lt;     左移
+&gt;&gt;     右移
+</code></pre>
+
+<p>位操作运算符<code>^</code>作为二元运算符时是按位异或（XOR），当用作一元运算符时表示按位取反,位操作运算符<code>&amp;^</code>用于按位置零（AND NOT)</p>
+
+<p>对于每种类型T，如果转换允许的话，类型转换操作<code>T(x)</code>将<code>x</code>转换为<code>T</code>类型
+许多整数之间的相互转换并不会改变数值；它们只是告诉编译器如何解释这个值。<br />
+ 对于将一个大尺寸的整数类型转为一个小尺寸的整数类型，或者是将一个浮点数转为整数，可能会改变数值或丢失精度</p>
+
+<pre><code class="language-go">f := 3.141 // a float64
+i := int(f)
+fmt.Println(f, i) // &quot;3.141 3&quot;
+f = 1.99
+fmt.Println(int(f)) // &quot;1&quot;
+</code></pre>
+
+<p>整数字面值都可以用以<code>0</code>开始的八进制格式书写， 或用以<code>0x</code>或<code>0X</code>开头的十六进制格式书写。</p>
+
+<pre><code class="language-go">ioutil.WriteFile(&quot;fileName&quot;, []byte(&quot;xxx&quot;), 0777)//rwx
+</code></pre>
+
+<h2 id="浮点数">浮点数</h2>
+
+<ul>
+<li>Go语言提供了两种精度的浮点数，<code>float32</code>和<code>float64</code>。<br />
+它们的算术规范由IEEE754浮点数国际标准定义。</li>
+<li>浮点数的范围极限值可以在math包找到。<br />
+eg 常量<code>math.MaxFloat32</code>表示<code>float32</code>能表示的最大数值。</li>
+</ul>
+
+<p>小数点前面或后面的数字都可能被省略（.707或1.）。也可以用科学计数法书写，通过<code>e</code>或<code>E</code>来指定指数部分</p>
+
+<pre><code class="language-go">const e = 10e2//1000
+</code></pre>
+
+<h2 id="复数">复数</h2>
+
+<ul>
+<li>两种精度的复数类型：<code>complex64</code>和<code>complex128</code>，分别对应<code>float32</code>和<code>float64</code>两种浮点数精度。</li>
+
+<li><p>内置的<code>complex</code>函数用于构建复数，<code>real</code>和<code>imag</code>函数分别返回复数的实部和虚部：</p>
+
+<pre><code class="language-go">//(a+bi)(c+di)=(ac－bd)+(bc+ad)i
+var x complex128 = complex(1, 2) // 1+2i
+var y complex128 = complex(3, 4) // 3+4i
+fmt.Println(x * y)               // &quot;(-5+10i)&quot;
+fmt.Println(real(x * y))         // &quot;-5&quot;
+fmt.Println(imag(x * y))         // &quot;10&quot;
+</code></pre></li>
+</ul>
+
+<p>一个浮点数面值或一个十进制整数面值后面跟着一个i，（3.141592i或2i），它将构成一个复数的虚部，复数的实部是0：</p>
+
+<pre><code class="language-go">fmt.Println(1i * 1i) // &quot;(-1+0i)&quot;, i^2 = -1
+</code></pre>
+
+<h2 id="布尔">布尔</h2>
+
+<ul>
+<li>布尔类型的值只有两种：<code>true</code>和<code>false</code>。</li>
+<li>逻辑运算符会产生布尔型的值。</li>
+<li>一元操作符<code>!</code>对应逻辑非操作，<code>!true</code>的值为<code>false</code>。</li>
+<li>布尔值和<code>&amp;&amp;</code>和<code>||</code>操作符结合可能会<strong>短路</strong>。</li>
+<li>布尔值并不会隐式转换为数字值0或1，反之亦然。</li>
+</ul>
+
+<h2 id="字符串">字符串</h2>
+
+<ul>
+<li>一个字符串是一个不可改变的字节序列。</li>
+<li>字符串可以包含任意的数据，通常是用来包含人类可读的文本。</li>
+<li>文本字符串通常被解释为采用UTF8编码的Unicode码点（rune）序列。</li>
+<li>内置的<code>len</code>函数可以返回一个字符串中的<strong>字节</strong>数目<strong>不是</strong><code>rune</code>字符数目。</li>
+
+<li><p>索引操作<code>s[i]</code>返回第i个字节的字节值，<code>i</code>必须满足<code>0 ≤ i&lt; len(s)</code>条件约束。</p>
+
+<pre><code class="language-go">s := &quot;hello, world&quot;
+fmt.Println(len(s))     // &quot;12&quot;
+fmt.Println(s[0], s[7]) // &quot;104 119&quot; ('h' and 'w')
+</code></pre></li>
+</ul>
+
+<p>访问超出字符串索引范围的字节将会导致<code>panic</code>异常：</p>
+
+<pre><code class="language-go">c := s[len(s)] // panic: index out of range
+</code></pre>
+
+<p>第<code>i</code>个字节并<strong>不一定</strong>是字符串的第i个字符，对于非<code>ASCII</code>字符的<code>UTF8</code>编码会要两个或多个字节。</p>
+
+<p>子字符串操作<code>s[i:j]</code>基于原始的<code>s</code>字符串的第<code>i</code>个字节开始到第<code>j</code>个字节<strong>不包含</strong><code>j</code>生成一个新字符串。生成的新字符串将包含<code>j-i</code>个字节。</p>
+
+<pre><code class="language-go">fmt.Println(s[0:5]) // &quot;hello&quot;
+</code></pre>
+
+<p><code>i</code>或者<code>j</code>都可能被忽略，当它们被忽略时将采用<code>0</code>作为开始位置，采用<code>len(s)</code>作为结束的位置。</p>
+
+<pre><code class="language-go">fmt.Println(s[:5]) // &quot;hello&quot;
+fmt.Println(s[7:]) // &quot;world&quot;
+fmt.Println(s[:])  // &quot;hello, world&quot;
+</code></pre>
+
+<p><code>+</code>操作符将两个字符串连接构造一个新字符串</p>
+
+<pre><code class="language-go">fmt.Println(&quot;goodbye&quot; + s[5:]) // &quot;goodbye, world&quot;
+</code></pre>
+
+<p>字符串可以用<code>==</code>和<code>&lt;</code>进行比较；比较通过逐个字节比较完成的，比较的结果是字符串自然编码的顺序。</p>
+
+<p>字符串的值是❌<strong>不可变</strong>的。</p>
+
+<pre><code class="language-go">func main() {
+	s := &quot;left&quot;
+	t := s
+	s += &quot;, right&quot;
+	fmt.Println(s, &quot;&lt;--&gt;&quot;, t)
+}
+</code></pre>
+
+<p><img src="/imgs/post/20180717/upload_3ec29358173c13b9631578a169b9e538.png" alt="alt" /></p>
+
+<p>字符串是不可修改的，修改字符串内部数据的操作也被禁止</p>
+
+<pre><code class="language-go">s[0] = 'L' // compile error: cannot assign to s[0]
+</code></pre>
+
+<p>✌不变性意味着如果两个字符串共享相同的底层数据的话也是安全的，复制任何长度的字符串代价是低廉的。
+<img src="/imgs/post/20180717/upload_e347cfb7c716505218ee022f23d4fc0c.png" alt="alt" /></p>
+
+<h3 id="字符串面值">字符串面值</h3>
+
+<p>字符串直接写在双引号里面</p>
+
+<pre><code>&quot;Hello, 世界&quot;
+</code></pre>
+
+<p>转义</p>
+
+<pre><code class="language-go">\a      响铃
+\b      退格
+\f      换页
+\n      换行
+\r      回车
+\t      制表符
+\v      垂直制表符
+\'      单引号（只用在 '\'' 形式的rune符号面值中）
+\&quot;      双引号（只用在 &quot;...&quot; 形式的字符串面值中）
+\\      反斜杠
+</code></pre>
+
+<p>可以通过十六进制或八进制转义在字符串面值中包含任意的字节
+- <strong>一个</strong>十六进制的转义形式是<code>\xhh</code>，其中两个h表示十六进制数字（大写或小写都可以）。
+- <strong>一个</strong>八进制转义形式是<code>\ooo</code>，包含三个八进制的o数字（0到7）,不能超过<code>\377</code>❓ 。</p>
+
+<p>一个原生的字符串面值形式是`&hellip;`，使用反引号代替双引号。<br />
+在原生的字符串面值中，没有转义操作；全部的内容都是字面的意思。</p>
+
+<pre><code>func main() {
+	s := `
+	很多
+	很多\
+	行`
+	fmt.Println(s)
+}
+</code></pre>
+
+<h3 id="unicode">Unicode</h3>
+
+<p>在很久以前，世界还是比较简单的，起码计算机世界就只有一个ASCII字符集：美国信息交换标准代码。ASCI，使用7bit来表示128个字符：包含英文字母的大小写、数字、各种标点符号和设备控制符。随着互联网的发展，混合多种语言的数据变得很常见。如何有效处理这些包含了各种语言的丰富多样的文本数据呢❓<br />
+<img src="/imgs/post/20180717/upload_fd5efab3ff8f6b10f2bcf905b1f9f778.png" alt="alt" /></p>
+
+<p><code>Unicode</code><a href="http://unicode.org"> http://unicode.org</a>，它收集了这个世界上所有的符号系统，包括重音符号和其它变音符号，制表符和回车符，还有很多神秘的符号，每个符号都分配一个唯一的Unicode码点。</p>
+
+<h3 id="utf-8">UTF-8</h3>
+
+<ul>
+<li>UTF8是一个将Unicode码点编码为字节序列的变长编码。UTF8编码是由Go语言之父Ken Thompson和Rob Pike共同发明的。</li>
+<li>UTF8编码使用1到4个字节来表示每个Unicode码点，ASCII部分字符只使用1个字节，常用字符部分使用2或3个字节表示。</li>
+</ul>
+
+<p>每个符号编码后第一个字节的高端bit位用于表示编码总共有多少个字节。如果第一个字节的高端bit为0，则表示对应7bit的ASCII字符，ASCII字符每个字符依然是一个字节，和传统的ASCII编码兼容。如果第一个字节的高端bit是110，则说明需要2个字节；后续的每个高端bit都以10开头。</p>
+
+<pre><code>0xxxxxxx     
+110xxxxx 10xxxxxx       
+1110xxxx 10xxxxxx 10xxxxxx      
+11110xxx 10xxxxxx 10xxxxxx 10xxxxxx 
+</code></pre>
+
+<h3 id="字符串和byte切片">字符串和Byte切片</h3>
+
+<p>字符串和Byte切片转换</p>
+
+<pre><code class="language-go">s := &quot;zxysilent&quot;
+b := []byte(s)
+s1 := string(b)
+fmt.Println(s, b, s1)
+</code></pre>
+
+<p>标准库中有四个包对字符串处理尤为重要：<code>bytes</code>、<code>strings</code>、<code>strconv</code>和<code>unicode</code>包。<br />
+- <code>strings</code>包提供了许多如字符串的查询、替换、比较、截断、拆分和合并等功能。
+- <code>bytes</code>包也提供了很多类似功能的函数，但是针对和字符串有着相同结构的<code>[]byte</code>类型。
+因为字符串是只读的，因此逐步构建字符串会导致很多分配和复制。在这种情况下，使用<code>bytes.Buffer</code>类型将会更有效。
+- <code>strconv</code>包提供了布尔型、整型数、浮点数和对应字符串的相互转换，还提供了双引号转义相关的转换。
+- <code>unicode</code>包提供了<code>IsDigit</code>、<code>IsUppe</code>r和<code>IsLower</code>等类似功能，它们用于给字符分类。</p>
+
+<p><img src="/imgs/post/20180717/upload_9ff6d8fc5e0d6e9b22bd998232ffb780.png" alt="alt" /></p>
+
+<h3 id="字符串和数字的转换">字符串和数字的转换</h3>
+
+<p>除了字符串、字符、字节之间的转换，字符串和数值之间的转换也比较常见。
+<code>strconv</code>包提供这类转换功能。</p>
+
+<p>将一个整数转为字符串，一种方法是用fmt.Sprintf返回一个格式化的字符串；另一个方法是用strconv.Itoa(“整数到ASCII”)：</p>
+
+<pre><code class="language-go">x := 123
+y := fmt.Sprintf(&quot;%d&quot;, x)
+fmt.Println(y, strconv.Itoa(x)) // &quot;123 123&quot;
+</code></pre>
+
+<p><code>FormatInt</code>和<code>FormatUint</code>函数可以用不同的进制来格式化数字</p>
+
+<pre><code class="language-go">fmt.Println(strconv.FormatInt(int64(x), 2)) // &quot;1111011&quot;
+</code></pre>
+
+<p><code>fmt.Printf</code>函数的<code>%b</code>、<code>%d</code>、<code>%o</code>和<code>%x</code>等也可用来格式化：</p>
+
+<pre><code class="language-go">s := fmt.Sprintf(&quot;x=%b&quot;, x) // &quot;x=1111011&quot;
+</code></pre>
+
+<p>将一个字符串解析为整数，可以使用<code>strconv</code>包的<code>Atoi</code>或<code>ParseInt</code>,<code>ParseUint</code>(无符号整数)函数</p>
+
+<pre><code class="language-go">x, err := strconv.Atoi(&quot;123&quot;)          
+y, err := strconv.ParseInt(&quot;123&quot;, 10, 64) // base 10, up to 64 bits
+</code></pre>
+
+<p><code>ParseInt</code>函数的第三个参数是用于指定整型数的大小；eg<code>16</code>表示<code>int16</code>，<code>0</code>则表示<code>int</code>， 返回的结果总是<code>int64</code>类型。
+也可使用<code>fmt.Scanf</code>来解析输入的字符串和数字。</p>
+
+<pre><code class="language-go">fmt.Printf(format string, a ...interface{})
+fmt.Fprintf(w io.Writer, format string, a ...interface{})
+fmt.Sprintf(format string, a ...interface{})
+
+fmt.Scanf(format string, a ...interface{})
+fmt.Fscanf(r io.Reader, format string, a ...interface{})
+fmt.Sscanf(str string, format string, a ...interface{})
+</code></pre>
+
+<h2 id="常量">常量</h2>
+
+<ul>
+<li>常量表达式的值在编译期计算，而不是在运行期。</li>
+
+<li><p>每种常量的潜在类型都是基础类型。</p>
+
+<pre><code class="language-go">const pi = 3.14159
+</code></pre></li>
+</ul>
+
+<p>批量声明多个常量。</p>
+
+<pre><code class="language-go">const (
+	e  = 2.718281
+	pi = 3.141592
+)
+</code></pre>
+
+<p>常量间的所有算术运算、逻辑运算和比较运算的结果也是常量，对常量的类型转换操作或以下函数调用都是返回常量结果：<code>len</code>、<code>cap</code>、<code>real</code>、<code>imag</code>、<code>complex</code>和<code>unsafe.Sizeof</code>。</p>
+
+<pre><code>const L=len(&quot;adcd&quot;)//4
+const L = unsafe.Sizeof(int(1))//8
+</code></pre>
+
+<p>一个常量的声明也可以包含一个类型和一个值，但是如果没有显式指明类型，那么将从右边的表达式推断类型。通过%T参数打印类型信息</p>
+
+<pre><code class="language-Go">//type Duration int64
+const noDelay time.Duration = 0
+const timeout = 2 * time.Minute
+fmt.Printf(&quot;%T %[1]v\n&quot;, noDelay) 
+fmt.Printf(&quot;%T %[1]v\n&quot;, timeout)   
+</code></pre>
+
+<p>批量声明的常量，除了第一个外其它的常量右边的初始化表达式都可以省略，如果省略初始化表达式则表示使用前面常量的初始化表达式写法，对应的常量类型也一样的</p>
+
+<pre><code class="language-Go">const (
+	a = 1
+	b
+	c = 2
+	d
+)
+
+fmt.Println(a, b, c, d) // &quot;1 1 2 2&quot;
+</code></pre>
+
+<h3 id="iota-常量生成器">iota 常量生成器</h3>
+
+<p>在一个<code>const</code>声明语句中，在<strong>第一个</strong>声明的常量所在的行，<code>iota</code>将会被置为<code>0</code>，然后在每一个有常量声明的行加一。</p>
+
+<pre><code class="language-go">const (
+		a = iota
+		b
+		c
+	)
+	const (
+		d = iota
+		e
+		f
+	)
+	fmt.Println(a, b, c, d, e, f)
+</code></pre>
+                    </div>
+                    <p>本文链接：<a href="/posts/goweb-031/">/posts/goweb-031/</a></p>
+                    <p>-- <acronym title="End of File">EOF</acronym> --</p>
+                    <div class="post-info">
+                        <p>
+                            <code class="notebook">zxysilent</code>发表于<i> 2018-07-16 16:40:28</i>，
+                            
+                            
+                                添加「
+                                    
+                                        
+                                            <a href="http://example.org/tags/golang" data-tag="golang"><code class="notebook">golang</code></a>
+                                        
+                                            <a href="http://example.org/tags/goweb" data-tag="goweb"><code class="notebook">goweb</code></a>
+                                        
+                                    
+                                」标签，
+                            
+                            最后修改于<i> 2018-07-23 16:39:29</i>
+                        </p>
+                    </div>
+                </article>
+                <nav class="pagination">
+                    
+                        <a class="prev" href="http://example.org/posts/goweb-030/">«  goweb-030-golang-程序结构</a>
+                    
+                    
+                        <a class="next" href="http://example.org/posts/goweb-032/"> goweb-032-golang-复合数据类型  »</a>
+                    
+                </nav>
+                
+            </div>
+                        
+<footer id="footer" class="inner">
+                &copy; 2019&nbsp;-&nbsp; zxysilent&nbsp;-&nbsp;<a target="_blank" rel="nofollow" class="external beian" href="http://www.miitbeian.gov.cn/">蜀ICP备16011344号-2</a
+                ><br />Powered by&nbsp;ThinkJS&nbsp;&amp;&nbsp;FireKyli<a target="_blank" rel="nofollow" class="external" href="https://zxysilent.org">n</a>
+                <span id="busuanzi_container_site_pv"
+                    >total:<span id="busuanzi_value_site_pv"></span><span id="busuanzi_container_page_pv">&nbsp;page:<span id="busuanzi_value_page_pv"></span></span
+                ></span>
+            </footer>
+        </div>
+        <script src="/js/theme.js" data-ls="js_zxysilent"></script>
+
+
+<script>
+    console.info("https://blog.zxysilent.com");
+</script>
+
+    </body>
+</html>

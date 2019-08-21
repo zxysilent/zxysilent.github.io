@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>env on zxysilent</title>
+    <link>http://example.org/tags/env/</link>
+    <description>Recent content in env on zxysilent</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 03 Mar 2019 18:19:06 +0800</lastBuildDate>
+    
+	<atom:link href="http://example.org/tags/env/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>安装nodejs</title>
+      <link>http://example.org/posts/install-nodejs/</link>
+      <pubDate>Sun, 03 Mar 2019 18:19:06 +0800</pubDate>
+      
+      <guid>http://example.org/posts/install-nodejs/</guid>
+      <description>&lt;h2 id=&#34;nodejs&#34;&gt;NodeJs&lt;/h2&gt;
+
+&lt;p&gt;&lt;code&gt;Node.js&lt;/code&gt; 是一个基于 &lt;code&gt;Chrome V8&lt;/code&gt; 引擎的 &lt;code&gt;JavaScript&lt;/code&gt; 运行环境。Node.js 使用了一个事件驱动、非阻塞式&lt;code&gt;I/O&lt;/code&gt; 的模型，使其轻量又高效。&lt;code&gt;Node.js&lt;/code&gt;的包管理器 &lt;code&gt;npm&lt;/code&gt;，是全球最大的开源库生态系统。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>使用visual studio code 写c语言</title>
+      <link>http://example.org/posts/vs-code-c/</link>
+      <pubDate>Sun, 24 Feb 2019 13:45:34 +0000</pubDate>
+      
+      <guid>http://example.org/posts/vs-code-c/</guid>
+      <description>&lt;h3 id=&#34;所需软件&#34;&gt;所需软件&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://code.visualstudio.com/#alt-downloads&#34;&gt;vscode&lt;/a&gt;
+推荐下载 &lt;img src=&#34;http://example.org/imgs/post/20190224/upload_d5c0164b43ed052f150a8a0086059ad5.png&#34; alt=&#34;alt&#34; /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://mingw-w64.org&#34;&gt;gcc(mingw64)&lt;/a&gt; 官网下载略微复杂&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://pan.baidu.com/s/10rwyP_21nKeVN00aZXObKw&#34;&gt;百度网盘下载gcc(mingw64)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>python-01-环境搭建</title>
+      <link>http://example.org/posts/python-01/</link>
+      <pubDate>Mon, 06 Aug 2018 09:50:47 +0000</pubDate>
+      
+      <guid>http://example.org/posts/python-01/</guid>
+      <description>&lt;h2 id=&#34;python&#34;&gt;python&lt;/h2&gt;
+
+&lt;p&gt;安装 python
+&amp;gt; 官方下载地址 &lt;a href=&#34;https://www.python.org/downloads/&#34;&gt;https://www.python.org/downloads/&lt;/a&gt;&lt;br /&gt;
+推荐安装 3.6.5&lt;/p&gt;
+
+&lt;p&gt;网盘&lt;a href=&#34;https://pan.baidu.com/s/10CxDeoLMzETGxm_IU9Rhlg&#34;&gt;https://pan.baidu.com/s/10CxDeoLMzETGxm_IU9Rhlg&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <title>zxysilent</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+        <meta name="msvalidate.01" content="BA6009DC1D95902AC43052D430AA822D" />
+        <meta name="keywords" content="zxysilent,zxyslt,zxy" />
+        <meta name="description" content="zxysilent;zxysilent blog;zxyslt;zxyslt blog;" />
+        <meta name="google-site-verification" content="51J555Z28axR2us4ULmrJuBCizGyxgSMhhL2QGz0XOE" />
+        <link rel="icon" href="/imgs/logo.png" />
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="/index.xml" />
+<link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="zxysilent" />
+<link rel="canonical" href="https://blog.zxysilent.com/" />
+<link href="/css/all.css?v=1566365206" rel="stylesheet" type="text/css" data-ls="css_zxysilent" >
+    </head>
+    <body>
+        <nav id="sidebar">
+    <div class="wrap">
+        <div class="profile">
+            <a href="/"><img src="/imgs/logo.png" alt="zxysilent"/></a><span>zxysilent</span>
+        </div>
+        <ul class="naver">
+            
+                <li>
+                <a href="/" title=""><i class="iconfont icon-home"></i><span>首页</span></a> 
+            </li>
+            
+                <li>
+                <a href="/archives" title=""><i class="iconfont icon-archive"></i><span>归档</span></a> 
+            </li>
+            
+                <li>
+                <a href="/tags" title=""><i class="iconfont icon-tags"></i><span>标签</span></a> 
+            </li>
+            
+                <li>
+                <a href="/about" title=""><i class="iconfont icon-user"></i><span>关于</span></a> 
+            </li>
+            
+                <li>
+                <a href="/links" title=""><i class="iconfont icon-link"></i><span>友链</span></a> 
+            </li>
+            
+        </ul>
+        <div class="footer">
+            <a class="inline" rel="nofollow" target="_blank" href="https://github.com/zxysilent"><i class="iconfont icon-github-v" title="GitHub"></i></a>
+            <a class="inline" rel="nofollow" target="_blank" href="https://weibo.com/u/7072792903"><i class="iconfont icon-weibo" title="weibo"></i></a>
+            <a class="inline" href="/index.xml"><i class="iconfont icon-rss-v" title="RSS"></i></a>
+            <a class="inline" href="/search.html"><i class="iconfont icon-search" title="Search"></i></a>
+        </div>
+    </div>
+</nav>
+<div id="header">
+    <div class="btn-bar"><i></i></div>
+    <h1>
+        <a href="/">python-01-环境搭建</a>
+    </h1>
+    <a class="me" href="/about/"><img src="/imgs/logo.png" alt="zxysilent"/></a>
+</div>
+<div id="sidebar-mask"></div>
+
+        <div id="main">
+            <div id="page-post">
+                <article class="post detail">
+                    <div class="meta">
+                        <div class="date">08月06日, 2018</div>
+                        <div class="comment"><a href="#comments">108 Words</a></div>
+                    </div>
+                    <h1 class="title">python-01-环境搭建</h1>
+                    <div class="entry-content">
+                        
+                            <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#python">python</a></li>
+<li><a href="#pip">pip</a></li>
+<li><a href="#libs">libs</a>
+<ul>
+<li><a href="#numpy">numpy</a></li>
+<li><a href="#opencv">opencv</a></li>
+<li><a href="#matplotlib">Matplotlib</a></li>
+<li><a href="#tensorflow">tensorflow</a></li>
+<li><a href="#keras">Keras</a></li>
+</ul></li>
+<li><a href="#vscode">vscode</a></li>
+</ul></li>
+</ul>
+</nav>
+                        
+                        
+                        <h2 id="python">python</h2>
+
+<p>安装 python
+&gt; 官方下载地址 <a href="https://www.python.org/downloads/">https://www.python.org/downloads/</a><br />
+推荐安装 3.6.5</p>
+
+<p>网盘<a href="https://pan.baidu.com/s/10CxDeoLMzETGxm_IU9Rhlg">https://pan.baidu.com/s/10CxDeoLMzETGxm_IU9Rhlg</a></p>
+
+<p><code>python</code> 兼容性不是很好
+<img src="/imgs/post/20180806/upload_5a40537e81d1f94b317bf022f8cc11e8.png" alt="alt" /></p>
+
+<ol>
+<li><p>点击安装程序<br />
+<img src="/imgs/post/20180806/upload_f24deabe27f8265900e223cac1dc9f92.png" alt="alt" /></p></li>
+
+<li><p>默认选择全部安装<br />
+<img src="/imgs/post/20180806/upload_7f53bba92558978620f15947b5a41660.png" alt="alt" /></p></li>
+
+<li><p>修改安装路径<br />
+<img src="/imgs/post/20180806/upload_01128fd496b17a64456d449376b6760e.png" alt="alt" /></p></li>
+
+<li><p>测试安装结果( <code>Win + R =&gt; cmd =&gt;py</code>)
+<img src="/imgs/post/20180806/upload_22aa3e7832920e04ffa627223413c1fa.png" alt="alt" /></p></li>
+
+<li><p>退出交互模式(<code>exit()</code>)⚡️<br />
+<img src="/imgs/post/20180806/upload_d7407f224b94f6ede88d7ae88a26e790.png" alt="alt" /></p></li>
+
+<li><p>添加环境变量(如果没有)
+<img src="/imgs/post/20180806/upload_2792b039ef6624c665fc822a11c1b1f8.png" alt="alt" /></p></li>
+</ol>
+
+<h2 id="pip">pip</h2>
+
+<p>pip 是一个Python包管理工具可以用来管理python的第三方包</p>
+
+<p>直接输入 <code>pip</code> 等价于<code>pip -h</code> 、<code>pip --help</code> 或者 <code>pip help</code> 获取帮助信息<br />
+<img src="/imgs/post/20180806/upload_66e9739db086c25ffa41ff6425c3e2f0.png" alt="alt" /></p>
+
+<p>常用三个指令
+- install                         Install packages.
+- download                        Download packages.
+- uninstall                       Uninstall packages.
+- list                            List installed packages.</p>
+
+<h2 id="libs">libs</h2>
+
+<p>网络不稳定请多安装几次</p>
+
+<h3 id="numpy">numpy</h3>
+
+<p><code>numpy</code>系统是<code>Python</code>的一种开源的数值计算扩展。<br />
+官网<a href="http://www.numpy.org/">http://www.numpy.org/</a></p>
+
+<p><code>pip install numpy</code><br />
+<img src="/imgs/post/20180806/upload_19d9ff2cdbb36356bdb0979423684124.png" alt="alt" /></p>
+
+<h3 id="opencv">opencv</h3>
+
+<p>OpenCV是一个基于BSD许可（开源）发行的跨平台计算机视觉库。<br />
+官网<a href="https://opencv.org/">https://opencv.org/</a><br />
+<code>pip install opencv-python</code></p>
+
+<h3 id="matplotlib">Matplotlib</h3>
+
+<p>Matplotlib 是一个 Python 的 2D绘图库，它以各种硬拷贝格式和跨平台的交互式环境生成出版质量级别的图形。<br />
+官网 <a href="https://matplotlib.org/">https://matplotlib.org/</a><br />
+<code>pip install Matplotlib</code></p>
+
+<h3 id="tensorflow">tensorflow</h3>
+
+<p>TensorFlow是谷歌基于DistBelief进行研发的第二代人工智能学习系统。<br />
+官网[墙外] <a href="http://tensorflow.org/">http://tensorflow.org/</a><br />
+镜像 <a href="https://tensorflow.google.cn/">https://tensorflow.google.cn/</a><br />
+<code>pip install --upgrade tensorflow</code></p>
+
+<h3 id="keras">Keras</h3>
+
+<p>Keras是一个高层神经网络API，Keras由纯Python编写而成并基Tensorflow、Theano以及CNTK后端。<br />
+官网 <a href="https://keras.io/">https://keras.io//</a><br />
+<code>pip install keras</code></p>
+
+<h2 id="vscode">vscode</h2>
+
+<p>一个运行于 Mac OS X、Windows和 Linux 之上的，针对于编写现代 Web 和云应用的跨平台源代码编辑器。<br />
+官网 <a href="https://code.visualstudio.com/">https://code.visualstudio.com/</a><br />
+常用插件<br />
+<img src="/imgs/post/20180806/upload_1f2214fcf8dcd5cbc2e1aa9ebfc38b80.png" alt="alt" /></p>
+                    </div>
+                    <p>本文链接：<a href="/posts/python-01/">/posts/python-01/</a></p>
+                    <p>-- <acronym title="End of File">EOF</acronym> --</p>
+                    <div class="post-info">
+                        <p>
+                            <code class="notebook">zxysilent</code>发表于<i> 2018-08-06 09:50:47</i>，
+                            
+                            
+                                添加「
+                                    
+                                        
+                                            <a href="http://example.org/tags/python" data-tag="python"><code class="notebook">python</code></a>
+                                        
+                                            <a href="http://example.org/tags/env" data-tag="env"><code class="notebook">env</code></a>
+                                        
+                                    
+                                」标签，
+                            
+                            最后修改于<i> 2018-09-05 23:07:25</i>
+                        </p>
+                    </div>
+                </article>
+                <nav class="pagination">
+                    
+                        <a class="prev" href="http://example.org/posts/python-00/">«  python-00-前言</a>
+                    
+                    
+                        <a class="next" href="http://example.org/posts/python-02/"> python-02  »</a>
+                    
+                </nav>
+                
+            </div>
+                        
+<footer id="footer" class="inner">
+                &copy; 2019&nbsp;-&nbsp; zxysilent&nbsp;-&nbsp;<a target="_blank" rel="nofollow" class="external beian" href="http://www.miitbeian.gov.cn/">蜀ICP备16011344号-2</a
+                ><br />Powered by&nbsp;ThinkJS&nbsp;&amp;&nbsp;FireKyli<a target="_blank" rel="nofollow" class="external" href="https://zxysilent.org">n</a>
+                <span id="busuanzi_container_site_pv"
+                    >total:<span id="busuanzi_value_site_pv"></span><span id="busuanzi_container_page_pv">&nbsp;page:<span id="busuanzi_value_page_pv"></span></span
+                ></span>
+            </footer>
+        </div>
+        <script src="/js/theme.js" data-ls="js_zxysilent"></script>
+
+
+<script>
+    console.info("https://blog.zxysilent.com");
+</script>
+
+    </body>
+</html>

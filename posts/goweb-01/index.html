@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <title>zxysilent</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+        <meta name="msvalidate.01" content="BA6009DC1D95902AC43052D430AA822D" />
+        <meta name="keywords" content="zxysilent,zxyslt,zxy" />
+        <meta name="description" content="zxysilent;zxysilent blog;zxyslt;zxyslt blog;" />
+        <meta name="google-site-verification" content="51J555Z28axR2us4ULmrJuBCizGyxgSMhhL2QGz0XOE" />
+        <link rel="icon" href="/imgs/logo.png" />
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="/index.xml" />
+<link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="zxysilent" />
+<link rel="canonical" href="https://blog.zxysilent.com/" />
+<link href="/css/all.css?v=1566365206" rel="stylesheet" type="text/css" data-ls="css_zxysilent" >
+    </head>
+    <body>
+        <nav id="sidebar">
+    <div class="wrap">
+        <div class="profile">
+            <a href="/"><img src="/imgs/logo.png" alt="zxysilent"/></a><span>zxysilent</span>
+        </div>
+        <ul class="naver">
+            
+                <li>
+                <a href="/" title=""><i class="iconfont icon-home"></i><span>首页</span></a> 
+            </li>
+            
+                <li>
+                <a href="/archives" title=""><i class="iconfont icon-archive"></i><span>归档</span></a> 
+            </li>
+            
+                <li>
+                <a href="/tags" title=""><i class="iconfont icon-tags"></i><span>标签</span></a> 
+            </li>
+            
+                <li>
+                <a href="/about" title=""><i class="iconfont icon-user"></i><span>关于</span></a> 
+            </li>
+            
+                <li>
+                <a href="/links" title=""><i class="iconfont icon-link"></i><span>友链</span></a> 
+            </li>
+            
+        </ul>
+        <div class="footer">
+            <a class="inline" rel="nofollow" target="_blank" href="https://github.com/zxysilent"><i class="iconfont icon-github-v" title="GitHub"></i></a>
+            <a class="inline" rel="nofollow" target="_blank" href="https://weibo.com/u/7072792903"><i class="iconfont icon-weibo" title="weibo"></i></a>
+            <a class="inline" href="/index.xml"><i class="iconfont icon-rss-v" title="RSS"></i></a>
+            <a class="inline" href="/search.html"><i class="iconfont icon-search" title="Search"></i></a>
+        </div>
+    </div>
+</nav>
+<div id="header">
+    <div class="btn-bar"><i></i></div>
+    <h1>
+        <a href="/">goweb-01-基础知识</a>
+    </h1>
+    <a class="me" href="/about/"><img src="/imgs/logo.png" alt="zxysilent"/></a>
+</div>
+<div id="sidebar-mask"></div>
+
+        <div id="main">
+            <div id="page-post">
+                <article class="post detail">
+                    <div class="meta">
+                        <div class="date">07月12日, 2018</div>
+                        <div class="comment"><a href="#comments">530 Words</a></div>
+                    </div>
+                    <h1 class="title">goweb-01-基础知识</h1>
+                    <div class="entry-content">
+                        
+                            <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#网站运作流程">网站运作流程</a>
+<ul>
+<li><a href="#输入设备">输入设备</a></li>
+<li><a href="#地址栏">地址栏</a></li>
+<li><a href="#dns-domain-name-system">DNS(Domain Name System)</a></li>
+<li><a href="#ip地址">IP地址</a></li>
+<li><a href="#建立连接">建立连接</a></li>
+<li><a href="#发送请求-request">发送请求(Request)</a></li>
+<li><a href="#服务器响应-response">服务器响应(Response)</a></li>
+<li><a href="#浏览器处理请求">浏览器处理请求</a></li>
+</ul></li>
+<li><a href="#http协议">http协议</a>
+<ul>
+<li><a href="#cookie">cookie</a></li>
+<li><a href="#session">session</a></li>
+</ul></li>
+<li><a href="#http头信息">http头信息</a>
+<ul>
+<li><a href="#request">Request</a></li>
+<li><a href="#response">Response</a></li>
+<li><a href="#mime">MIME</a></li>
+</ul></li>
+<li><a href="#http状态码">http状态码</a>
+<ul>
+<li><a href="#一览众山小">一览众山小</a></li>
+<li><a href="#常见状态码">常见状态码</a>
+<ul>
+<li><a href="#10x">10x</a></li>
+<li><a href="#20x">20x</a></li>
+<li><a href="#30x">30x</a></li>
+<li><a href="#40x">40x</a></li>
+<li><a href="#50x">50x</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#get-post">GET/POST</a>
+<ul>
+<li><a href="#get-方法">GET 方法</a></li>
+<li><a href="#post-方法">POST 方法</a></li>
+</ul></li>
+<li><a href="#其他">其他 </a></li>
+</ul></li>
+</ul>
+</nav>
+                        
+                        
+                        <h2 id="网站运作流程">网站运作流程</h2>
+
+<p>当我们在浏览器地址栏输入
+<a href="http://mi.cwnu.edu.cn">http://mi.cwnu.edu.cn</a>
+并回车后到底发生了什么</p>
+
+<h3 id="输入设备">输入设备</h3>
+
+<ol>
+<li>键盘</li>
+<li>触屏</li>
+</ol>
+
+<h3 id="地址栏">地址栏</h3>
+
+<ol>
+<li><p>正确地址</p></li>
+
+<li><p>非正确地址(搜索)
+<strong>url</strong> <a href="https://sub.host.com:8080/p/a/t/h?query=string#hash">https://sub.host.com:8080/p/a/t/h?query=string#hash</a></p></li>
+</ol>
+
+<h3 id="dns-domain-name-system">DNS(Domain Name System)</h3>
+
+<ol>
+<li>浏览器</li>
+<li>host</li>
+<li>路由器/交换机</li>
+<li>顶级域名服务器</li>
+</ol>
+
+<h3 id="ip地址">IP地址</h3>
+
+<h3 id="建立连接">建立连接</h3>
+
+<ol>
+<li>3握手</li>
+<li>4挥手</li>
+</ol>
+
+<h3 id="发送请求-request">发送请求(Request)</h3>
+
+<ol>
+<li>get</li>
+<li>post</li>
+<li>xxx</li>
+</ol>
+
+<h3 id="服务器响应-response">服务器响应(Response)</h3>
+
+<p>http 状态码</p>
+
+<h3 id="浏览器处理请求">浏览器处理请求</h3>
+
+<ol>
+<li>解析(HTML，CSS，JS )</li>
+<li>渲染——构建 DOM 树 -&gt; 渲染 -&gt; 布局 -&gt; 绘制</li>
+</ol>
+
+<h2 id="http协议">http协议</h2>
+
+<blockquote>
+<p>无状态的,本身并不能支持服务端保存客户端的状态信息</p>
+</blockquote>
+
+<h3 id="cookie">cookie</h3>
+
+<ol>
+<li>如果客户端支持Cookie，Web Server在返回Response的时候，在Response的Header部分，加入一个“set-cookie: jsessionid=XXXX”header属性，把jsessionid放在Cookie里传到客户端。</li>
+<li>客户端会把Cookie存放在本地文件里，下一次访问Web Server的时候，再把Cookie的信息放到HTTP Request的“Cookie”header属性里面，这样jsessionid就随着HTTP Request返回给Web Server。</li>
+</ol>
+
+<h3 id="session">session</h3>
+
+<ol>
+<li>当一个用户向服务器发送第一个请求时，服务器为其建立一个session，并为此session创建一个标识号；</li>
+<li>这个用户随后的所有请求都应包括这个标识号。服务器会校对这个标识号以判断请求属于哪个session。</li>
+</ol>
+
+<h2 id="http头信息">http头信息</h2>
+
+<blockquote>
+<p>HTTP请求头提供了关于请求，响应或者其他的发送实体的信息。<br />
+HTTP的头信息包括通用头、请求头、响应头和实体头四个部分。每个头域由一个域名，冒号&gt;（:）和域值三部分组成。</p>
+</blockquote>
+
+<ol>
+<li>通用头标：即可用于请求，也可用于响应，是作为一个整体而不是特定资源与事务相关联。</li>
+<li>请求头标：允许客户端传递关于自身的信息和希望的响应形式。</li>
+<li>响应头标：服务器和于传递自身信息的响应。</li>
+<li>实体头标：定义被传送资源的信息。即可用于请求，也可用于响应。</li>
+</ol>
+
+<h3 id="request">Request</h3>
+
+<p>常见头信息</p>
+
+<p>| Header | 解释 | 示例 |<br />
+| &mdash; | &mdash; | &mdash; |<br />
+| Accept | 指定客户端能够接收的内容类型 | Accept: text/plain, text/html |<br />
+| Accept-Charset | 浏览器可以接受的字符编码集。 | Accept-Charset: iso-8859-5 |<br />
+| Accept-Encoding | 指定浏览器可以支持的web服务器返回内容压缩编码类型。 | Accept-Encoding: compress, gzip |<br />
+| Accept-Language | 浏览器可接受的语言 | Accept-Language: en,zh |
+| Authorization | HTTP授权的授权证书 | Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ== |
+| Cache-Control | 指定请求和响应遵循的缓存机制 | Cache-Control: no-cache |
+| Connection | 表示是否需要持久连接。（HTTP 1.1默认进行持久连接） | Connection: close |
+| Cookie | HTTP请求发送时，会把保存在该请求域名下的所有cookie值一起发送给web服务器。 | Cookie: $Version=1; Skin=new; |
+| Content-Length | 请求的内容长度 | Content-Length: 348 |
+| Content-Type | 请求的与实体对应的MIME信息 | Content-Type: application/x-www-form-urlencoded |
+| Date | 请求发送的日期和时间 | Date: Tue, 15 Nov 2010 08:12:31 GMT |
+| Host | 指定请求的服务器的域名和端口号 | Host:blog.zxysilent.com |
+| Referer | 先前网页的地址，当前请求网页紧随其后,即来路 | Referer: <a href="https://blog.zxysilent.com/">https://blog.zxysilent.com/</a> |
+| Upgrade | 向服务器指定某种传输协议以便服务器进行转换（如果支持） | Upgrade: HTTP/2.0, SHTTP/1.3, IRC/6.9, RTA/x11 |
+| User-Agent | User-Agent的内容包含发出请求的用户信息 | User-Agent: Mozilla/5.0 (Linux; X11) |</p>
+
+<h3 id="response">Response</h3>
+
+<p>常见头信息</p>
+
+<table>
+<thead>
+<tr>
+<th>Header</th>
+<th>解释</th>
+<th>示例</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Cache-Control</td>
+<td>告诉所有的缓存机制是否可以缓存及哪种类型</td>
+<td>Cache-Control: no-cache</td>
+</tr>
+
+<tr>
+<td>Content-Encoding</td>
+<td>web服务器支持的返回内容压缩编码类型。</td>
+<td>Content-Encoding: gzip</td>
+</tr>
+
+<tr>
+<td>Content-Language</td>
+<td>响应体的语言</td>
+<td>Content-Language: en,zh</td>
+</tr>
+
+<tr>
+<td>Content-Length</td>
+<td>响应体的长度</td>
+<td>Content-Length: 348</td>
+</tr>
+
+<tr>
+<td>Content-Location</td>
+<td>请求资源可替代的备用的另一地址</td>
+<td>Content-Location: /index.htm</td>
+</tr>
+
+<tr>
+<td>Content-Type</td>
+<td>返回内容的MIME类型</td>
+<td>Content-Type: text/html; charset=utf-8</td>
+</tr>
+
+<tr>
+<td>Expires</td>
+<td>响应过期的日期和时间</td>
+<td>Expires: Thu, 01 Dec 2010 16:00:00 GMT</td>
+</tr>
+
+<tr>
+<td>Location</td>
+<td>用来重定向接收方到非请求URL的位置来完成请求或标识新的资源</td>
+<td>Location: <a href="https://blog.zxysilent.com/">https://blog.zxysilent.com/</a></td>
+</tr>
+
+<tr>
+<td>Server</td>
+<td>web服务器软件名称</td>
+<td>Server: Apache/1.3.27 (Unix) (Red-Hat/Linux)</td>
+</tr>
+
+<tr>
+<td>Set-Cookie</td>
+<td>设置Http Cookie</td>
+<td>Set-Cookie: UserID=JohnDoe; Max-Age=3600; Version=1</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="mime">MIME</h3>
+
+<blockquote>
+<p>(Multipurpose Internet Mail Extensions) 是描述消息内容类型的因特网标准</p>
+</blockquote>
+
+<p>一些MIME</p>
+
+<table>
+<thead>
+<tr>
+<th>扩展名</th>
+<th>类型/子类型</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>css</td>
+<td>text/css</td>
+</tr>
+
+<tr>
+<td>doc</td>
+<td>application/msword</td>
+</tr>
+
+<tr>
+<td>htm</td>
+<td>text/html</td>
+</tr>
+
+<tr>
+<td>html</td>
+<td>text/html</td>
+</tr>
+
+<tr>
+<td>jpeg</td>
+<td>image/jpeg</td>
+</tr>
+
+<tr>
+<td>jpg</td>
+<td>image/jpeg</td>
+</tr>
+
+<tr>
+<td>js</td>
+<td>application/x-javascript</td>
+</tr>
+
+<tr>
+<td>json</td>
+<td>application/json</td>
+</tr>
+
+<tr>
+<td>mp3</td>
+<td>audio/mpeg</td>
+</tr>
+
+<tr>
+<td>mp4</td>
+<td>video/mp4</td>
+</tr>
+
+<tr>
+<td>pdf</td>
+<td>application/pdf</td>
+</tr>
+
+<tr>
+<td>ppt</td>
+<td>application/vnd.ms-powerpoint</td>
+</tr>
+
+<tr>
+<td>svg</td>
+<td>image/svg+xml</td>
+</tr>
+
+<tr>
+<td>txt</td>
+<td>text/plain</td>
+</tr>
+
+<tr>
+<td>xls</td>
+<td>application/vnd.ms-excel</td>
+</tr>
+
+<tr>
+<td>zip</td>
+<td>application/zip</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="http状态码">http状态码</h2>
+
+<h3 id="一览众山小">一览众山小</h3>
+
+<p>1xx 用于指定客户端应相应的某些动作。
+2xx 用于表示请求成功。
+3xx 用于已经移动的文件并且常被包含在定位头信息中指定新的地址信息。
+4xx 用于指出客户端的错误。
+5xx 用于指出服务器错误。</p>
+
+<h3 id="常见状态码">常见状态码</h3>
+
+<h4 id="10x">10x</h4>
+
+<ul>
+<li>101 Switching Protocols
+服务器将遵从客户的请求转换到另外一种协议。</li>
+</ul>
+
+<h4 id="20x">20x</h4>
+
+<ul>
+<li>200 OK
+一切正常，对GET和POST请求的应答文档跟在后面。</li>
+</ul>
+
+<h4 id="30x">30x</h4>
+
+<ul>
+<li>301 Moved Permanently
+客户请求的文档在其他地方，新的URL在Location头中给出，浏览器应该自动地访问新的URL。</li>
+<li>302 Found
+类似于301，但新的URL应该被视为临时性的替代，而不是永久性的。</li>
+<li>304 Not Modified
+客户端有缓冲的文档并发出了一个条件性的请求（一般是提供If-Modified-Since头表示客户只想比指定日期更新的文档）。服务器告诉客户，原来缓存的数据还可以继续使用。</li>
+</ul>
+
+<h4 id="40x">40x</h4>
+
+<ul>
+<li>400 Bad Request
+请求出现语法错误。</li>
+<li>401 Unauthorized
+客户试图未经授权访问受密码保护的页面(没有权限)。</li>
+<li>403 Forbidden
+表示资源不可用。服务器理解客户的请求，但拒绝处理它。</li>
+<li>404 Not Found
+无法找到指定位置的资源。</li>
+<li>405 Method Not Allowed
+请求方法（GET、POST、HEAD、Delete、PUT、TRACE等）对指定的资源不适用。</li>
+</ul>
+
+<h4 id="50x">50x</h4>
+
+<ul>
+<li>500 Internal Server Error
+服务器遇到了意料不到的情况，不能完成客户的请求。</li>
+<li>501 Not Implemented
+服务器不支持实现请求所需要的功能。例如，客户发出了一个服务器不支持的PUT请求。</li>
+<li>502 Bad Gateway
+服务器作为网关或者代理时，为了完成请求访问下一个服务器，但该服务器返回了非法的应答。</li>
+<li>503 Service Unavailable
+服务器由于维护或者负载过重未能应答。</li>
+<li>504 Gateway Timeout
+由作为代理或网关的服务器使用，表示不能及时地从远程服务器获得应答。
+<br /></li>
+</ul>
+
+<blockquote>
+<p>101,200,301,302,404,503
+  ## 调试？（debug）
+<img src="/imgs/post/20180712/upload_e011db73f04c1284d6d7dcb552f055b8.png" alt="alt" />
+ <img src="/imgs/post/20180712/upload_ff66bbedd946cbdd85b30187b7002706.png" alt="alt" /></p>
+</blockquote>
+
+<p>### Elements
+  页面元素
+  ### Console
+  console.log/xxx()
+  ### Network
+<img src="/imgs/post/20180712/upload_0f1af672169c7821809cafbba200aabe.png" alt="alt" />
+  ### Application
+<img src="/imgs/post/20180712/upload_e70aca28a199261bf3e0b879425514dc.png" alt="alt" /></p>
+
+<h2 id="get-post">GET/POST</h2>
+
+<h3 id="get-方法">GET 方法</h3>
+
+<p><strong>注意</strong>，查询字符串（名称/值对）是在 GET 请求的 URL 中发送的：
+/p/a/t/h?name1=value1&amp;name2=value2</p>
+
+<ol>
+<li>GET 请求可被缓存</li>
+<li>GET 请求保留在浏览器历史记录中</li>
+<li>GET 请求可被收藏为书签</li>
+<li>GET 请求不应在处理敏感数据时使用</li>
+<li>GET 请求有长度限制</li>
+</ol>
+
+<h3 id="post-方法">POST 方法</h3>
+
+<p><strong>注意</strong>，查询字符串（名称/值对）是在 POST 请求的 HTTP 消息主体中发送的：
+name1=value1&amp;name2=value2
+1. POST 请求不会被缓存
+2. POST 请求不会保留在浏览器历史记录中
+3. POST 不能被收藏为书签
+4. POST 请求对数据长度没有要求</p>
+
+<table>
+<thead>
+<tr>
+<th> </th>
+<th>GET</th>
+<th>POST</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>后退按钮/刷新</td>
+<td>无害</td>
+<td>数据会被重新提交（浏览器应该告知用户数据会被重新提交）。</td>
+</tr>
+
+<tr>
+<td>书签</td>
+<td>可收藏为书签</td>
+<td>不可收藏为书签</td>
+</tr>
+
+<tr>
+<td>缓存</td>
+<td>能被缓存</td>
+<td>不能缓存</td>
+</tr>
+
+<tr>
+<td>编码类型</td>
+<td>application/x-www-form-urlencoded</td>
+<td>application/x-www-form-urlencoded 或 multipart/form-data。为二进制数据使用多重编码。</td>
+</tr>
+
+<tr>
+<td>历史</td>
+<td>参数保留在浏览器历史中。</td>
+<td>参数不会保存在浏览器历史中。</td>
+</tr>
+
+<tr>
+<td>对数据长度的限制</td>
+<td>是的。当发送数据时，GET 方法向 URL 添加数据；URL 的长度是受限制的</td>
+<td>无限制。</td>
+</tr>
+
+<tr>
+<td>对数据类型的限制</td>
+<td>文本（base64-img）</td>
+<td>没有限制。也允许二进制数据。</td>
+</tr>
+
+<tr>
+<td>安全性</td>
+<td>与 POST 相比，GET 的安全性较差，因为所发送的数据是 URL 的一部分。在发送密码或其他敏感信息时绝不要使用 GET ！</td>
+<td>POST 比 GET 更安全，因为参数不会被保存在浏览器历史或 web 服务器日志中。</td>
+</tr>
+
+<tr>
+<td>可见性</td>
+<td>数据在 URL 中对所有人都是可见的。</td>
+<td>数据不会显示在 URL 中。</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="其他">其他 </h2>
+
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>1</td>
+<td>GET</td>
+<td>请求指定的页面信息，并返回实体主体。</td>
+</tr>
+
+<tr>
+<td>2</td>
+<td>HEAD</td>
+<td>类似于get请求，只不过返回的响应中没有具体的内容，用于获取报头</td>
+</tr>
+
+<tr>
+<td>3</td>
+<td>POST</td>
+<td>向指定资源提交数据进行处理请求（例如提交表单或者上传文件）。数据被包含在请求体中。POST请求可能会导致新的资源的建立和/或已有资源的修改。</td>
+</tr>
+
+<tr>
+<td>4</td>
+<td>PUT</td>
+<td>从客户端向服务器传送的数据取代指定的文档的内容。</td>
+</tr>
+
+<tr>
+<td>5</td>
+<td>DELETE</td>
+<td>请求服务器删除指定的页面。</td>
+</tr>
+
+<tr>
+<td>6</td>
+<td>CONNECT</td>
+<td>HTTP/1.1协议中预留给能够将连接改为管道方式的代理服务器。</td>
+</tr>
+
+<tr>
+<td>7</td>
+<td>OPTIONS</td>
+<td>允许客户端查看服务器的性能。</td>
+</tr>
+
+<tr>
+<td>8</td>
+<td>TRACE</td>
+<td>回显服务器收到的请求，主要用于测试或诊断。</td>
+</tr>
+</tbody>
+</table>
+
+<p>## 页面展示？
+  ### 传统方式
+  - 服务器生成完整的html
+  - 验证
+  - 传输
+  ### web2.0
+  Ajax</p>
+                    </div>
+                    <p>本文链接：<a href="/posts/goweb-01/">/posts/goweb-01/</a></p>
+                    <p>-- <acronym title="End of File">EOF</acronym> --</p>
+                    <div class="post-info">
+                        <p>
+                            <code class="notebook">zxysilent</code>发表于<i> 2018-07-12 11:58:58</i>，
+                            
+                            
+                                添加「
+                                    
+                                        
+                                            <a href="http://example.org/tags/golang" data-tag="golang"><code class="notebook">golang</code></a>
+                                        
+                                            <a href="http://example.org/tags/goweb" data-tag="goweb"><code class="notebook">goweb</code></a>
+                                        
+                                    
+                                」标签，
+                            
+                            最后修改于<i> 2018-09-07 08:38:47</i>
+                        </p>
+                    </div>
+                </article>
+                <nav class="pagination">
+                    
+                        <a class="prev" href="http://example.org/posts/goweb-00/">«  goweb-00-前言</a>
+                    
+                    
+                        <a class="next" href="http://example.org/posts/goweb-02/"> goweb-02-环境搭建  »</a>
+                    
+                </nav>
+                
+            </div>
+                        
+<footer id="footer" class="inner">
+                &copy; 2019&nbsp;-&nbsp; zxysilent&nbsp;-&nbsp;<a target="_blank" rel="nofollow" class="external beian" href="http://www.miitbeian.gov.cn/">蜀ICP备16011344号-2</a
+                ><br />Powered by&nbsp;ThinkJS&nbsp;&amp;&nbsp;FireKyli<a target="_blank" rel="nofollow" class="external" href="https://zxysilent.org">n</a>
+                <span id="busuanzi_container_site_pv"
+                    >total:<span id="busuanzi_value_site_pv"></span><span id="busuanzi_container_page_pv">&nbsp;page:<span id="busuanzi_value_page_pv"></span></span
+                ></span>
+            </footer>
+        </div>
+        <script src="/js/theme.js" data-ls="js_zxysilent"></script>
+
+
+<script>
+    console.info("https://blog.zxysilent.com");
+</script>
+
+    </body>
+</html>

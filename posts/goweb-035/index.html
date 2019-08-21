@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <title>zxysilent</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+        <meta name="msvalidate.01" content="BA6009DC1D95902AC43052D430AA822D" />
+        <meta name="keywords" content="zxysilent,zxyslt,zxy" />
+        <meta name="description" content="zxysilent;zxysilent blog;zxyslt;zxyslt blog;" />
+        <meta name="google-site-verification" content="51J555Z28axR2us4ULmrJuBCizGyxgSMhhL2QGz0XOE" />
+        <link rel="icon" href="/imgs/logo.png" />
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="/index.xml" />
+<link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="zxysilent" />
+<link rel="canonical" href="https://blog.zxysilent.com/" />
+<link href="/css/all.css?v=1566365206" rel="stylesheet" type="text/css" data-ls="css_zxysilent" >
+    </head>
+    <body>
+        <nav id="sidebar">
+    <div class="wrap">
+        <div class="profile">
+            <a href="/"><img src="/imgs/logo.png" alt="zxysilent"/></a><span>zxysilent</span>
+        </div>
+        <ul class="naver">
+            
+                <li>
+                <a href="/" title=""><i class="iconfont icon-home"></i><span>首页</span></a> 
+            </li>
+            
+                <li>
+                <a href="/archives" title=""><i class="iconfont icon-archive"></i><span>归档</span></a> 
+            </li>
+            
+                <li>
+                <a href="/tags" title=""><i class="iconfont icon-tags"></i><span>标签</span></a> 
+            </li>
+            
+                <li>
+                <a href="/about" title=""><i class="iconfont icon-user"></i><span>关于</span></a> 
+            </li>
+            
+                <li>
+                <a href="/links" title=""><i class="iconfont icon-link"></i><span>友链</span></a> 
+            </li>
+            
+        </ul>
+        <div class="footer">
+            <a class="inline" rel="nofollow" target="_blank" href="https://github.com/zxysilent"><i class="iconfont icon-github-v" title="GitHub"></i></a>
+            <a class="inline" rel="nofollow" target="_blank" href="https://weibo.com/u/7072792903"><i class="iconfont icon-weibo" title="weibo"></i></a>
+            <a class="inline" href="/index.xml"><i class="iconfont icon-rss-v" title="RSS"></i></a>
+            <a class="inline" href="/search.html"><i class="iconfont icon-search" title="Search"></i></a>
+        </div>
+    </div>
+</nav>
+<div id="header">
+    <div class="btn-bar"><i></i></div>
+    <h1>
+        <a href="/">goweb-035-golang-接口</a>
+    </h1>
+    <a class="me" href="/about/"><img src="/imgs/logo.png" alt="zxysilent"/></a>
+</div>
+<div id="sidebar-mask"></div>
+
+        <div id="main">
+            <div id="page-post">
+                <article class="post detail">
+                    <div class="meta">
+                        <div class="date">07月19日, 2018</div>
+                        <div class="comment"><a href="#comments">369 Words</a></div>
+                    </div>
+                    <h1 class="title">goweb-035-golang-接口</h1>
+                    <div class="entry-content">
+                        
+                            <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#接口类型">接口类型</a></li>
+<li><a href="#实现接口">实现接口</a></li>
+<li><a href="#空接口">空接口</a></li>
+<li><a href="#断言">断言</a></li>
+</ul></li>
+</ul>
+</nav>
+                        
+                        
+                        <p>接口类型是对其它类型行为的抽象和概括；因为接口类型不会和特定的实现细节绑定在一起，通过这种抽象的方式我们可以让我们的函数更加灵活和更具有适应能力。</p>
+
+<h2 id="接口类型">接口类型</h2>
+
+<p>接口类型具体描述了一系列方法的集合，一个实现了这些方法的具体类型是这个接口类型的实例。</p>
+
+<p><code>io.Writer</code>类型是用得最广泛的接口之一，因为它提供了所有类型的写入<code>bytes</code>的抽象。</p>
+
+<pre><code class="language-go">// Writer is the interface that wraps the basic Write method.
+//
+// Write writes len(p) bytes from p to the underlying data stream.
+// It returns the number of bytes written from p (0 &lt;= n &lt;= len(p))
+// and any error encountered that caused the write to stop early.
+// Write must return a non-nil error if it returns n &lt; len(p).
+// Write must not modify the slice data, even temporarily.
+//
+// Implementations must not retain p.
+type Writer interface {
+	Write(p []byte) (n int, err error)
+}
+</code></pre>
+
+<h2 id="实现接口">实现接口</h2>
+
+<blockquote>
+<p>一个类型如果拥有一个接口需要的所有方法，那么这个类型就实现了这个接口。</p>
+</blockquote>
+
+<p>如标准库中<code>*os.File</code>类型实现了<code>Reader</code>，<code>Writer</code>，<code>Closer</code>，和<code>ReadWriter</code>接口。
+<img src="/imgs/post/20180719/upload_4191d76d456f10c251689e4ec2cf2961.png" alt="alt" /></p>
+
+<p>举例子说明
+&gt; 抽象的东西请多动手 ✅</p>
+
+<pre><code class="language-go">package main
+import (
+	&quot;fmt&quot;
+)
+//Animal 定义 Animal 接口
+type Animal interface {
+	Say()
+}
+//具体类型去实现接口所定义的方法
+//Dog 狗狗
+type Dog struct {
+	Name string
+}
+//Say 实现接口所需要的方法 就实现了接口
+func (d Dog) Say() {
+	fmt.Println(&quot;Dog say :&quot;, d.Name)
+}
+//Cat 猫猫
+type Cat struct {
+	Name string
+}
+//Say 实现接口所需要的方法 就实现了接口
+func (c Cat) Say() {
+	fmt.Println(&quot;Cat say :&quot;, c.Name)
+}
+//String 实现 stringer接口
+//fmt.Println 输出时 优先调用 String
+func (c Cat) String() string {
+	return fmt.Sprintf(&quot;\nStringer Cat:%s&quot;, c.Name)
+}
+func main() {
+	// 一个接口变量
+	var i Animal
+	// 一个 Dog 变量
+	var d = Dog{
+		Name: &quot;大狗狗&quot;,
+	}
+	//实现了接口就可以把值赋值给 接口
+	i = d
+	i.Say()
+	fmt.Printf(&quot;%T\n&quot;, i)
+	fmt.Println(i)
+	fmt.Println(&quot;------------------华丽分割线-------------&quot;)
+	// 一个 Cat 变量
+	var c = Cat{
+		Name: &quot;小猫猫&quot;,
+	}
+	//实现了接口就可以把值赋值给 接口
+	i = c
+	i.Say()
+	fmt.Printf(&quot;%T&quot;, i)
+	fmt.Println(i)
+}
+</code></pre>
+
+<p>结果<br />
+<img src="/imgs/post/20180719/upload_55d4713a9ee3851f90deb5cd1ca80ada.png" alt="alt" /></p>
+
+<h2 id="空接口">空接口</h2>
+
+<ul>
+<li>空接口<code>interface{}</code> 任何类型都实现了空接口的方法因为<strong>没有方法</strong></li>
+
+<li><p>空接口用来存放任意类型的值如其他语言的  <code>object</code>、<code>void*</code></p>
+
+<pre><code class="language-go">var i interface{}
+var d = Dog{
+	Name: &quot;大狗狗&quot;,
+}
+i = d
+fmt.Println(i)
+i = &quot;string&quot;
+fmt.Println(i)
+i = false
+fmt.Println(i)
+i = 100
+fmt.Println(i)
+i = 3.1415
+fmt.Println(i)
+</code></pre></li>
+</ul>
+
+<h2 id="断言">断言</h2>
+
+<ul>
+<li><code>x.(T)</code>[变量.(类型)]被称为断言类型，这里<code>x</code>表示一个接口的类型的值和<code>T</code>表示一个类型。</li>
+<li>一个类型断言检查它操作对象的动态类型是否和断言的类型匹配。<br /></li>
+</ul>
+
+<p>这里有 2️⃣两种可能。</p>
+
+<ol>
+<li><p>断言的类型<code>T</code>是一个具体类型，然后类型断言检查<code>x</code>的动态类型是否和<code>T</code>相同。<br />
+<strong>具体类型的类型断言</strong>从它的操作对象中获得具体的值。如果检查失败，这个操作会抛出<code>panic</code>。</p>
+
+<pre><code class="language-go">var i Animal
+var d = Dog{
+	Name: &quot;大狗狗&quot;,
+}
+i = d
+dog := i.(Dog)
+cat := i.(Cat) //panic: interface conversion: main.Animal is main.Dog, not main.Cat
+fmt.Println(dog, cat)
+</code></pre></li>
+
+<li><p>断言的类型T是一个接口类型，然后类型断言检查是否<code>x</code>的动态类型满足<code>T</code>。<br />
+<strong>接口类型的类型断言</strong>改变了类型的表述方式，改变了可以获取的方法集合，但它保留了接口值内部的动态类型和值的部分。</p>
+
+<pre><code class="language-go">var i Animal
+var c = Cat{
+	Name: &quot;小猫猫&quot;,
+}
+i = c
+a, ok := i.(Animal)
+fmt.Println(a, ok)
+a.Say()
+//a.String() //a.String undefined (type Animal has no field or method String)
+</code></pre>
+
+<p><img src="/imgs/post/20180719/upload_5ed502ee18dd06ab1049987c0f7daf5c.png" alt="alt" /></p></li>
+</ol>
+
+<p>如果断言操作的对象是一个<code>nil</code>接口值，那么不论被断言的类型是什么这个类型断言都会失败。</p>
+
+<p>对一个接口值的动态类型我们是不确定的，我们也不想产生<code>panic</code>，那么可以返回一个额外的第二个结果，这个结果是一个标识成功与否的布尔值：</p>
+
+<pre><code class="language-go">var i Animal
+var d = Dog{
+	Name: &quot;大狗狗&quot;,
+}
+i = d
+dog, ok1 := i.(Dog)
+cat, ok2 := i.(Cat)
+fmt.Println(dog, ok1, cat, ok2)
+//{大狗狗} true 
+//Stringer Cat: false
+</code></pre>
+                    </div>
+                    <p>本文链接：<a href="/posts/goweb-035/">/posts/goweb-035/</a></p>
+                    <p>-- <acronym title="End of File">EOF</acronym> --</p>
+                    <div class="post-info">
+                        <p>
+                            <code class="notebook">zxysilent</code>发表于<i> 2018-07-19 15:37:41</i>，
+                            
+                            
+                                添加「
+                                    
+                                        
+                                            <a href="http://example.org/tags/golang" data-tag="golang"><code class="notebook">golang</code></a>
+                                        
+                                            <a href="http://example.org/tags/goweb" data-tag="goweb"><code class="notebook">goweb</code></a>
+                                        
+                                    
+                                」标签，
+                            
+                            最后修改于<i> 2018-07-23 16:39:59</i>
+                        </p>
+                    </div>
+                </article>
+                <nav class="pagination">
+                    
+                        <a class="prev" href="http://example.org/posts/goweb-034/">«  goweb-034-golang-方法</a>
+                    
+                    
+                        <a class="next" href="http://example.org/posts/goweb-036/"> goweb-036-golang-Goroutines和Channels  »</a>
+                    
+                </nav>
+                
+            </div>
+                        
+<footer id="footer" class="inner">
+                &copy; 2019&nbsp;-&nbsp; zxysilent&nbsp;-&nbsp;<a target="_blank" rel="nofollow" class="external beian" href="http://www.miitbeian.gov.cn/">蜀ICP备16011344号-2</a
+                ><br />Powered by&nbsp;ThinkJS&nbsp;&amp;&nbsp;FireKyli<a target="_blank" rel="nofollow" class="external" href="https://zxysilent.org">n</a>
+                <span id="busuanzi_container_site_pv"
+                    >total:<span id="busuanzi_value_site_pv"></span><span id="busuanzi_container_page_pv">&nbsp;page:<span id="busuanzi_value_page_pv"></span></span
+                ></span>
+            </footer>
+        </div>
+        <script src="/js/theme.js" data-ls="js_zxysilent"></script>
+
+
+<script>
+    console.info("https://blog.zxysilent.com");
+</script>
+
+    </body>
+</html>

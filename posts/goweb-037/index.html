@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <title>zxysilent</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+        <meta name="msvalidate.01" content="BA6009DC1D95902AC43052D430AA822D" />
+        <meta name="keywords" content="zxysilent,zxyslt,zxy" />
+        <meta name="description" content="zxysilent;zxysilent blog;zxyslt;zxyslt blog;" />
+        <meta name="google-site-verification" content="51J555Z28axR2us4ULmrJuBCizGyxgSMhhL2QGz0XOE" />
+        <link rel="icon" href="/imgs/logo.png" />
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="/index.xml" />
+<link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="zxysilent" />
+<link rel="canonical" href="https://blog.zxysilent.com/" />
+<link href="/css/all.css?v=1566365206" rel="stylesheet" type="text/css" data-ls="css_zxysilent" >
+    </head>
+    <body>
+        <nav id="sidebar">
+    <div class="wrap">
+        <div class="profile">
+            <a href="/"><img src="/imgs/logo.png" alt="zxysilent"/></a><span>zxysilent</span>
+        </div>
+        <ul class="naver">
+            
+                <li>
+                <a href="/" title=""><i class="iconfont icon-home"></i><span>首页</span></a> 
+            </li>
+            
+                <li>
+                <a href="/archives" title=""><i class="iconfont icon-archive"></i><span>归档</span></a> 
+            </li>
+            
+                <li>
+                <a href="/tags" title=""><i class="iconfont icon-tags"></i><span>标签</span></a> 
+            </li>
+            
+                <li>
+                <a href="/about" title=""><i class="iconfont icon-user"></i><span>关于</span></a> 
+            </li>
+            
+                <li>
+                <a href="/links" title=""><i class="iconfont icon-link"></i><span>友链</span></a> 
+            </li>
+            
+        </ul>
+        <div class="footer">
+            <a class="inline" rel="nofollow" target="_blank" href="https://github.com/zxysilent"><i class="iconfont icon-github-v" title="GitHub"></i></a>
+            <a class="inline" rel="nofollow" target="_blank" href="https://weibo.com/u/7072792903"><i class="iconfont icon-weibo" title="weibo"></i></a>
+            <a class="inline" href="/index.xml"><i class="iconfont icon-rss-v" title="RSS"></i></a>
+            <a class="inline" href="/search.html"><i class="iconfont icon-search" title="Search"></i></a>
+        </div>
+    </div>
+</nav>
+<div id="header">
+    <div class="btn-bar"><i></i></div>
+    <h1>
+        <a href="/">goweb-037-golang-常用包</a>
+    </h1>
+    <a class="me" href="/about/"><img src="/imgs/logo.png" alt="zxysilent"/></a>
+</div>
+<div id="sidebar-mask"></div>
+
+        <div id="main">
+            <div id="page-post">
+                <article class="post detail">
+                    <div class="meta">
+                        <div class="date">07月20日, 2018</div>
+                        <div class="comment"><a href="#comments">1097 Words</a></div>
+                    </div>
+                    <h1 class="title">goweb-037-golang-常用包</h1>
+                    <div class="entry-content">
+                        
+                            <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#os">os</a>
+<ul>
+<li><a href="#标准的文件信息">标准的文件信息</a></li>
+<li><a href="#常用方法">常用方法</a></li>
+</ul></li>
+<li><a href="#io-ioutil">io &amp;&amp; ioutil</a>
+<ul>
+<li><a href="#ioutil">ioutil</a></li>
+</ul></li>
+<li><a href="#strings">strings</a></li>
+<li><a href="#bytes">bytes</a></li>
+</ul></li>
+</ul>
+</nav>
+                        
+                        
+                        <p>以示例的方式演示常用包的用法，更详细深入的信息请参考 <a href="https://golang.google.cn/pkg/">https://golang.google.cn/pkg/</a>标准库<br />
+<img src="/imgs/post/20180720/upload_a2a95976a5f1c377cd1244e720deeeea.png" alt="alt" /></p>
+
+<h2 id="os">os</h2>
+
+<ul>
+<li><code>os</code>包提供了操作系统函数的不依赖平台的接口。设计为<code>Unix</code>风格的，错误处理是go风格的；失败的调用会返回错误值而非错误码。</li>
+<li>通常错误值里包含更多信息。</li>
+</ul>
+
+<p><code>os</code>包的接口规定为在所有操作系统中都是一致的。</p>
+
+<p>打开一个文件并从中读取一些数据。</p>
+
+<pre><code class="language-go">file, err := os.Open(&quot;file.go&quot;)
+if err != nil {
+	log.Fatal(err)
+}
+</code></pre>
+
+<p>如果打开失败，错误字符串是自解释的。<br />
+<code>open file.go: no such file or directory</code></p>
+
+<p>文件的信息可以读取进一个<code>[]byte</code>切片。<code>Read</code>和<code>Write</code>方法从切片参数获取其内的字节数。</p>
+
+<pre><code class="language-go">data := make([]byte, 100)
+count, err := file.Read(data)
+if err != nil {
+	log.Fatal(err)
+}
+fmt.Printf(&quot;read %d bytes: %q\n&quot;, count, data[:count])
+</code></pre>
+
+<h3 id="标准的文件信息">标准的文件信息</h3>
+
+<pre><code class="language-go">type FileInfo interface {
+	Name() string       // base name of the file
+	Size() int64        // length in bytes for regular files; system-dependent for others
+	Mode() FileMode     // file mode bits
+	ModTime() time.Time // modification time
+	IsDir() bool        // abbreviation for Mode().IsDir()
+	Sys() interface{}   // underlying data source (can return nil)
+}
+</code></pre>
+
+<h3 id="常用方法">常用方法</h3>
+
+<ul>
+<li><p>Stat<br />
+<code>func Stat(name string) (fi FileInfo, err error)</code><br />
+<code>Stat</code>返回一个描述<code>name</code>指定的文件对象的<code>FileInfo</code>。</p>
+
+<pre><code class="language-go">f, _ := os.Stat(`main.go`)
+fmt.Println(f.Name(), f.IsDir(), f.ModTime())
+</code></pre></li>
+
+<li><p>Mkdir<br />
+<code>func Mkdir(name string, perm FileMode) error</code><br />
+<code>Mkdir</code>使用指定的权限和名称创建一个目录。</p>
+
+<pre><code class="language-go">os.Mkdir(`dir`, 0777)
+</code></pre>
+
+<p><img src="/imgs/post/20180720/upload_e9a73d014542e1228a9a08c31b12de29.png" alt="alt" /></p></li>
+
+<li><p>MkdirAll<br />
+<code>func MkdirAll(path string, perm FileMode) error</code><br />
+<code>MkdirAll</code>使用指定的权限和名称创建一个目录，包括任何必要的上级目录，并返回nil，否则返回错误。<br />
+权限位<code>perm</code>会应用在每一个被本函数创建的目录上。<br />
+如果path指定了一个已经存在的目录，MkdirAll不做任何操作并返回nil。</p>
+
+<pre><code class="language-go">os.MkdirAll(`a/b/c/d`, 0777)
+</code></pre>
+
+<p><img src="/imgs/post/20180720/upload_a4ecf075da47c998092272678259589d.png" alt="alt" /></p></li>
+
+<li><p>Rename<br />
+<code>func Rename(oldpath, newpath string) error</code><br />
+Rename修改一个文件的名字，移动一个文件。可能会有一些个操作系统特定的限制。</p>
+
+<pre><code class="language-go">os.Rename(`dir`, `dir1`)
+</code></pre>
+
+<p><img src="/imgs/post/20180720/upload_092c76037732ad6153ddb4a499655a6f.png" alt="alt" /></p></li>
+
+<li><p>Remove<br />
+<code>func Remove(name string) error</code><br />
+Remove删除<code>name</code>指定的文件或目录。</p>
+
+<pre><code class="language-go">os.Remove(`dir1`)
+</code></pre>
+
+<p><img src="/imgs/post/20180720/upload_2003eaf33eb743e7e22593c20be9d05c.png" alt="alt" /></p></li>
+
+<li><p>RemoveAll<br />
+<code>func RemoveAll(path string) error</code><br />
+RemoveAll删除path指定的文件，或目录及它包含的任何下级对象。它会尝试删除所有东西，除非遇到错误并返回。<br />
+如果path指定的对象不存在，<code>RemoveAll</code>会返回nil而不返回错误。</p>
+
+<pre><code class="language-go">os.RemoveAll(`a`)
+</code></pre>
+
+<p><img src="/imgs/post/20180720/upload_5b46e1aaac0611fa435eca5ac25ab103.png" alt="alt" /></p></li>
+
+<li><p>Create<br />
+<code>func Create(name string) (file *File, err error)</code><br />
+<code>Create</code>采用模式<code>0666</code>✋创建一个名为<code>name</code>的文件，如果文件已存在会置为空文件。<br />
+如果成功，返回的文件对象可用于<code>I/O</code>；对应的文件描述符具有<code>O_RDWR</code>模式。</p></li>
+
+<li><p>Open<br />
+<code>func Open(name string) (file *File, err error)</code>
+<code>Open</code>打开一个文件用于读取。如果操作成功，返回的文件对象的方法可用于读取数据；对应的文件描述符具有<code>O_RDONLY</code>模式。</p>
+
+<pre><code class="language-go">fout, _ := os.Create(`output.txt`)
+fin, _ := os.Open(`main.go`)
+io.Copy(fout, fin)//io包
+</code></pre></li>
+
+<li><p>OpenFile<br />
+<code>func OpenFile(name string, flag int, perm FileMode) (file *File, err error)</code><br />
+<code>OpenFile</code>是一个更一般性的文件打开函数，大多数调用者都应用<code>Open</code>或<code>Create</code>代替本函数。<br />
+它会使用指定的选项（如<code>O_RDONLY</code>等）、指定的模式（如<code>066</code>6等）打开指定名称的文件。<br />
+如果操作成功，返回的文件对象可用于<code>I/O</code>。</p>
+
+<pre><code class="language-go">fout, _ := os.Create(`output.txt`)
+fin, _ := os.OpenFile(`main.go`, os.O_RDWR, 0666)
+io.Copy(fout, fin)
+</code></pre></li>
+
+<li><p>Readdir
+<code>func (f *File) Readdir(n int) (fi []FileInfo, err error)</code><br />
+<code>Readdir</code>读取目录f的内容，返回一个有<code>n</code>个成员的<code>[]FileInfo</code>，采用目录顺序。  对本函数的下一次调用会返回上一次调用剩余未读取的内容的信息。<br />
+如果<code>n&gt;0</code>，<code>Readdir</code>函数会返回一个最多n个成员的切片。<br />
+如果<code>n&lt;=0</code>，<code>Readdir</code>函数返回目录中剩余所有文件对象的<code>FileInfo</code>构成的切片。</p>
+
+<pre><code class="language-go">dir, _ := os.Open(`util`)
+dirs, _ := dir.Readdir(-1)
+for idx := range dirs {
+	fmt.Println(dirs[idx].Name())
+}
+</code></pre></li>
+
+<li><p>Read<br />
+<code>func (f *File) Read(b []byte) (n int, err error)</code><br />
+<code>Read</code>方法从f中读取最多<code>len(b)</code>字节数据并写入<code>b</code>。它返回读取的字节数和可能遇到的任何错误。文件终止标志是读取<code>0</code>个字节且返回值<code>err</code>为<code>io.EOF</code>。</p></li>
+
+<li><p>Write<br />
+<code>func (f *File) Write(b []byte) (n int, err error)</code><br />
+<code>Write</code>向文件中写入<code>len(b)</code>字节数据。它返回写入的字节数和可能遇到的任何错误。如果返回值<code>n!=len(b)</code>，本方法会返回一个非<code>nil</code>的错误。</p></li>
+
+<li><p>Close<br />
+<code>func (f *File) Close() error</code><br />
+<code>Close</code>关闭文件<code>f</code>，使文件不能用于读写。它返回可能出现的错误。</p>
+
+<pre><code class="language-go">fin, _ := os.Open(`main.go`)
+fout, _ := os.Create(`output.txt`)
+//准备容器
+buf := make([]byte, 128)
+for {
+	n, err := fin.Read(buf)
+	if n == 0 || err == io.EOF {
+		break
+	}
+	fout.Write(buf[:n])
+}
+fin.Close()
+fout.Close()
+</code></pre></li>
+
+<li><p><code>WriteString</code><br />
+<code>func (f *File) WriteString(s string) (ret int, err error)</code><br />
+<code>WriteString</code> 类似<code>Write</code>，但接受一个字符串参数。</p>
+
+<pre><code class="language-go">fout, _ := os.Create(`output.txt`)
+defer fout.Close()
+fout.WriteString(`WriteString`)
+</code></pre></li>
+</ul>
+
+<h2 id="io-ioutil">io &amp;&amp; ioutil</h2>
+
+<ul>
+<li><p>eof
+<code>var EOF = errors.New(&quot;EOF&quot;)</code><br />
+<code>EOF</code>当无法得到更多输入时，<code>Read</code>方法返回<code>EOF</code>☂️。当函数一切正常的到达输入的结束时，就应返回<code>EOF</code>。</p></li>
+
+<li><p>Copy
+<code>func Copy(dst Writer, src Reader) (written int64, err error)</code></p></li>
+
+<li><p>将<code>src</code>的数据拷贝到<code>dst</code>，直到在<code>src</code>上到达<code>EOF</code>或发生错误。返回拷贝的字节数和遇到的第一个错误。</p></li>
+
+<li><p>对成功的调用，返回值err为nil而<code>非EOF</code>，因为<code>Copy</code>定义为从<code>src</code>读取直到<code>EOF</code>，它<strong>不</strong>会将读取到<code>EOF</code>视为应报告的错误。</p>
+
+<pre><code class="language-go">fout, _ := os.Create(`output.txt`)
+fin, _ := os.OpenFile(`main.go`, os.O_RDWR, 0666)
+io.Copy(fout, fin)
+</code></pre>
+
+<h3 id="ioutil">ioutil</h3></li>
+
+<li><p>ReadAll<br />
+<code>func ReadAll(r io.Reader) ([]byte, error)</code><br />
+<code>ReadAll</code>从<code>r</code>读取数据直到<code>EOF</code>或遇到<code>error</code>，返回读取的数据和遇到的错误。<br />
+成功的调用返回的<code>err</code>为<code>nil</code>而非<code>EOF</code>。因为本函数定义为读取r直到<code>EOF</code>，它不会将读取返回的<code>EOF</code>视为应报告的错误。</p>
+
+<pre><code class="language-go">package main
+import (
+	&quot;fmt&quot;
+	&quot;io/ioutil&quot;
+	&quot;log&quot;
+	&quot;strings&quot;
+)
+func main() {
+	r := strings.NewReader(&quot;Go is a general-purpose language designed with systems programming in mind.&quot;)
+	b, err := ioutil.ReadAll(r)
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Printf(&quot;%s&quot;, b)
+}
+</code></pre></li>
+
+<li><p>ReadFile<br />
+<code>func ReadFile(filename string) ([]byte, error)</code><br />
+<code>ReadFile</code> 从<code>filename</code>指定的文件中读取数据并返回文件的内容。成功的调用返回的<code>err</code>为<code>nil</code>而非<code>EOF</code>。因为本函数定义为读取整个文件，它不会将读取返回的<code>EOF</code>视为应报告的错误。</p>
+
+<pre><code class="language-go">package main
+import (
+	&quot;fmt&quot;
+	&quot;io/ioutil&quot;
+	&quot;log&quot;
+)
+func main() {
+	content, err := ioutil.ReadFile(&quot;testdata/hello&quot;)
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Printf(&quot;File contents: %s&quot;, content)
+}
+</code></pre></li>
+
+<li><p>WriteFile<br />
+<code>func WriteFile(filename string, data []byte, perm os.FileMode) error</code><br />
+函数向<code>filename</code>指定的文件中写入数据。如果文件不存在将按给出的权限创建文件，否则在写入数据之前清空文件。</p>
+
+<pre><code class="language-go">package main
+import &quot;io/ioutil&quot;
+func main() {
+	ioutil.WriteFile(&quot;1.txt&quot;, []byte(`string`), 0777)
+}
+</code></pre></li>
+
+<li><p>ReadDir
+<code>func ReadDir(dirname string) ([]os.FileInfo, error)</code><br />
+返回<code>dirname</code>指定的目录的目录信息的有序列表。</p>
+
+<pre><code class="language-go">package main
+import (
+	&quot;fmt&quot;
+	&quot;io/ioutil&quot;
+	&quot;log&quot;
+)
+func main() {
+	files, err := ioutil.ReadDir(&quot;.&quot;)
+	if err != nil {
+		log.Fatal(err)
+	}
+	for _, file := range files {
+		fmt.Println(file.Name())
+	}
+}
+</code></pre></li>
+</ul>
+
+<h2 id="strings">strings</h2>
+
+<ul>
+<li><p>Compare<br />
+<code>func Compare(a, b string) int</code><br />
+Compare returns an integer comparing two strings lexicographically. The result will be 0 if a==b, -1 if a &lt; b, and +1 if a &gt; b.</p>
+
+<pre><code class="language-go">package main
+import (
+	&quot;fmt&quot;
+	&quot;strings&quot;
+)
+func main() {
+	fmt.Println(strings.Compare(&quot;a&quot;, &quot;b&quot;))
+	fmt.Println(strings.Compare(&quot;a&quot;, &quot;a&quot;))
+	fmt.Println(strings.Compare(&quot;b&quot;, &quot;a&quot;))
+}
+</code></pre></li>
+
+<li><p>Contains<br />
+<code>func Contains(s, substr string) bool</code><br />
+Contains reports whether substr is within s.</p>
+
+<pre><code class="language-go">package main
+import (
+	&quot;fmt&quot;
+	&quot;strings&quot;
+)
+func main() {
+	fmt.Println(strings.Contains(&quot;seafood&quot;, &quot;foo&quot;))
+	fmt.Println(strings.Contains(&quot;seafood&quot;, &quot;bar&quot;))
+	fmt.Println(strings.Contains(&quot;seafood&quot;, &quot;&quot;))
+	fmt.Println(strings.Contains(&quot;&quot;, &quot;&quot;))
+}
+</code></pre></li>
+
+<li><p>Count<br />
+<code>func Count(s, substr string) int</code><br />
+Count counts the number of non-overlapping instances of substr in s. If substr is an empty string, Count returns 1 + the number of Unicode code points in s.</p>
+
+<pre><code class="language-go">package main
+import (
+	&quot;fmt&quot;
+	&quot;strings&quot;
+)
+func main() {
+	fmt.Println(strings.Count(&quot;cheese&quot;, &quot;e&quot;))
+	fmt.Println(strings.Count(&quot;five&quot;, &quot;&quot;)) // before &amp; after each rune
+}
+</code></pre></li>
+
+<li><p>HasPrefix<br />
+<code>func HasPrefix(s, prefix string) bool</code><br />
+HasPrefix tests whether the string s begins with prefix</p>
+
+<pre><code class="language-go">package main
+import (
+	&quot;fmt&quot;
+	&quot;strings&quot;
+)
+func main() {
+	fmt.Println(strings.HasPrefix(&quot;Gopher&quot;, &quot;Go&quot;))
+	fmt.Println(strings.HasPrefix(&quot;Gopher&quot;, &quot;C&quot;))
+	fmt.Println(strings.HasPrefix(&quot;Gopher&quot;, &quot;&quot;))
+}
+</code></pre></li>
+
+<li><p>HasSuffix
+<code>func HasSuffix(s, suffix string) bool</code><br />
+HasSuffix tests whether the string s ends with suffix.</p>
+
+<pre><code class="language-go">package main
+import (
+	&quot;fmt&quot;
+	&quot;strings&quot;
+)
+func main() {
+	fmt.Println(strings.HasSuffix(&quot;Amigo&quot;, &quot;go&quot;))
+	fmt.Println(strings.HasSuffix(&quot;Amigo&quot;, &quot;O&quot;))
+	fmt.Println(strings.HasSuffix(&quot;Amigo&quot;, &quot;Ami&quot;))
+	fmt.Println(strings.HasSuffix(&quot;Amigo&quot;, &quot;&quot;))
+}
+</code></pre></li>
+
+<li><p>Index<br />
+<code>func Index(s, substr string) int</code><br />
+Index returns the index of the first instance of substr in s, or -1 if substr is not present in s.</p>
+
+<pre><code class="language-go">package main
+import (
+	&quot;fmt&quot;
+	&quot;strings&quot;
+)
+func main() {
+	fmt.Println(strings.Index(&quot;chicken&quot;, &quot;ken&quot;))
+	fmt.Println(strings.Index(&quot;chicken&quot;, &quot;dmr&quot;))
+}
+</code></pre></li>
+
+<li><p>Join<br />
+<code>func Join(a []string, sep string) string</code><br />
+Join concatenates the elements of a to create a single string. The separator string sep is placed between elements in the resulting string.</p>
+
+<pre><code class="language-go">package main
+import (
+	&quot;fmt&quot;
+	&quot;strings&quot;
+)
+func main() {
+	s := []string{&quot;foo&quot;, &quot;bar&quot;, &quot;baz&quot;}
+	fmt.Println(strings.Join(s, &quot;, &quot;))
+}
+</code></pre></li>
+
+<li><p>Replace
+<code>func Replace(s, old, new string, n int) string</code><br />
+Replace returns a copy of the string s with the first n non-overlapping instances of old replaced by new. If old is empty, it matches at the beginning of the string and after each UTF-8 sequence, yielding up to k+1 replacements for a k-rune string. If n &lt; 0, there is no limit on the number of replacements.</p>
+
+<pre><code class="language-go">package main
+import (
+	&quot;fmt&quot;
+	&quot;strings&quot;
+)
+func main() {
+	fmt.Println(strings.Replace(&quot;oink oink oink&quot;, &quot;k&quot;, &quot;ky&quot;, 2))
+	fmt.Println(strings.Replace(&quot;oink oink oink&quot;, &quot;oink&quot;, &quot;moo&quot;, -1))
+}
+</code></pre></li>
+
+<li><p>Split
+<code>func Split(s, sep string) []string</code>
+Split slices s into all substrings separated by sep and returns a slice of the substrings between those separators.</p>
+
+<pre><code class="language-go">package main
+import (
+	&quot;fmt&quot;
+	&quot;strings&quot;
+)
+func main() {
+	fmt.Printf(&quot;%q\n&quot;, strings.Split(&quot;a,b,c&quot;, &quot;,&quot;))
+	fmt.Printf(&quot;%q\n&quot;, strings.Split(&quot;a man a plan a canal panama&quot;, &quot;a &quot;))
+	fmt.Printf(&quot;%q\n&quot;, strings.Split(&quot; xyz &quot;, &quot;&quot;))
+	fmt.Printf(&quot;%q\n&quot;, strings.Split(&quot;&quot;, &quot;Bernardo O'Higgins&quot;))
+}
+</code></pre></li>
+
+<li><p>ToLower<br />
+<code>func ToLower(s string) string</code><br />
+ToLower returns a copy of the string s with all Unicode letters mapped to their lower case.</p>
+
+<pre><code class="language-go">package main
+import (
+	&quot;fmt&quot;
+	&quot;strings&quot;
+)
+func main() {
+	fmt.Println(strings.ToLower(&quot;Gopher&quot;))
+}
+</code></pre></li>
+
+<li><p>ToUpper<br />
+<code>func ToUpper(s string) string</code><br />
+ToUpper returns a copy of the string s with all Unicode letters mapped to their upper case.</p>
+
+<pre><code class="language-go">package main
+import (
+	&quot;fmt&quot;
+	&quot;strings&quot;
+)
+func main() {
+	fmt.Println(strings.ToUpper(&quot;Gopher&quot;))
+}
+</code></pre></li>
+
+<li><p>Builder<br />
+⚡️
+A Builder is used to efficiently build a string using Write methods. It minimizes memory copying. The zero value is ready to use. Do not copy a non-zero Builder.</p>
+
+<pre><code class="language-go">type Builder struct {
+    // contains filtered or unexported fields
+}
+</code></pre>
+
+<pre><code>package main
+import (
+	&quot;fmt&quot;
+	&quot;strings&quot;
+)
+func main() {
+	var b strings.Builder
+	for i := 3; i &gt;= 1; i-- {
+		fmt.Fprintf(&amp;b, &quot;%d...&quot;, i)
+	}
+	b.WriteString(&quot;ignition&quot;)
+	fmt.Println(b.String())
+}
+</code></pre></li>
+</ul>
+
+<h2 id="bytes">bytes</h2>
+
+<ul>
+<li><code>bytes</code> 包使用方式同<code>strings包</code></li>
+<li><code>bytes</code> 包操作对象为<code>[]byte</code></li>
+<li><code>strings</code>包操作对象为<code>string</code></li>
+</ul>
+
+<p>直接操作不舒服
+<a href="/post/regular-expression.html">正则走一波</a></p>
+                    </div>
+                    <p>本文链接：<a href="/posts/goweb-037/">/posts/goweb-037/</a></p>
+                    <p>-- <acronym title="End of File">EOF</acronym> --</p>
+                    <div class="post-info">
+                        <p>
+                            <code class="notebook">zxysilent</code>发表于<i> 2018-07-20 08:22:37</i>，
+                            
+                            
+                                添加「
+                                    
+                                        
+                                            <a href="http://example.org/tags/golang" data-tag="golang"><code class="notebook">golang</code></a>
+                                        
+                                            <a href="http://example.org/tags/goweb" data-tag="goweb"><code class="notebook">goweb</code></a>
+                                        
+                                    
+                                」标签，
+                            
+                            最后修改于<i> 2018-07-23 16:40:14</i>
+                        </p>
+                    </div>
+                </article>
+                <nav class="pagination">
+                    
+                        <a class="prev" href="http://example.org/posts/goweb-036/">«  goweb-036-golang-Goroutines和Channels</a>
+                    
+                    
+                        <a class="next" href="http://example.org/posts/goweb-038/"> goweb-038-常用包net&#43;http  »</a>
+                    
+                </nav>
+                
+            </div>
+                        
+<footer id="footer" class="inner">
+                &copy; 2019&nbsp;-&nbsp; zxysilent&nbsp;-&nbsp;<a target="_blank" rel="nofollow" class="external beian" href="http://www.miitbeian.gov.cn/">蜀ICP备16011344号-2</a
+                ><br />Powered by&nbsp;ThinkJS&nbsp;&amp;&nbsp;FireKyli<a target="_blank" rel="nofollow" class="external" href="https://zxysilent.org">n</a>
+                <span id="busuanzi_container_site_pv"
+                    >total:<span id="busuanzi_value_site_pv"></span><span id="busuanzi_container_page_pv">&nbsp;page:<span id="busuanzi_value_page_pv"></span></span
+                ></span>
+            </footer>
+        </div>
+        <script src="/js/theme.js" data-ls="js_zxysilent"></script>
+
+
+<script>
+    console.info("https://blog.zxysilent.com");
+</script>
+
+    </body>
+</html>

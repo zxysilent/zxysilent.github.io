@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <title>zxysilent</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+        <meta name="msvalidate.01" content="BA6009DC1D95902AC43052D430AA822D" />
+        <meta name="keywords" content="zxysilent,zxyslt,zxy" />
+        <meta name="description" content="zxysilent;zxysilent blog;zxyslt;zxyslt blog;" />
+        <meta name="google-site-verification" content="51J555Z28axR2us4ULmrJuBCizGyxgSMhhL2QGz0XOE" />
+        <link rel="icon" href="/imgs/logo.png" />
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="/index.xml" />
+<link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="zxysilent" />
+<link rel="canonical" href="https://blog.zxysilent.com/" />
+<link href="/css/all.css?v=1566365206" rel="stylesheet" type="text/css" data-ls="css_zxysilent" >
+    </head>
+    <body>
+        <nav id="sidebar">
+    <div class="wrap">
+        <div class="profile">
+            <a href="/"><img src="/imgs/logo.png" alt="zxysilent"/></a><span>zxysilent</span>
+        </div>
+        <ul class="naver">
+            
+                <li>
+                <a href="/" title=""><i class="iconfont icon-home"></i><span>首页</span></a> 
+            </li>
+            
+                <li>
+                <a href="/archives" title=""><i class="iconfont icon-archive"></i><span>归档</span></a> 
+            </li>
+            
+                <li>
+                <a href="/tags" title=""><i class="iconfont icon-tags"></i><span>标签</span></a> 
+            </li>
+            
+                <li>
+                <a href="/about" title=""><i class="iconfont icon-user"></i><span>关于</span></a> 
+            </li>
+            
+                <li>
+                <a href="/links" title=""><i class="iconfont icon-link"></i><span>友链</span></a> 
+            </li>
+            
+        </ul>
+        <div class="footer">
+            <a class="inline" rel="nofollow" target="_blank" href="https://github.com/zxysilent"><i class="iconfont icon-github-v" title="GitHub"></i></a>
+            <a class="inline" rel="nofollow" target="_blank" href="https://weibo.com/u/7072792903"><i class="iconfont icon-weibo" title="weibo"></i></a>
+            <a class="inline" href="/index.xml"><i class="iconfont icon-rss-v" title="RSS"></i></a>
+            <a class="inline" href="/search.html"><i class="iconfont icon-search" title="Search"></i></a>
+        </div>
+    </div>
+</nav>
+<div id="header">
+    <div class="btn-bar"><i></i></div>
+    <h1>
+        <a href="/">matplotlib</a>
+    </h1>
+    <a class="me" href="/about/"><img src="/imgs/logo.png" alt="zxysilent"/></a>
+</div>
+<div id="sidebar-mask"></div>
+
+        <div id="main">
+            <div id="page-post">
+                <article class="post detail">
+                    <div class="meta">
+                        <div class="date">08月21日, 2018</div>
+                        <div class="comment"><a href="#comments">198 Words</a></div>
+                    </div>
+                    <h1 class="title">matplotlib</h1>
+                    <div class="entry-content">
+                        
+                            <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#安装">安装</a></li>
+<li><a href="#快速体验">快速体验</a></li>
+<li><a href="#功能按钮">功能按钮</a></li>
+<li><a href="#图例-标题和标签">图例、标题和标签</a></li>
+<li><a href="#条形图">条形图</a></li>
+<li><a href="#直方图">直方图</a></li>
+<li><a href="#散点图">散点图</a></li>
+<li><a href="#展示图片">展示图片</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+                        
+                        
+                        <blockquote>
+<p>Matplotlib 是 Python 的一个绘图库。
+它包含了大量的工具，你可以使用这些工具创建各种图形，包括简单的散点图，正弦曲线，三维图形。</p>
+
+<h3 id="安装">安装</h3>
+
+<p><code>pip install matplotlib</code></p>
+</blockquote>
+
+<h3 id="快速体验">快速体验</h3>
+
+<pre><code class="language-python">import matplotlib.pyplot as plt
+import numpy as np
+
+## 产生0 到10之间100个等差数列
+x = np.linspace(0, 10, 100)
+## ^ 平方
+y = x**2
+plt.plot(x, y)
+## 显示
+plt.show()
+</code></pre>
+
+<p><img src="/imgs/post/20180821/upload_891eb3c4cf52f57b864a4d76ec38f6cc.png" alt="alt" /></p>
+
+<h3 id="功能按钮">功能按钮</h3>
+
+<p><img src="/imgs/post/20180821/upload_8d9356f859472de4e202c10f74146369.png" alt="alt" /></p>
+
+<ul>
+<li><p>Home 单击它可以返回原始视图， 在浏览图表之前单击此按钮将不会生效。</p></li>
+
+<li><p>Forward/Back  像浏览器中的前进和后退按钮一样使用。 可以单击这些来移回到之前的位置，或再次前进。</p></li>
+
+<li><p>Pan 点击之后可以拖拽图表。</p></li>
+
+<li><p>Zoom 单击并拖动出要放大的方形区域。 放大需要<strong>左键</strong>单击并拖动。 你也可以<strong>右键</strong>单击并拖动来缩小。</p></li>
+
+<li><p>Configure Subplots 此可以对图形和绘图配置各种间距选项。
+<img src="/imgs/post/20180821/upload_8ef12724f071e0122102ba8bd3862551.png" alt="alt" /><br />
+wspace和hspace对应于绘制多个子图时，它们的水平或竖直间距。</p></li>
+
+<li><p>Save 允许以各种形式保存图形。</p></li>
+</ul>
+
+<h3 id="图例-标题和标签">图例、标题和标签</h3>
+
+<pre><code class="language-python">import matplotlib.pyplot as plt
+import numpy as np
+x = np.linspace(-5, 5, 100)
+y = np.sin(x)
+y1 = np.cos(x)
+
+# 直接画在一起
+# plt.plot(x,y,x,y1)
+
+# 中文乱码
+# plt.xlabel(&quot;x轴&quot;)
+# plt.ylabel(&quot;y轴&quot;)
+
+plt.xlabel(&quot;x&quot;)
+plt.ylabel(&quot;y&quot;)
+
+plt.title('title')
+
+plt.plot(x, y, label='sin')
+plt.plot(x, y1, label='cos')
+# 生成图例
+plt.legend()
+plt.show()
+</code></pre>
+
+<p><img src="/imgs/post/20180822/upload_f6d7d9164b0fa84845d335945d485dff.png" alt="alt" /></p>
+
+<h3 id="条形图">条形图</h3>
+
+<pre><code class="language-python">import matplotlib.pyplot as plt
+
+x=[1,3,5,7,9]
+y=[1,2,3,5,4]
+
+x1=[2,4,6,8,10]
+y1=[5,4,3,1,2]
+
+plt.bar(x,y)
+plt.bar(x1,y1)
+plt.show()
+</code></pre>
+
+<p><img src="/imgs/post/20180822/upload_3643533a5b2a2ed79e845017d3fc3d4e.png" alt="alt" /></p>
+
+<h3 id="直方图">直方图</h3>
+
+<p>直方图非常像条形图，倾向于通过将区段组合在一起来显示分布</p>
+
+<pre><code class="language-python">import matplotlib.pyplot as plt
+y = [23, 56,  63, 46,  22, 23, 35, 43,  43, 5, 100, 123, 131, 112, 116, 113, 81, 76,   66,  55]
+print(y)
+bins = [0, 50, 100, 150]
+#plt.hist(y, 10, rwidth=0.8)
+plt.hist(y, bins, rwidth=0.8)
+plt.show()
+</code></pre>
+
+<p><img src="/imgs/post/20180822/upload_7246de998f84c0b667fe18dbd8f57752.png" alt="alt" /></p>
+
+<h3 id="散点图">散点图</h3>
+
+<pre><code>import matplotlib.pyplot as plt
+import numpy as np
+x = np.linspace(-5, 5, 100)
+y = np.sin(x)
+
+plt.scatter(x,y,label='sin', color='b', s=3, marker=&quot;o&quot;)#颜色，大小，形状
+plt.legend()
+plt.show()
+</code></pre>
+
+<p><img src="/imgs/post/20180822/upload_926338acadce3b8f9c79c2810dfd0836.png" alt="alt" /></p>
+
+<h3 id="展示图片">展示图片</h3>
+
+<p><strong>png</strong></p>
+
+<pre><code class="language-python">import matplotlib.pyplot as plt
+import matplotlib.image as mpimg 
+
+# 读取图片
+lena = mpimg.imread('lena.png')
+# 绘制图片
+plt.imshow(lena)
+# 关闭坐标轴
+plt.axis('off')
+plt.show()
+</code></pre>
+                    </div>
+                    <p>本文链接：<a href="/posts/python-matplotlib/">/posts/python-matplotlib/</a></p>
+                    <p>-- <acronym title="End of File">EOF</acronym> --</p>
+                    <div class="post-info">
+                        <p>
+                            <code class="notebook">zxysilent</code>发表于<i> 2018-08-21 16:53:44</i>，
+                            
+                            
+                                添加「
+                                    
+                                        
+                                            <a href="http://example.org/tags/python" data-tag="python"><code class="notebook">python</code></a>
+                                        
+                                    
+                                」标签，
+                            
+                            最后修改于<i> 2018-08-22 12:24:09</i>
+                        </p>
+                    </div>
+                </article>
+                <nav class="pagination">
+                    
+                        <a class="prev" href="http://example.org/posts/python-02/">«  python-02</a>
+                    
+                    
+                        <a class="next" href="http://example.org/posts/restore-win10-apps/"> 还原window自带app  »</a>
+                    
+                </nav>
+                
+            </div>
+                        
+<footer id="footer" class="inner">
+                &copy; 2019&nbsp;-&nbsp; zxysilent&nbsp;-&nbsp;<a target="_blank" rel="nofollow" class="external beian" href="http://www.miitbeian.gov.cn/">蜀ICP备16011344号-2</a
+                ><br />Powered by&nbsp;ThinkJS&nbsp;&amp;&nbsp;FireKyli<a target="_blank" rel="nofollow" class="external" href="https://zxysilent.org">n</a>
+                <span id="busuanzi_container_site_pv"
+                    >total:<span id="busuanzi_value_site_pv"></span><span id="busuanzi_container_page_pv">&nbsp;page:<span id="busuanzi_value_page_pv"></span></span
+                ></span>
+            </footer>
+        </div>
+        <script src="/js/theme.js" data-ls="js_zxysilent"></script>
+
+
+<script>
+    console.info("https://blog.zxysilent.com");
+</script>
+
+    </body>
+</html>

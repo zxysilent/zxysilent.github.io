@@ -1,0 +1,155 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>zxysilent on zxysilent</title>
+    <link>http://example.org/</link>
+    <description>Recent content in zxysilent on zxysilent</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>2019-03-03 18:19:06</lastBuildDate>
+    <atom:link href="http://example.org/" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>安装nodejs</title>
+      <link>http://example.org/posts/install-nodejs/</link>
+      <pubDate>2019-03-03 18:19:06</pubDate>
+      
+      <guid>http://example.org/posts/install-nodejs/</guid>
+      <description>&lt;h2 id=&#34;nodejs&#34;&gt;NodeJs&lt;/h2&gt;
+
+&lt;p&gt;&lt;code&gt;Node.js&lt;/code&gt; 是一个基于 &lt;code&gt;Chrome V8&lt;/code&gt; 引擎的 &lt;code&gt;JavaScript&lt;/code&gt; 运行环境。Node.js 使用了一个事件驱动、非阻塞式&lt;code&gt;I/O&lt;/code&gt; 的模型，使其轻量又高效。&lt;code&gt;Node.js&lt;/code&gt;的包管理器 &lt;code&gt;npm&lt;/code&gt;，是全球最大的开源库生态系统。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>使用visual studio code 写c语言</title>
+      <link>http://example.org/posts/vs-code-c/</link>
+      <pubDate>2019-02-24 13:45:34</pubDate>
+      
+      <guid>http://example.org/posts/vs-code-c/</guid>
+      <description>&lt;h3 id=&#34;所需软件&#34;&gt;所需软件&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://code.visualstudio.com/#alt-downloads&#34;&gt;vscode&lt;/a&gt;
+推荐下载 &lt;img src=&#34;http://example.org/imgs/post/20190224/upload_d5c0164b43ed052f150a8a0086059ad5.png&#34; alt=&#34;alt&#34; /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://mingw-w64.org&#34;&gt;gcc(mingw64)&lt;/a&gt; 官网下载略微复杂&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://pan.baidu.com/s/10rwyP_21nKeVN00aZXObKw&#34;&gt;百度网盘下载gcc(mingw64)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>json web token</title>
+      <link>http://example.org/posts/jwt/</link>
+      <pubDate>2018-11-16 16:16:52</pubDate>
+      
+      <guid>http://example.org/posts/jwt/</guid>
+      <description>&lt;p&gt;JWT是&lt;code&gt;json web token&lt;/code&gt;缩写。&lt;br /&gt;
+&lt;a href=&#34;https://jwt.io/&#34;&gt;官网&lt;/a&gt;
+它将用户信息加密到token里，服务器不保存任何用户信息。服务器通过使用保存的密钥验证token的正确性，只要正确即通过验证。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;优点是在分布式系统中，很好地解决了单点登录问题，很容易解决了&lt;code&gt;session&lt;/code&gt;共享的问题。&lt;/li&gt;
+&lt;li&gt;缺点是无法作废已颁布的令牌/不易应对数据过期。&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>还原window自带app</title>
+      <link>http://example.org/posts/restore-win10-apps/</link>
+      <pubDate>2018-11-15 16:47:17</pubDate>
+      
+      <guid>http://example.org/posts/restore-win10-apps/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;复制以下代码再&lt;code&gt;powershell&lt;/code&gt;运行&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+    </item>
+    
+    <item>
+      <title>matplotlib</title>
+      <link>http://example.org/posts/python-matplotlib/</link>
+      <pubDate>2018-08-21 16:53:44</pubDate>
+      
+      <guid>http://example.org/posts/python-matplotlib/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;Matplotlib 是 Python 的一个绘图库。
+它包含了大量的工具，你可以使用这些工具创建各种图形，包括简单的散点图，正弦曲线，三维图形。&lt;/p&gt;
+
+&lt;h3 id=&#34;安装&#34;&gt;安装&lt;/h3&gt;
+
+&lt;p&gt;&lt;code&gt;pip install matplotlib&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+    </item>
+    
+    <item>
+      <title>python-02</title>
+      <link>http://example.org/posts/python-02/</link>
+      <pubDate>2018-08-06 11:04:59</pubDate>
+      
+      <guid>http://example.org/posts/python-02/</guid>
+      <description>&lt;h2 id=&#34;运行python&#34;&gt;运行python&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;交互模式&lt;code&gt;win+r =&amp;gt; py&lt;/code&gt;&lt;br /&gt;
+直接输入&lt;code&gt;python&lt;/code&gt;代码运行&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>python-01-环境搭建</title>
+      <link>http://example.org/posts/python-01/</link>
+      <pubDate>2018-08-06 09:50:47</pubDate>
+      
+      <guid>http://example.org/posts/python-01/</guid>
+      <description>&lt;h2 id=&#34;python&#34;&gt;python&lt;/h2&gt;
+
+&lt;p&gt;安装 python
+&amp;gt; 官方下载地址 &lt;a href=&#34;https://www.python.org/downloads/&#34;&gt;https://www.python.org/downloads/&lt;/a&gt;&lt;br /&gt;
+推荐安装 3.6.5&lt;/p&gt;
+
+&lt;p&gt;网盘&lt;a href=&#34;https://pan.baidu.com/s/10CxDeoLMzETGxm_IU9Rhlg&#34;&gt;https://pan.baidu.com/s/10CxDeoLMzETGxm_IU9Rhlg&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>python-00-前言</title>
+      <link>http://example.org/posts/python-00/</link>
+      <pubDate>2018-07-23 16:37:12</pubDate>
+      
+      <guid>http://example.org/posts/python-00/</guid>
+      <description>&lt;h3 id=&#34;目标&#34;&gt;目标&lt;/h3&gt;
+
+&lt;p&gt;通过完成&lt;code&gt;python&lt;/code&gt;语言基础的学习为后面数据分析机器学习打下坚实的基础。&lt;br /&gt;
+   后续课程包括：
+ - &lt;code&gt;opencv&lt;/code&gt;的使用
+ - 数据分析&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>goweb-06-综合示例</title>
+      <link>http://example.org/posts/goweb-06/</link>
+      <pubDate>2018-07-23 09:09:26</pubDate>
+      
+      <guid>http://example.org/posts/goweb-06/</guid>
+      <description> goweb-06-综合示例
+实践操作 </description>
+    </item>
+    
+    <item>
+      <title>goweb-05-golang-操作数据库</title>
+      <link>http://example.org/posts/goweb-05/</link>
+      <pubDate>2018-07-22 17:35:10</pubDate>
+      
+      <guid>http://example.org/posts/goweb-05/</guid>
+      <description>&lt;h2 id=&#34;使用数据库的一般步骤&#34;&gt;使用数据库的一般步骤&lt;/h2&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/jmoiron/sqlx&#34;&gt;sqlx官网&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;引入xxx&#34;&gt;引入xxx&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;第三方包 &lt;code&gt;import &amp;quot;github.com/jmoiron/sqlx&amp;quot;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;驱动 &lt;code&gt;import _ &amp;quot;github.com/go-sql-driver/mysql&amp;quot;&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

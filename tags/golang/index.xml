@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>golang on zxysilent</title>
+    <link>http://example.org/tags/golang/</link>
+    <description>Recent content in golang on zxysilent</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 16 Nov 2018 16:16:52 +0000</lastBuildDate>
+    
+	<atom:link href="http://example.org/tags/golang/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>json web token</title>
+      <link>http://example.org/posts/jwt/</link>
+      <pubDate>Fri, 16 Nov 2018 16:16:52 +0000</pubDate>
+      
+      <guid>http://example.org/posts/jwt/</guid>
+      <description>&lt;p&gt;JWT是&lt;code&gt;json web token&lt;/code&gt;缩写。&lt;br /&gt;
+&lt;a href=&#34;https://jwt.io/&#34;&gt;官网&lt;/a&gt;
+它将用户信息加密到token里，服务器不保存任何用户信息。服务器通过使用保存的密钥验证token的正确性，只要正确即通过验证。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;优点是在分布式系统中，很好地解决了单点登录问题，很容易解决了&lt;code&gt;session&lt;/code&gt;共享的问题。&lt;/li&gt;
+&lt;li&gt;缺点是无法作废已颁布的令牌/不易应对数据过期。&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>goweb-06-综合示例</title>
+      <link>http://example.org/posts/goweb-06/</link>
+      <pubDate>Mon, 23 Jul 2018 09:09:26 +0000</pubDate>
+      
+      <guid>http://example.org/posts/goweb-06/</guid>
+      <description> goweb-06-综合示例
+实践操作 </description>
+    </item>
+    
+    <item>
+      <title>goweb-05-golang-操作数据库</title>
+      <link>http://example.org/posts/goweb-05/</link>
+      <pubDate>Sun, 22 Jul 2018 17:35:10 +0000</pubDate>
+      
+      <guid>http://example.org/posts/goweb-05/</guid>
+      <description>&lt;h2 id=&#34;使用数据库的一般步骤&#34;&gt;使用数据库的一般步骤&lt;/h2&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/jmoiron/sqlx&#34;&gt;sqlx官网&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;引入xxx&#34;&gt;引入xxx&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;第三方包 &lt;code&gt;import &amp;quot;github.com/jmoiron/sqlx&amp;quot;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;驱动 &lt;code&gt;import _ &amp;quot;github.com/go-sql-driver/mysql&amp;quot;&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;</description>
+    </item>
+    
+    <item>
+      <title>goweb-04-数据库</title>
+      <link>http://example.org/posts/goweb-04/</link>
+      <pubDate>Sun, 22 Jul 2018 17:04:05 +0000</pubDate>
+      
+      <guid>http://example.org/posts/goweb-04/</guid>
+      <description>&lt;h2 id=&#34;测试数据库&#34;&gt;测试数据库&lt;/h2&gt;
+
+&lt;p&gt;&lt;code&gt;mysql -V&lt;/code&gt;&lt;br /&gt;
+&lt;img src=&#34;http://example.org/imgs/post/20180712/screenshot_1502450228763.png&#34; alt=&#34;&#34; /&gt;&lt;br /&gt;
+&lt;a href=&#34;http://pan.baidu.com/s/1kUAXwgv&#34;&gt;测试数据&lt;/a&gt;
+tip&lt;code&gt;source D:/news.sql;&lt;/code&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>goweb-038-常用包net&#43;http</title>
+      <link>http://example.org/posts/goweb-038/</link>
+      <pubDate>Fri, 20 Jul 2018 11:50:06 +0000</pubDate>
+      
+      <guid>http://example.org/posts/goweb-038/</guid>
+      <description>&lt;p&gt;网络操作(计算机网络相关知识可以利用此包实践)&lt;/p&gt;
+
+&lt;h2 id=&#34;net&#34;&gt;net&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;net&lt;/code&gt;包提供了可移植的网络&lt;code&gt;I/O&lt;/code&gt;接口，包括&lt;code&gt;TCP/IP&lt;/code&gt;、&lt;code&gt;UDP&lt;/code&gt;、域名解析和&lt;code&gt;Unix&lt;/code&gt;域&lt;code&gt;socket&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;本包提供了对网络原语的访问，大部分使用者只需要&lt;code&gt;Dial&lt;/code&gt;、&lt;code&gt;Listen&lt;/code&gt;和&lt;code&gt;Accept&lt;/code&gt;函数提供的基本接口；以及相关的&lt;code&gt;Conn&lt;/code&gt;和&lt;code&gt;Listener&lt;/code&gt;接口。&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>goweb-037-golang-常用包</title>
+      <link>http://example.org/posts/goweb-037/</link>
+      <pubDate>Fri, 20 Jul 2018 08:22:37 +0000</pubDate>
+      
+      <guid>http://example.org/posts/goweb-037/</guid>
+      <description>&lt;p&gt;以示例的方式演示常用包的用法，更详细深入的信息请参考 &lt;a href=&#34;https://golang.google.cn/pkg/&#34;&gt;https://golang.google.cn/pkg/&lt;/a&gt;标准库&lt;br /&gt;
+&lt;img src=&#34;http://example.org/imgs/post/20180720/upload_a2a95976a5f1c377cd1244e720deeeea.png&#34; alt=&#34;alt&#34; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;os&#34;&gt;os&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;os&lt;/code&gt;包提供了操作系统函数的不依赖平台的接口。设计为&lt;code&gt;Unix&lt;/code&gt;风格的，错误处理是go风格的；失败的调用会返回错误值而非错误码。&lt;/li&gt;
+&lt;li&gt;通常错误值里包含更多信息。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;code&gt;os&lt;/code&gt;包的接口规定为在所有操作系统中都是一致的。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>goweb-036-golang-Goroutines和Channels</title>
+      <link>http://example.org/posts/goweb-036/</link>
+      <pubDate>Thu, 19 Jul 2018 17:16:40 +0000</pubDate>
+      
+      <guid>http://example.org/posts/goweb-036/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;并行&lt;/strong&gt;同时做不同事。&lt;br /&gt;
+&lt;img src=&#34;http://example.org/imgs/post/20180719/upload_637d666569fc53940d0de76a3f6987b0.png&#34; alt=&#34;alt&#34; /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;并发&lt;/strong&gt;交替做不同事。&lt;br /&gt;
+&lt;img src=&#34;http://example.org/imgs/post/20180719/upload_f5b7c9457b34b935a0d61a822ac573c9.png&#34; alt=&#34;alt&#34; /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;假设你需要洗衣服和做饭
+1. ** 串行**：先洗完衣服再做饭，或者先做完饭再洗衣服。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>goweb-035-golang-接口</title>
+      <link>http://example.org/posts/goweb-035/</link>
+      <pubDate>Thu, 19 Jul 2018 15:37:41 +0000</pubDate>
+      
+      <guid>http://example.org/posts/goweb-035/</guid>
+      <description>&lt;p&gt;接口类型是对其它类型行为的抽象和概括；因为接口类型不会和特定的实现细节绑定在一起，通过这种抽象的方式我们可以让我们的函数更加灵活和更具有适应能力。&lt;/p&gt;
+
+&lt;h2 id=&#34;接口类型&#34;&gt;接口类型&lt;/h2&gt;
+
+&lt;p&gt;接口类型具体描述了一系列方法的集合，一个实现了这些方法的具体类型是这个接口类型的实例。&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;io.Writer&lt;/code&gt;类型是用得最广泛的接口之一，因为它提供了所有类型的写入&lt;code&gt;bytes&lt;/code&gt;的抽象。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>goweb-034-golang-方法</title>
+      <link>http://example.org/posts/goweb-034/</link>
+      <pubDate>Thu, 19 Jul 2018 11:38:47 +0000</pubDate>
+      
+      <guid>http://example.org/posts/goweb-034/</guid>
+      <description>&lt;p&gt;面向对象编程(OOP)的三大特征分别为封装、继承和多态。
+封装，是指利用抽象数据类型对数据信息以及对数据。。。。。。。此处省略3万字&lt;br /&gt;
+&lt;img src=&#34;http://example.org/imgs/post/20180719/upload_17ce2c733b1cb9b4b3a410756c4765fd.png&#34; alt=&#34;alt&#34; /&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>goweb-033-golang-函数</title>
+      <link>http://example.org/posts/goweb-033/</link>
+      <pubDate>Thu, 19 Jul 2018 09:27:42 +0000</pubDate>
+      
+      <guid>http://example.org/posts/goweb-033/</guid>
+      <description>&lt;h2 id=&#34;函数声明&#34;&gt;函数声明&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;函数声明包括函数名、形式参数列表、返回值列表（可省略）以及函数体。&lt;/li&gt;
+&lt;li&gt;形式参数列表描述了函数的参数名以及参数类型。&lt;/li&gt;
+&lt;li&gt;返回值列表描述了函数返回值的变量名以及类型。&lt;/li&gt;
+&lt;li&gt;若函数返回一个无名变量或者没有返回值，返回值列表的括号是可以省略的。&lt;/li&gt;
+&lt;li&gt;若函数声明不包括返回值列表，那么函数体执行完毕后，不会返回任何值。&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>goweb-032-golang-复合数据类型</title>
+      <link>http://example.org/posts/goweb-032/</link>
+      <pubDate>Tue, 17 Jul 2018 11:51:12 +0000</pubDate>
+      
+      <guid>http://example.org/posts/goweb-032/</guid>
+      <description>&lt;h2 id=&#34;流程控制&#34;&gt;流程控制&lt;/h2&gt;
+
+&lt;p&gt;类比 &lt;code&gt;clang&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;if&#34;&gt;if&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;条件表达式没有括号&lt;/li&gt;
+&lt;li&gt;左大括号必须和条件语句或&lt;code&gt;else&lt;/code&gt;在同一行&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>goweb-031-golang-基础数据类型</title>
+      <link>http://example.org/posts/goweb-031/</link>
+      <pubDate>Mon, 16 Jul 2018 16:40:28 +0000</pubDate>
+      
+      <guid>http://example.org/posts/goweb-031/</guid>
+      <description>&lt;p&gt;所有的数据都是由比特组成&lt;/p&gt;
+
+&lt;h2 id=&#34;整型&#34;&gt;整型&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Go语言的数值类型包括几种不同大小的整数、浮点数和复数。&lt;/li&gt;
+&lt;li&gt;每种数值类型都决定了对应的大小范围和是否支持正负符号。&lt;/li&gt;
+&lt;li&gt;Go语言同时提供了有符号和无符号类型的整数运算。&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>goweb-030-golang-程序结构</title>
+      <link>http://example.org/posts/goweb-030/</link>
+      <pubDate>Mon, 16 Jul 2018 11:41:45 +0000</pubDate>
+      
+      <guid>http://example.org/posts/goweb-030/</guid>
+      <description>&lt;h2 id=&#34;命名&#34;&gt;命名&lt;/h2&gt;
+
+&lt;p&gt;Go语言中的函数名、变量名、常量名、类型名、语句标号和包名等所有的命名，都遵循一个
+简单的命名规则：一个名字必须以一个字母（Unicode字母）或下划线开头，后面可以跟任意
+数量的字母、数字或下划线。大写字母和小写字母是不同的：&lt;code&gt;abc&lt;/code&gt;和&lt;code&gt;aBc&lt;/code&gt;是两个不
+同的名字。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>goweb-03-golang</title>
+      <link>http://example.org/posts/goweb-03/</link>
+      <pubDate>Thu, 12 Jul 2018 16:58:33 +0000</pubDate>
+      
+      <guid>http://example.org/posts/goweb-03/</guid>
+      <description>&lt;h2 id=&#34;qaq&#34;&gt;QAQ&lt;/h2&gt;
+
+&lt;p&gt;本应该长篇大论介绍&lt;code&gt;golang&lt;/code&gt;的 but&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://example.org/imgs/post/20180716/upload_d7ba285d3e106edd139688f7287fef92.png&#34; alt=&#34;alt&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://golang.org/&#34;&gt;https://golang.org/&lt;/a&gt; 官方网站&lt;strong&gt;墙外&lt;/strong&gt;&lt;br /&gt;
+&lt;a href=&#34;https://golang.google.cn/&#34;&gt;https://golang.google.cn/&lt;/a&gt;  镜像网站&lt;br /&gt;
+&lt;a href=&#34;https://golang.google.cn/pkg/&#34;&gt;https://golang.google.cn/pkg/&lt;/a&gt; 标准库文档&lt;br /&gt;
+很多例子可以在线练习&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;特点&lt;/strong&gt;
+　简洁 快速 安全 并行 有趣 开源 支持泛型编程，内存管理，数组安全，编译迅速 balabala&amp;hellip;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>goweb-02-环境搭建</title>
+      <link>http://example.org/posts/goweb-02/</link>
+      <pubDate>Thu, 12 Jul 2018 12:00:20 +0000</pubDate>
+      
+      <guid>http://example.org/posts/goweb-02/</guid>
+      <description>&lt;h1 id=&#34;golang&#34;&gt;golang&lt;/h1&gt;
+
+&lt;h2 id=&#34;安装go1-10-3&#34;&gt;安装go1.10.3&lt;/h2&gt;
+
+&lt;p&gt;图片上的字不重要请忽略&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;根据自己电脑的配置 选择版本&lt;br /&gt;
+ &lt;a href=&#34;https://golang.org/dl/&#34;&gt;官方下载地址 墙外 https://golang.org/dl/&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&#34;https://golang.google.cn/dl/&#34;&gt;镜像下载地址  https://golang.google.cn/dl/&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ol&gt;
+&lt;li&gt;点击安装程序&lt;br /&gt;&lt;/li&gt;
+&lt;/ol&gt;</description>
+    </item>
+    
+    <item>
+      <title>goweb-01-基础知识</title>
+      <link>http://example.org/posts/goweb-01/</link>
+      <pubDate>Thu, 12 Jul 2018 11:58:58 +0000</pubDate>
+      
+      <guid>http://example.org/posts/goweb-01/</guid>
+      <description>&lt;h2 id=&#34;网站运作流程&#34;&gt;网站运作流程&lt;/h2&gt;
+
+&lt;p&gt;当我们在浏览器地址栏输入
+&lt;a href=&#34;http://mi.cwnu.edu.cn&#34;&gt;http://mi.cwnu.edu.cn&lt;/a&gt;
+并回车后到底发生了什么&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>goweb-00-前言</title>
+      <link>http://example.org/posts/goweb-00/</link>
+      <pubDate>Thu, 12 Jul 2018 11:57:15 +0000</pubDate>
+      
+      <guid>http://example.org/posts/goweb-00/</guid>
+      <description>&lt;h3 id=&#34;目标&#34;&gt;目标&lt;/h3&gt;
+
+&lt;p&gt;通过完成&lt;code&gt;go&lt;/code&gt;语言 &lt;code&gt;mysql&lt;/code&gt; 等相关内容的学习使自己独立完成一般网站。&lt;/p&gt;
+
+&lt;h3 id=&#34;网页基础&#34;&gt;网页基础&lt;/h3&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

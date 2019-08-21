@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <title>zxysilent</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+        <meta name="msvalidate.01" content="BA6009DC1D95902AC43052D430AA822D" />
+        <meta name="keywords" content="zxysilent,zxyslt,zxy" />
+        <meta name="description" content="zxysilent;zxysilent blog;zxyslt;zxyslt blog;" />
+        <meta name="google-site-verification" content="51J555Z28axR2us4ULmrJuBCizGyxgSMhhL2QGz0XOE" />
+        <link rel="icon" href="/imgs/logo.png" />
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="/index.xml" />
+<link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="zxysilent" />
+<link rel="canonical" href="https://blog.zxysilent.com/" />
+<link href="/css/all.css?v=1566365206" rel="stylesheet" type="text/css" data-ls="css_zxysilent" >
+    </head>
+    <body>
+        <nav id="sidebar">
+    <div class="wrap">
+        <div class="profile">
+            <a href="/"><img src="/imgs/logo.png" alt="zxysilent"/></a><span>zxysilent</span>
+        </div>
+        <ul class="naver">
+            
+                <li>
+                <a href="/" title=""><i class="iconfont icon-home"></i><span>首页</span></a> 
+            </li>
+            
+                <li>
+                <a href="/archives" title=""><i class="iconfont icon-archive"></i><span>归档</span></a> 
+            </li>
+            
+                <li>
+                <a href="/tags" title=""><i class="iconfont icon-tags"></i><span>标签</span></a> 
+            </li>
+            
+                <li>
+                <a href="/about" title=""><i class="iconfont icon-user"></i><span>关于</span></a> 
+            </li>
+            
+                <li>
+                <a href="/links" title=""><i class="iconfont icon-link"></i><span>友链</span></a> 
+            </li>
+            
+        </ul>
+        <div class="footer">
+            <a class="inline" rel="nofollow" target="_blank" href="https://github.com/zxysilent"><i class="iconfont icon-github-v" title="GitHub"></i></a>
+            <a class="inline" rel="nofollow" target="_blank" href="https://weibo.com/u/7072792903"><i class="iconfont icon-weibo" title="weibo"></i></a>
+            <a class="inline" href="/index.xml"><i class="iconfont icon-rss-v" title="RSS"></i></a>
+            <a class="inline" href="/search.html"><i class="iconfont icon-search" title="Search"></i></a>
+        </div>
+    </div>
+</nav>
+<div id="header">
+    <div class="btn-bar"><i></i></div>
+    <h1>
+        <a href="/">numpy</a>
+    </h1>
+    <a class="me" href="/about/"><img src="/imgs/logo.png" alt="zxysilent"/></a>
+</div>
+<div id="sidebar-mask"></div>
+
+        <div id="main">
+            <div id="page-post">
+                <article class="post detail">
+                    <div class="meta">
+                        <div class="date">04月07日, 2017</div>
+                        <div class="comment"><a href="#comments">1042 Words</a></div>
+                    </div>
+                    <h1 class="title">numpy</h1>
+                    <div class="entry-content">
+                        
+                            <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#基本概念">基本概念</a></li>
+<li><a href="#创建数组">创建数组</a>
+<ul>
+<li><a href="#random-类">random 类</a>
+<ul>
+<li><a href="#random">random()　</a></li>
+<li><a href="#randint">randint()</a></li>
+<li><a href="#normal">normal() 　</a></li>
+<li><a href="#randn">randn()</a></li>
+<li><a href="#standard-normal">standard_normal</a></li>
+<li><a href="#rand">rand()　</a></li>
+<li><a href="#shuffle">shuffle()  　</a></li>
+<li><a href="#choice">choice()</a></li>
+<li><a href="#randomstate">RandomState()</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#基本运算">基本运算</a></li>
+<li><a href="#通用函数-ufunc">通用函数(ufunc)</a></li>
+<li><a href="#索引-切片和迭">索引，切片和迭</a></li>
+<li><a href="#形状操作">形状操作</a>
+<ul>
+<li><a href="#布尔数组索引">布尔数组索引</a></li>
+</ul></li>
+<li><a href="#ref">ref</a></li>
+</ul></li>
+</ul>
+</nav>
+                        
+                        
+                        <h2 id="基本概念">基本概念</h2>
+
+<p>官网 <a href="https://docs.scipy.org/doc/">https://docs.scipy.org/doc/</a><br />
+numpy的主要对象是同种元素的多维数组。<br />
+这是一个所有的元素都是一种类型、通过一个正整数元组索引的元素表格(通常是元素是数字)。<br />
+在numpy中维度(dimensions)叫做轴(axis)，轴的个数叫做秩(rank)。<br />
+- eg：</p>
+
+<pre><code>[1, 2, 3]
+</code></pre>
+
+<p>秩为1的数组，只有一个轴、轴长为3。</p>
+
+<ul>
+<li><p>eg：</p>
+
+<pre><code>[[ 1.  0.  0.]
+[ 0.  1.  2.]]
+</code></pre>
+
+<p>秩为2(它有两个维度).第一个维度长度为2，第二个维度长度为3。</p></li>
+</ul>
+
+<p>numpy的数组类被称作ndarray。通常被称作数组。注意numpy.array和标准Python库类array.array并不相同，后者只处理一维数组和提供少量功能。更多重要ndarray对象属性有：</p>
+
+<ul>
+<li><p>ndarray.ndim
+数组轴的个数，轴的个数被称作秩</p></li>
+
+<li><p>ndarray.shape
+数组的维度。这是一个指示数组在每个维度上大小的整数元组。<br />
+eg:一个2行3列的矩阵，它的shape属性将是(2,3),这个元组的长度是秩，即维度或者ndim属性</p></li>
+
+<li><p>ndarray.size
+数组元素的总个数，等于shape属性中元组元素的乘积。</p></li>
+
+<li><p>ndarray.dtype
+一个用来描述数组中元素类型的对象。</p></li>
+
+<li><p>ndarray.itemsize
+数组中每个元素的<strong>字节</strong>大小。<br />
+eg:</p>
+
+<pre><code class="language-python">import numpy as np
+arr = np.arange(15).reshape(3, 5)
+print(&quot;arr&quot;, arr)
+print(&quot;shape&quot;, arr.shape)  # (3,5)
+print(&quot;dtype&quot;, arr.dtype)  # (int32)
+print(&quot;size&quot;, arr.size)  # 15
+print(&quot;type&quot;, type(arr))  # &lt;class 'nu py.ndarray'&gt;
+</code></pre></li>
+</ul>
+
+<h2 id="创建数组">创建数组</h2>
+
+<ul>
+<li><p>使用array函数从常规的Python列表和元组创造数组。<br />
+所创建的数组类型由原序列中的元素类型推导而来。</p>
+
+<pre><code class="language-python">import numpy as np
+arr = np.array([1, 2, 3, 4])
+# [1, 2, 3, 4]
+print(arr)
+</code></pre></li>
+
+<li><p>可以在创建时显示指定类型</p>
+
+<pre><code class="language-python">import numpy as np
+arr = np.array([1, 2, 3, 4],dtype=np.float32)
+# [1. 2. 3. 4.]
+print(arr)
+</code></pre></li>
+
+<li><p><code>zeros</code>创建一个全是0的数组<br />
+参数：zeros(shape, dtype = float, order = &lsquo;C&rsquo;)</p>
+
+<pre><code class="language-python">import numpy as np
+arr = np.zeros((2,3))
+print(arr)
+#float64
+print(arr.dtype) 
+</code></pre></li>
+
+<li><p><code>ones</code>创建一个全1的数组<br />
+参数：ones(shape, dtype=None, order=&lsquo;C&rsquo;)</p>
+
+<pre><code class="language-python">import numpy as np
+arr = np.ones((2,3))
+print(arr)
+#float64
+print(arr.dtype)
+</code></pre></li>
+
+<li><p><code>empty</code>创建一个内容随机并且依赖与内存状态的数组<br />
+参数：empty(shape, dtype = float, order = &lsquo;C&rsquo;)</p>
+
+<pre><code class="language-python">import numpy as np
+arr = np.empty((2,3))
+print(arr)
+#float64
+print(arr.dtype)
+</code></pre></li>
+
+<li><p><code>arange</code>函数返回数组<br />
+参数：arange(start = None, stop = None, step = None, dtype = None)<br />
+由于有限的浮点数精度，通常无法预测获得的元素个数。</p>
+
+<pre><code class="language-python">import numpy as np
+arr = np.arange(10,40,10)
+#[10 20 30]
+print(arr)
+#int32
+print(arr.dtype)
+</code></pre></li>
+
+<li><p><code>linspace</code>  返回数组<br />
+参数：linspace(start, stop, num=50, endpoint=True, retstep=False, dtype=None)</p>
+
+<pre><code class="language-python">import numpy as np
+arr = np.linspace(0,9,10)
+#[0. 1. 2. 3. 4. 5. 6. 7. 8. 9.]
+print(arr)
+#float64
+print(arr.dtype)
+</code></pre></li>
+</ul>
+
+<h3 id="random-类">random 类</h3>
+
+<p>numpy中利用random类获取随机数．</p>
+
+<h4 id="random">random()　</h4>
+
+<p>生成随机浮点数<br />
+默认为生成一个随机的浮点数，范围是在0.0~1.0之间，也可以通过参数size设置返回数据的size。</p>
+
+<pre><code class="language-python">import numpy as np
+# 生成一个随机的浮点数
+r = np.random.random()
+# 0.6590899579137934
+print (r)
+'''
+[[0.89269339 0.56326053 0.79697541]
+ [0.69644276 0.17902598 0.0084224 ]]
+'''
+# 指定size
+print(np.random.random(size=(2,3)))
+</code></pre>
+
+<h4 id="randint">randint()</h4>
+
+<p>产生随机整数<br />
+参数: randint(low, high=None, size=None, dtype=’l’) 如果 high为None（默认值），则结果为[0，low ]<br />
+默认随机生一个整数int类型，可以指定这个整数的范围。</p>
+
+<pre><code class="language-python">import numpy as np
+# 产生 0-4 一个
+print(np.random.randint(4))
+# 产生 2-4 一个
+print(np.random.randint(2,4))
+# 产生 1-5 两个
+print(np.random.randint(low=1,high=5,size=2))
+# 产生 0-5 三个
+print(np.random.randint(5, size=3))
+# 产生 0-10 2行3列（2*3）
+print(np.random.randint(10, size=(2, 3)))
+</code></pre>
+
+<h4 id="normal">normal() 　</h4>
+
+<p>高斯分布<br />
+参数: normal(loc=0.0, scale=1.0, size=None) loc：均值，scale：标准差，size：抽取样本的size 。</p>
+
+<pre><code class="language-python">import numpy as np
+import matplotlib.pyplot as plt
+y=np.random.normal(0,1,5000)
+print(y)
+# 直方图
+# 100个分块
+plt.hist(y,bins=100)
+plt.show()
+</code></pre>
+
+<p><img src="/imgs/post/20180822/upload_efbfccdda454dacdb16c7541aa7aa3b5.png" alt="alt" /></p>
+
+<h4 id="randn">randn()</h4>
+
+<p>正态分布产生一个浮点数或N维浮点数组
+参数：randn(d0, d1, &hellip;, dn)</p>
+
+<pre><code class="language-python">import numpy as np
+import matplotlib.pyplot as plt
+y=np.random.randn(1000)
+# 直方图
+# 100个分块
+plt.hist(y,bins=100)
+plt.show()
+</code></pre>
+
+<p><img src="/imgs/post/20180822/upload_96778132faf635854b11346d51194e1a.png" alt="alt" /></p>
+
+<h4 id="standard-normal">standard_normal</h4>
+
+<p>标准正态分布产生一个浮点数或N维浮点数组
+参数：standard_normal(size=None)</p>
+
+<pre><code class="language-python">import numpy as np
+import matplotlib.pyplot as plt
+y=np.random.standard_normal((2000,1))
+# 直方图
+# 100个分块
+plt.hist(y,bins=100)
+plt.show()
+</code></pre>
+
+<p><img src="/imgs/post/20180823/upload_cbf61b419ba24a5da29f2b9a19eed3d6.png" alt="alt" /></p>
+
+<h4 id="rand">rand()　</h4>
+
+<p>生成[0, 1) 间随机数</p>
+
+<pre><code class="language-python">import numpy as np
+# 0.7758272442386239
+print(np.random.rand())
+'''
+[[0.07675678 0.72700556 0.31372113]
+ [0.19674323 0.3332258  0.49691272]]
+'''
+print(np.random.rand(2,3))
+</code></pre>
+
+<h4 id="shuffle">shuffle()  　</h4>
+
+<p>随机打乱序列将序列的所有元素随机排序 </p>
+
+<pre><code class="language-python">import numpy as np
+x=np.arange(10)
+# [0 1 2 3 4 5 6 7 8 9]
+print(x)
+np.random.shuffle(x)
+# 并没有产生新的数组
+# [7 6 1 9 3 8 4 2 5 0]
+print(x)
+</code></pre>
+
+<h4 id="choice">choice()</h4>
+
+<p>随机选取序列的一个元素，可以从序列(字符串、列表、元组等)中随机选取，返回一个列表，元组或字符串的随机项。</p>
+
+<pre><code class="language-python">import numpy as np
+x=np.arange(10)
+# [0 1 2 3 4 5 6 7 8 9]
+print(x)
+# 5
+print(np.random.choice(x))
+# 输出6个小于5的元素  
+# [1 3 2 2 1 1]
+print(np.random.choice(5, 6))
+import numpy as np
+# 每个条目出现的概率。如果没有就均匀分布
+# [0 3 2]
+print(np.random.choice(5, 3, p=[0.1, 0, 0.3, 0.6, 0]))
+x = ['a', 'b', 'c', 'd']
+# ['a' 'c']
+print(np.random.choice(x, 2, p=[0.1, 0, 0.9, 0]))
+</code></pre>
+
+<h4 id="randomstate">RandomState()</h4>
+
+<p>指定种子值，如不设置种子值时,np.random.randint(10)可能产生0-10内的任意整数，且每次产生的数字可能是任意一种。<br />
+ 设置种子值后,np.random.RandomState(0).randint(10)可能产生0-10内的任意整数，如果种子值不变则每次运行程序产生的数字一样。</p>
+
+<pre><code class="language-python">import numpy as np
+
+print(np.random.RandomState(0).randint(10))
+print(np.random.RandomState(2).randint(10))
+print(np.random.randint(10))
+
+</code></pre>
+
+<h2 id="基本运算">基本运算</h2>
+
+<p>数组的算术运算是<strong>按元素</strong>的。新的数组被创建并且被结果填充。</p>
+
+<pre><code class="language-python">import numpy as np
+a = np.array([1, 3, 5, 7, 9])
+b = np.array([2, 4, 6, 8, 10])
+# +
+print(a+b)
+# -
+print(a-b)
+# *
+print(a*b)
+# /
+print(a/b)
+# ^ **平方
+print(b**2)
+# %
+print(b % 3)
+# 并没有产生新的数组
+print('------')
+b += 2
+print(b)
+# -=
+b -= 2
+print(b)
+# *=
+b *= 2
+print(b)
+</code></pre>
+
+<h2 id="通用函数-ufunc">通用函数(ufunc)</h2>
+
+<p>numpy提供常见的数学函数如<code>sin</code>,<code>cos</code>和<code>exp</code>叫作“通用函数”(ufunc)。<br />
+这些函数作用按数组的元素运算，产生一个数组作为输出。</p>
+
+<pre><code class="language-python">import numpy as np
+x =np.arange(5)
+# [0 1 2 3 4]
+print(x)
+
+# [ 0.          0.84147098  0.90929743  0.14112001 -0.7568025 ]
+print(np.sin(x))
+# [ 1.          0.54030231 -0.41614684 -0.9899925  -0.65364362]
+print(np.cos(x))
+# [0.         1.         1.41421356 1.73205081 2.        ]
+print(np.sqrt(x))
+# [ 1.          2.71828183  7.3890561  20.08553692 54.59815003]
+print(np.exp(x))
+</code></pre>
+
+<h2 id="索引-切片和迭">索引，切片和迭</h2>
+
+<p>索引模式：start:stop:step
+- 一维数组可以被索引、切片和迭代，就像列表和其它Python序列。
+- 多维数组可以每个轴有一个索引。这些索引由一个逗号分割的元组给出。
+- 当少于轴数的索引被提供时，确失的索引被认为是整个切片。
+- 迭代多维数组是就第一个轴而言的。
+- 对每个数组中元素进行运算，可以使用flat属性，该属性是数组元素的一个迭代器。</p>
+
+<pre><code class="language-python">import numpy as np
+x=np.arange(10)**2
+# [ 0  1  4  9 16 25 36 49 64 81]
+print(x)
+# 1
+print(x[1])
+# [1 4]
+print(x[1:3])
+# [1 9] 
+print(x[1:5:2])#start:stop:step
+
+idx=[1,2,3]
+# [1 4 9]
+print(x[idx])
+for item in x :
+    print(item)
+#--------------
+m=np.arange(20).reshape(4,5)**2
+'''
+[[  0   1   4   9  16]
+ [ 25  36  49  64  81]
+ [100 121 144 169 196]
+ [225 256 289 324 361]]
+'''
+print(m)
+# 多维索引
+# 169
+print(m[2,3])
+'''
+[[  9]
+ [ 64]
+ [169]]
+'''
+print(m[0:3,3:4])# 0,1,2 行 3列
+# [225 256 289 324 361]
+print(m[-1])
+
+for item in m.flat:
+    print(item)
+</code></pre>
+
+<h2 id="形状操作">形状操作</h2>
+
+<ul>
+<li><p>reshape函数改变参数形状并返回它，而resize函数改变数组自身</p>
+
+<pre><code class="language-python">import numpy as np
+
+x = np.arange(12)
+# [ 0  1  2  3  4  5  6  7  8  9 10 11]
+print(x)
+# (12,)
+print(x.shape)
+# reshape函数改变参数形状并返回它，而resize函数改变数组自身。
+# 返回新的数组
+print(x.reshape(3, 4))
+x.resize(3, 4)
+print(x)
+x.shape = (3, 4)
+print(x)
+# [ 0  1  2  3  4  5  6  7  8  9 10 11]
+print(x.ravel())
+
+a = np.array([[1, 2],
+          [3, 4]])
+b = np.array([[5, 6],
+          [7, 8]])
+'''
+[[1 2]
+[3 4]
+[5 6]
+[7 8]]
+'''
+print(np.vstack((a, b)))
+'''
+[[1 2 5 6]
+[3 4 7 8]]
+'''
+print(np.hstack((a, b)))
+</code></pre></li>
+</ul>
+
+<h3 id="布尔数组索引">布尔数组索引</h3>
+
+<pre><code class="language-python">import numpy as np
+
+x = np.arange(12).reshape(3, 4)
+'''
+[[ 0  1  2  3]
+ [ 4  5  6  7]
+ [ 8  9 10 11]]
+'''
+print(x)
+y = x &gt; 6
+'''
+[[False False False False]
+ [False False False  True]
+ [ True  True  True  True]]
+'''
+print(y)
+
+x[y]=100
+'''
+[[  0   1   2   3]
+ [  4   5   6 100]
+ [100 100 100 100]]
+'''
+print(x)
+</code></pre>
+
+<h2 id="ref">ref</h2>
+
+<blockquote>
+<p>方法</p>
+</blockquote>
+
+<table>
+<thead>
+<tr>
+<th>numpy方法</th>
+<th align="center">解释</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>np.dtype</td>
+<td align="center">指定当前numpy对象的整体数据类型</td>
+</tr>
+
+<tr>
+<td>np.itemsize</td>
+<td align="center">对象中每个元素的大小, 单位字节</td>
+</tr>
+
+<tr>
+<td>np.size</td>
+<td align="center">对象元素的个数, 相当于np.shape中的n*m值</td>
+</tr>
+
+<tr>
+<td>np.shape</td>
+<td align="center">轴, 查看数组形状, 对于矩阵, n行m列</td>
+</tr>
+
+<tr>
+<td>np.ndim</td>
+<td align="center">秩</td>
+</tr>
+
+<tr>
+<td>np.isnan(list)</td>
+<td align="center">筛选出nan值</td>
+</tr>
+
+<tr>
+<td>np.iscomplex(list)</td>
+<td align="center">筛选出非复数</td>
+</tr>
+
+<tr>
+<td>~</td>
+<td align="center">取补运算符</td>
+</tr>
+
+<tr>
+<td>np.array(数组, dtype=np.bool)</td>
+<td align="center">自定义数组类型</td>
+</tr>
+
+<tr>
+<td>np.astype(np.bool)</td>
+<td align="center">转换数组类型</td>
+</tr>
+
+<tr>
+<td>np.mat()</td>
+<td align="center">将python 列表转化成矩阵</td>
+</tr>
+
+<tr>
+<td>np.mat().getA()</td>
+<td align="center">将matrix对象转成ndarray对象</td>
+</tr>
+
+<tr>
+<td>np.matrix()</td>
+<td align="center">同上</td>
+</tr>
+
+<tr>
+<td>np.asmatrix()</td>
+<td align="center">将ndarray对象转成matrix对象</td>
+</tr>
+
+<tr>
+<td>np.tile()</td>
+<td align="center">重复某个数组。比如tile(A,n)，功能是将数组A重复n次，构成一个新的数组</td>
+</tr>
+
+<tr>
+<td>np.I</td>
+<td align="center">矩阵求逆</td>
+</tr>
+
+<tr>
+<td>np.T</td>
+<td align="center">矩阵转置, 行变列, 列变行, 对角线翻转矩阵</td>
+</tr>
+
+<tr>
+<td>np.tolist()</td>
+<td align="center">转换成python列表, 用于和python原生结合写程序</td>
+</tr>
+
+<tr>
+<td>np.multiply(x, y)</td>
+<td align="center">矩阵x 矩阵y相乘</td>
+</tr>
+
+<tr>
+<td>np.unique()</td>
+<td align="center">数组驱虫, 并且从小到大生成一个新的数组</td>
+</tr>
+
+<tr>
+<td>np.arange</td>
+<td align="center">同python range()</td>
+</tr>
+
+<tr>
+<td>np.arange(24).reshape((2, 3, 4))</td>
+<td align="center">创建一个2维3行4列的数组, 必须能被给定的长度除开, 可以索引和切片</td>
+</tr>
+
+<tr>
+<td>np.arange(24).resize((2, 3, 4))</td>
+<td align="center">同上, 会修改原值</td>
+</tr>
+
+<tr>
+<td>np.linspace(x, y, z)</td>
+<td align="center">等间距生成, x起始, y截止, z步长</td>
+</tr>
+
+<tr>
+<td>np.ones(x)</td>
+<td align="center">生成都是x的数组, 可传递三维数组, 几行几列, 具体的个数</td>
+</tr>
+
+<tr>
+<td>np.zeros(x)</td>
+<td align="center">生成都是0的数组</td>
+</tr>
+
+<tr>
+<td>np.full([x, y], z)</td>
+<td align="center">自定义模板数组, 生成x行y列都是z的数组</td>
+</tr>
+
+<tr>
+<td>np.eye(x)</td>
+<td align="center">创建一个正方的x*x单位的矩阵, 对角线为1, 其余为0</td>
+</tr>
+
+<tr>
+<td>np.flatten()</td>
+<td align="center">数组降维, 不改变 原值</td>
+</tr>
+
+<tr>
+<td>np.random.rand(x, y, z)</td>
+<td align="center">生成一个一维x随机数或生成x*y的随机数组</td>
+</tr>
+
+<tr>
+<td>np.random.randn(x, y)</td>
+<td align="center">正态分布随机数</td>
+</tr>
+
+<tr>
+<td>np.random.randint(low, high, (shape))</td>
+<td align="center">整数随机数</td>
+</tr>
+
+<tr>
+<td>np.random.normal(loc, scale, (size))</td>
+<td align="center">从指定正态分布中抽取样本, loc为概率分布的均匀值, 标准差scale</td>
+</tr>
+
+<tr>
+<td>np.random.seed(s)</td>
+<td align="center">给一个随机数字固定</td>
+</tr>
+
+<tr>
+<td>np.randomunifrom(low, high, (size))</td>
+<td align="center">均匀分布的数组, 有小数</td>
+</tr>
+
+<tr>
+<td>np.random.shuffle(a)</td>
+<td align="center">将数组a的第0轴(最外维度)进行随机排列(洗牌), 改变数组a, 行边列不变</td>
+</tr>
+
+<tr>
+<td>np.random.permutation(a)</td>
+<td align="center">同上, 不改变数组a</td>
+</tr>
+
+<tr>
+<td>np.random.choice(a, size=None, replace=False, p=数组a/np.sum(b))</td>
+<td align="center">从一维数组a中以概率p抽取元素，形成size形状新数组，replace表示是否可以重用元素，默认为False，p为抽取概率,本位置越高,抽取概率越高</td>
+</tr>
+
+<tr>
+<td>np.sum(axis=None)</td>
+<td align="center">求和, axis=0为列, 1为行</td>
+</tr>
+
+<tr>
+<td>np.argsort()</td>
+<td align="center">矩阵每个元素坐标排序</td>
+</tr>
+
+<tr>
+<td>np.sort(axix=None)</td>
+<td align="center">从小打大排序</td>
+</tr>
+
+<tr>
+<td>-np.sort(axis=None)</td>
+<td align="center">从大到小排序</td>
+</tr>
+
+<tr>
+<td>np.sort_values(‘字段’, ascending=False)</td>
+<td align="center">排序,升序排列</td>
+</tr>
+
+<tr>
+<td>np.mean(axis=None)</td>
+<td align="center">平均数</td>
+</tr>
+
+<tr>
+<td>np.average(axis=None,weights=None)</td>
+<td align="center">加权平均，weights加权值，不设为等权重,例子[10, 5, 1],每列分别X10,X5,X1在/(10+5+1)</td>
+</tr>
+
+<tr>
+<td>np.var(axis=None)</td>
+<td align="center">方差：各数与平均数之差的平方的平均数</td>
+</tr>
+
+<tr>
+<td>np.std(axis=None)</td>
+<td align="center">标准差:方差平方根</td>
+</tr>
+
+<tr>
+<td>np.min(axis=None)</td>
+<td align="center">最小值</td>
+</tr>
+
+<tr>
+<td>np.argmin(axis=None)</td>
+<td align="center">求数组中最小值的坐标</td>
+</tr>
+
+<tr>
+<td>np.median(axis=None)</td>
+<td align="center">中位数</td>
+</tr>
+
+<tr>
+<td>np.ptp(axis=None)</td>
+<td align="center">元素最大值与最小值的差</td>
+</tr>
+
+<tr>
+<td>np.cumsum()</td>
+<td align="center">累加,cumsum和cumprod之类的方法不聚合，产生一个中间结果组成的数组,默认一维数组,1为按原样</td>
+</tr>
+
+<tr>
+<td>np.cumprod()</td>
+<td align="center">累乘</td>
+</tr>
+
+<tr>
+<td>np.count_nonzero(arr &gt; 0)</td>
+<td align="center">计数非0值个数,布尔值会被强制转换为1和0，可以使用sum()对布尔型数组中的True值计数</td>
+</tr>
+
+<tr>
+<td>np.bools.any()</td>
+<td align="center">测试数组中是否存在一个或多个True</td>
+</tr>
+
+<tr>
+<td>np.bools.all()</td>
+<td align="center">数组中所有值是否都是True, 测试有没有空值</td>
+</tr>
+</tbody>
+</table>
+
+<blockquote>
+<p>类型</p>
+</blockquote>
+
+<table>
+<thead>
+<tr>
+<th>np.dtype类型</th>
+<th>解释</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>np.bool</td>
+<td>布尔值</td>
+</tr>
+
+<tr>
+<td>np.int</td>
+<td>整型</td>
+</tr>
+
+<tr>
+<td>np.float</td>
+<td>浮点型</td>
+</tr>
+
+<tr>
+<td>np.complex</td>
+<td>复数</td>
+</tr>
+
+<tr>
+<td>np.object</td>
+<td>对象</td>
+</tr>
+
+<tr>
+<td>np.string_</td>
+<td>ASCII字符</td>
+</tr>
+
+<tr>
+<td>np.unicode_</td>
+<td>Unicode所有字符, 字节数平台决定</td>
+</tr>
+</tbody>
+</table>
+                    </div>
+                    <p>本文链接：<a href="/posts/numpy/">/posts/numpy/</a></p>
+                    <p>-- <acronym title="End of File">EOF</acronym> --</p>
+                    <div class="post-info">
+                        <p>
+                            <code class="notebook">zxysilent</code>发表于<i> 2017-04-07 21:10:29</i>，
+                            
+                            
+                                添加「
+                                    
+                                        
+                                            <a href="http://example.org/tags/python" data-tag="python"><code class="notebook">python</code></a>
+                                        
+                                            <a href="http://example.org/tags/numpy" data-tag="numpy"><code class="notebook">numpy</code></a>
+                                        
+                                    
+                                」标签，
+                            
+                            最后修改于<i> 2017-04-07 21:10:29</i>
+                        </p>
+                    </div>
+                </article>
+                <nav class="pagination">
+                    
+                        <a class="prev" href="http://example.org/posts/one/">«  本站点部署</a>
+                    
+                    
+                        <a class="next" href="http://example.org/posts/goweb-00/"> goweb-00-前言  »</a>
+                    
+                </nav>
+                
+            </div>
+                        
+<footer id="footer" class="inner">
+                &copy; 2019&nbsp;-&nbsp; zxysilent&nbsp;-&nbsp;<a target="_blank" rel="nofollow" class="external beian" href="http://www.miitbeian.gov.cn/">蜀ICP备16011344号-2</a
+                ><br />Powered by&nbsp;ThinkJS&nbsp;&amp;&nbsp;FireKyli<a target="_blank" rel="nofollow" class="external" href="https://zxysilent.org">n</a>
+                <span id="busuanzi_container_site_pv"
+                    >total:<span id="busuanzi_value_site_pv"></span><span id="busuanzi_container_page_pv">&nbsp;page:<span id="busuanzi_value_page_pv"></span></span
+                ></span>
+            </footer>
+        </div>
+        <script src="/js/theme.js" data-ls="js_zxysilent"></script>
+
+
+<script>
+    console.info("https://blog.zxysilent.com");
+</script>
+
+    </body>
+</html>

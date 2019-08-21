@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <title>zxysilent</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+        <meta name="msvalidate.01" content="BA6009DC1D95902AC43052D430AA822D" />
+        <meta name="keywords" content="zxysilent,zxyslt,zxy" />
+        <meta name="description" content="zxysilent;zxysilent blog;zxyslt;zxyslt blog;" />
+        <meta name="google-site-verification" content="51J555Z28axR2us4ULmrJuBCizGyxgSMhhL2QGz0XOE" />
+        <link rel="icon" href="/imgs/logo.png" />
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="/index.xml" />
+<link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="zxysilent" />
+<link rel="canonical" href="https://blog.zxysilent.com/" />
+<link href="/css/all.css?v=1566365206" rel="stylesheet" type="text/css" data-ls="css_zxysilent" >
+    </head>
+    <body>
+        <nav id="sidebar">
+    <div class="wrap">
+        <div class="profile">
+            <a href="/"><img src="/imgs/logo.png" alt="zxysilent"/></a><span>zxysilent</span>
+        </div>
+        <ul class="naver">
+            
+                <li>
+                <a href="/" title=""><i class="iconfont icon-home"></i><span>首页</span></a> 
+            </li>
+            
+                <li>
+                <a href="/archives" title=""><i class="iconfont icon-archive"></i><span>归档</span></a> 
+            </li>
+            
+                <li>
+                <a href="/tags" title=""><i class="iconfont icon-tags"></i><span>标签</span></a> 
+            </li>
+            
+                <li>
+                <a href="/about" title=""><i class="iconfont icon-user"></i><span>关于</span></a> 
+            </li>
+            
+                <li>
+                <a href="/links" title=""><i class="iconfont icon-link"></i><span>友链</span></a> 
+            </li>
+            
+        </ul>
+        <div class="footer">
+            <a class="inline" rel="nofollow" target="_blank" href="https://github.com/zxysilent"><i class="iconfont icon-github-v" title="GitHub"></i></a>
+            <a class="inline" rel="nofollow" target="_blank" href="https://weibo.com/u/7072792903"><i class="iconfont icon-weibo" title="weibo"></i></a>
+            <a class="inline" href="/index.xml"><i class="iconfont icon-rss-v" title="RSS"></i></a>
+            <a class="inline" href="/search.html"><i class="iconfont icon-search" title="Search"></i></a>
+        </div>
+    </div>
+</nav>
+<div id="header">
+    <div class="btn-bar"><i></i></div>
+    <h1>
+        <a href="/">goweb-032-golang-复合数据类型</a>
+    </h1>
+    <a class="me" href="/about/"><img src="/imgs/logo.png" alt="zxysilent"/></a>
+</div>
+<div id="sidebar-mask"></div>
+
+        <div id="main">
+            <div id="page-post">
+                <article class="post detail">
+                    <div class="meta">
+                        <div class="date">07月17日, 2018</div>
+                        <div class="comment"><a href="#comments">1164 Words</a></div>
+                    </div>
+                    <h1 class="title">goweb-032-golang-复合数据类型</h1>
+                    <div class="entry-content">
+                        
+                            <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#流程控制">流程控制</a>
+<ul>
+<li><a href="#if">if</a></li>
+<li><a href="#for">for</a></li>
+<li><a href="#switch">switch</a></li>
+<li><a href="#goto-break-continue">goto, break, continue</a></li>
+</ul></li>
+<li><a href="#数组">数组</a>
+<ul>
+<li><a href="#range">range</a></li>
+</ul></li>
+<li><a href="#slice">Slice</a>
+<ul>
+<li><a href="#append函数">append函数</a></li>
+</ul></li>
+<li><a href="#map">Map</a></li>
+<li><a href="#结构体">结构体</a>
+<ul>
+<li><a href="#结构体字面值">结构体字面值</a></li>
+<li><a href="#结构体高级操作">结构体高级操作</a></li>
+</ul></li>
+<li><a href="#json">JSON</a></li>
+<li><a href="#文本和html模板">文本和HTML模板</a></li>
+</ul></li>
+</ul>
+</nav>
+                        
+                        
+                        <h2 id="流程控制">流程控制</h2>
+
+<p>类比 <code>clang</code></p>
+
+<h3 id="if">if</h3>
+
+<ul>
+<li>条件表达式没有括号</li>
+<li>左大括号必须和条件语句或<code>else</code>在同一行</li>
+</ul>
+
+<pre><code class="language-go">package main
+func main() {
+	a,b:=1,2
+	// 没有小括号
+	if a&gt;b{
+		println(b)
+	}else{
+		print(a)
+	}
+}
+
+</code></pre>
+
+<ul>
+<li>支持一个初始化表达式（可以是并行方式）</li>
+
+<li><p>支持单行模式</p>
+
+<pre><code class="language-go">package main
+func main() {
+	if a,b:=1,2;a&gt;b{
+		println(b)
+	}else{
+		print(a)
+	}
+}
+</code></pre></li>
+
+<li><p>初始化语句中的变量为<code>block</code>级别，同时隐藏外部同名变量</p>
+
+<pre><code class="language-go">package main
+func main() {
+	var a =true
+	if a,b:=1,2;a&gt;b{
+		println(b)
+	}else{
+		print(a)
+	}
+	println(a)
+}
+</code></pre></li>
+</ul>
+
+<h3 id="for">for</h3>
+
+<ul>
+<li>Go只有<code>for</code>一个循环语句关键字，但支持3种形式</li>
+<li>初始化和步进表达式可以是多个值</li>
+<li>条件语句每次循环都会被重新检查，因此<strong>不建议</strong>在条件语句中使用函数，尽量提前计算好条件并以变量或常量代替</li>
+
+<li><p>左大括号必须和条件语句在同一行</p>
+
+<pre><code class="language-go">package main
+func main() {
+	for{
+		//死循环
+	}
+}
+</code></pre>
+
+<pre><code class="language-go">package main
+func main() {
+	flag := 1
+	//while
+	for flag &lt; 5 {
+		flag++
+		println(flag)
+	}
+}
+</code></pre>
+
+<pre><code class="language-go">package main
+func main() {
+	//index:=1
+	// for ;index &lt; 5;index++ {
+	// 	println(index)
+	// }
+
+	for idx:=0;idx&lt;5;idx++{
+		println(idx)
+	}
+}
+</code></pre></li>
+</ul>
+
+<h3 id="switch">switch</h3>
+
+<ul>
+<li>可以使用任何类型或表达式作为条件语句</li>
+<li>不需要写<code>break</code>，一旦条件符合自动终止</li>
+<li>如希望继续执行下一个<code>case</code>，需使用<code>fallthrough</code>语句</li>
+<li>支持一个初始化表达式（可以是并行方式），右侧需跟分号</li>
+
+<li><p>左大括号必须和条件语句在同一行</p>
+
+<pre><code class="language-go">package main
+func main() {
+	swh := 1
+	switch swh {
+	case 0:
+		println(0)
+	case 1:
+		{
+			println(1)
+			println(&quot;OK&quot;)
+		}
+	default:
+		println(&quot;default&quot;)
+	}
+}
+</code></pre>
+
+<pre><code class="language-go">package main
+func main() {
+	switch swh:=1;{
+	case swh &gt; 0:
+		println(0)
+		fallthrough
+	case swh == 1:
+		{
+			println(&quot;OK&quot;)
+		} 
+	default:
+		println(&quot;default&quot;)
+	}
+}
+</code></pre></li>
+</ul>
+
+<h3 id="goto-break-continue">goto, break, continue</h3>
+
+<ul>
+<li>三个语法都可以配合标签使用</li>
+<li>标签名区分大小写，若不使用会造成编译错误</li>
+<li><code>break</code>与<code>continue</code>配合标签可用于多层循环的跳出<strong>标签同级</strong></li>
+
+<li><p><code>goto</code>是<strong>调整执行位置</strong>，与其它2个语句配合标签的结果并不相同</p>
+
+<pre><code class="language-go">package main
+func main() {
+	FLG:
+	for{
+		for i:=0;i&lt;10;i++{
+			if i&gt;2{
+				break FLG
+			}else{
+				println(i)
+			}
+		}
+	}
+}
+</code></pre>
+
+<pre><code class="language-go">package main
+func main() {
+FLG:
+	for i := 0; i &lt; 10; i++ {
+		for {
+			println(i)
+			continue FLG
+		}
+	}
+}
+</code></pre>
+
+<p>将上面中的continue替换成goto，程序运行的结果还一样吗❓</p></li>
+</ul>
+
+<h2 id="数组">数组</h2>
+
+<ul>
+<li>数组是一个由固定长度的特定类型元素组成的序列，一个数组可以由零个或多个元素组成。</li>
+<li>数组的每个元素可以通过索引下标来访问，索引下标的范围是从0开始到数组长度减1的位置。</li>
+<li>内置的len函数将返回数组中元素的个数。</li>
+
+<li><p><strong>值类型</strong> 数组的长度是数组类型的一个组成部分，因此[3]int和[4]int是两种不同的数组类型。</p>
+
+<pre><code class="language-go">var a [3]int           
+fmt.Println(a[0])        
+fmt.Println(a[len(a)-1]) 
+
+for i, v := range a {
+	fmt.Printf(&quot;%d %d\n&quot;, i, v)
+}
+
+// Print the elements only.
+for _, v := range a {
+	fmt.Printf(&quot;%d\n&quot;, v)
+}
+</code></pre></li>
+</ul>
+
+<p>数组的每个元素都被初始化为元素类型对应的零值，也可以使用数组字面值语法用一组值来初始化数组。</p>
+
+<pre><code class="language-go">var q [3]int = [3]int{1, 2, 3}
+var r [3]int = [3]int{1, 2}
+fmt.Println(r[2]) // &quot;0&quot;
+</code></pre>
+
+<p>在数组字面值中，如果在数组的长度位置出现的是“&hellip;”省略号，则表示数组的长度是根据初始化值的个数来计算。</p>
+
+<pre><code class="language-go">q := [...]int{1, 2, 3}
+fmt.Printf(&quot;%T\n&quot;, q) // &quot;[3]int&quot;
+</code></pre>
+
+<p>数组的长度必须是常量表达式，因为数组的长度需要在编译阶段确定。</p>
+
+<pre><code class="language-go">q := [3]int{1, 2, 3}
+q = [4]int{1, 2, 3, 4} // compile error: cannot assign [4]int to [3]int
+</code></pre>
+
+<p>可以指定一个索引和对应值列表的方式初始化，初始化索引的顺序是无关紧要的。</p>
+
+<pre><code class="language-go">func main() {
+	arr := [...]int{2: 10}
+	fmt.Println(arr)//[0 0 10]
+}
+</code></pre>
+
+<pre><code>package main
+import &quot;fmt&quot;
+func main() {
+	var arr1 [5]int = [5]int{}
+	arr1[1] = 99
+	var arr2 = [4]int{}
+	// paintln 只能输出简单类型
+	//println(arr1)
+	fmt.Println(arr1)
+	// 不同的类型不能比较
+	//invalid operation: arr1 == arr2 (mismatched types [5]int and [4]int)
+	// if arr1 == arr2 {
+	// 	fmt.Println(&quot;arr1==arr2&quot;)
+	// }
+	//指向数组的指针
+	var arr3 = new([3]int)
+	fmt.Println(&amp;arr2, arr3)
+	// 由编译器推断数组大小
+	arr4 := [...]int{1, 2, 3, 4, 5, 6, 10: 9}
+	fmt.Println(arr4, len(arr4))
+	// 值类型 copy
+	arr5 := arr4
+	fmt.Printf(&quot;%p,%p\n&quot;, &amp;arr4[1], &amp;arr5[1])
+	//arr6:=[2][3]int{}
+        //多维数组
+	arr6 := [2][3]int{
+		{1, 2, 3},
+		{4, 5, 6},
+	}
+	fmt.Println(arr6)
+}
+</code></pre>
+
+<h3 id="range">range</h3>
+
+<ul>
+<li>完整使用方式 <code>for k,v:=range arr{  /* do something*/}</code></li>
+<li>索引方式 <code>for item:=range {  /* do something*/}</code></li>
+
+<li><p>值方式 <code>for _,v:=range arr{/* do something*/}</code></p>
+
+<pre><code class="language-go">package main
+import &quot;fmt&quot;
+func main() {
+var arr = [10]int{2, 3, 4, 5, 6, 7, 8, 9}
+	for k,v:=range arr{
+		fmt.Println(k,v)
+		//i:=0
+		//fmt.Printf(&quot;i:%p\n&quot;,&amp;i)
+		fmt.Printf(&quot;%p,%p\n&quot;,&amp;k,&amp;v)
+	}
+	println(&quot;oth&quot;)
+	for item:=range arr{
+		fmt.Println(item)
+	}
+	for _,v:=range arr{
+		fmt.Println(v)
+	}
+}
+</code></pre></li>
+</ul>
+
+<h2 id="slice">Slice</h2>
+
+<ul>
+<li>Slice（切片）代表变长的序列，序列中每个元素都有相同的类型。</li>
+<li>一个slice类型一般写作<code>[]T</code>，其中<code>T</code>代表<code>slice</code>中元素的类型。</li>
+
+<li><p>变长数组啦</p>
+
+<pre><code>type slice struct{
+  len  int
+  cap  int
+  data point
+}
+</code></pre></li>
+</ul>
+
+<p>数组和slice之间有着紧密的联系。<br />
+一个slice由三个部分构成：指针、长度和容量。<br />
+指针指向第一个slice元素对应的底层数组元素的地址，<code>slice</code>的第一个元素<strong>不一定</strong>就是数组的第一个元素。<br />
+长度对应slice中元素的数目；长度不能超过容量，容量一般是从slice的开始位置到<strong>底层数据</strong>的结尾位置。<br />
+<code>len</code>和<code>cap</code>函数分别返回slice的长度和容量。</p>
+
+<p><img src="/imgs/post/20180717/upload_3fa5906635be890fe02429ba7b8a61b7.png" alt="alt" /></p>
+
+<p>多个slice之间可以共享底层的数据，并且引用的数组部分区间可能重叠。<br />
+字符串的切片操作和<code>[]byte</code>字节类型切片的切片操作是类似的。都写作<code>x[m:n]</code>，并且都是返回一个原始字节系列的子序列，底层都是共享之前的底层数组，因此这种操作都是常量时间复杂度。</p>
+
+<pre><code class="language-go">Array_ori := [...]byte{'a', 'b', 'c', 'd', 'e', 'f', 'h', 'i', 'j', 'k'}
+Slice_a := Array_ori[2:5]
+Slice_b:= Array_ori[3:5]
+fmt.Println(Array_ori, len(Array_ori))
+fmt.Println(Slice_a, len(Slice_a), cap(Slice_a))
+fmt.Println(Slice_b, len(Slice_b), cap(Slice_b))
+</code></pre>
+
+<p><img src="/imgs/post/20180717/upload_384221ee8c9cb1eff19c567c2cf891df.png" alt="alt" /></p>
+
+<p>slice唯一合法的比较操作是和<code>nil</code>比较。</p>
+
+<pre><code class="language-go">if summer == nil { /* ... */ }
+</code></pre>
+
+<p>一个零值的<code>slice</code>等于<code>nil</code>。一个<code>nil</code>值的<code>slice</code>并没有底层数组。一个<code>nil</code>值的<code>slice</code>的长度和容量都是<code>0</code>。
+但也有非<code>nil</code>值的<code>slice</code>的长度和容量也是<code>0</code>的。</p>
+
+<pre><code class="language-go">var s []int    // len(s) == 0, s == nil
+s = nil        // len(s) == 0, s == nil
+s = []int(nil) // len(s) == 0, s == nil
+s = []int{}    // len(s) == 0, s != nil
+</code></pre>
+
+<p>内置的make函数创建一个指定元素类型、长度和容量的<code>slice</code>。容量部分可以省略(容量将等于长度)。</p>
+
+<pre><code class="language-go">make([]T, len)
+make([]T, len, cap) 
+</code></pre>
+
+<h3 id="append函数">append函数</h3>
+
+<p>内置的append函数用于向slice追加元素</p>
+
+<pre><code class="language-go">var arr []rune
+for _, r := range &quot;Hello,世界&quot; {
+	arr = append(arr, r)
+}
+fmt.Println(arr) //[72 101 108 108 111 44 19990 30028]
+//%q 单引号围绕的字符字面值
+fmt.Printf(&quot;%q\n&quot;, arr) // ['H' 'e' 'l' 'l' 'o' ',' '世' '界']
+</code></pre>
+
+<p>append函数则可以追加多个元素，甚至追加一个slice。
+<strong>面向过程</strong></p>
+
+<pre><code class="language-go">var x []int
+x = append(x, 1)
+x = append(x, 2, 3)
+x = append(x, 4, 5, 6)
+x = append(x, x...) // append the slice x
+fmt.Println(x)      // &quot;[1 2 3 4 5 6 1 2 3 4 5 6]&quot;
+</code></pre>
+
+<h2 id="map">Map</h2>
+
+<ul>
+<li>无序的<code>key/value</code>对的集合，其中所有的<code>key</code>都是不同的，然后通过给定的<code>key</code>可以在常数时间复杂度内检索、更新或删除对应的<code>value</code>。</li>
+<li>一个<code>map</code>就是一个哈希表的引用，<code>map</code>类型可以写为<code>map[K]V</code>，其中<code>K</code>和<code>V</code>分别对应<code>key</code>和<code>value</code>的数据类型，<code>key</code>和<code>value</code>可以是不同的数据类型。</li>
+<li><code>K</code>对应的<code>key</code>必须是支持<code>==</code>比较运算符的数据类型，<code>V</code>对应的<code>value</code>数据类型则没有限制。</li>
+</ul>
+
+<p>内置的make函数可以创建一个map：</p>
+
+<pre><code class="language-go">ages := make(map[string]int) 
+</code></pre>
+
+<p>也可以用map字面值的语法创建<code>map</code>，同时还可以指定一些最初的<code>key/value</code>。</p>
+
+<pre><code class="language-go">ages := map[string]int{
+	&quot;zxy&quot;:   24,
+	&quot;zxysilent&quot;: 24,
+}
+</code></pre>
+
+<p>等价于</p>
+
+<pre><code class="language-go">ages := make(map[string]int)
+ages[&quot;zxy&quot;] =24
+ages[&quot;zxysilent&quot;] = 24
+</code></pre>
+
+<p>创建空的<code>map</code>的表达式是<code>map[string]int{}</code>。</p>
+
+<p><code>Map</code>中的元素通过<code>ke</code>y对应的下标语法访问。</p>
+
+<pre><code class="language-go">ages[&quot;zxy&quot;] = 32
+fmt.Println(ages[&quot;zxy&quot;]) // &quot;32&quot;
+</code></pre>
+
+<p>内置的delete函数可以删除元素。</p>
+
+<pre><code class="language-go">delete(ages, &quot;zxy&quot;) 
+</code></pre>
+
+<p>⚠️所有这些操作是安全的，即使这些元素不在map中也没有关系；如果一个查找失败将返回value类型对应的零值。</p>
+
+<pre><code class="language-go">ages[&quot;xxx&quot;] = ages[&quot;xxx&quot;] + 1
+</code></pre>
+
+<p><code>x += y</code>和<code>x++</code>等简短赋值语法也可以用在map上。</p>
+
+<pre><code class="language-go">ages[&quot;xxx&quot;] += 1
+</code></pre>
+
+<p>更简单的写法</p>
+
+<pre><code class="language-go">ages[&quot;xxx&quot;]++
+</code></pre>
+
+<p>不能对map的元素进行取址操作⁉️。</p>
+
+<p>遍历 <code>map</code></p>
+
+<pre><code class="language-go">ages := make(map[string]int)
+ages[&quot;zxysilent&quot;] = 24
+ages[&quot;zxy&quot;] = 24
+for k, v := range ages {
+	fmt.Println(k, v)
+}
+fmt.Println(&quot;------------&quot;)
+for k := range ages {
+	fmt.Println(k)
+}
+fmt.Println(&quot;------------&quot;)
+for _, v := range ages {
+	fmt.Println(v)
+}
+</code></pre>
+
+<p>遍历的顺序是随机的</p>
+
+<p>map上的大部分操作，包括查找、删除、len和range循环都可以安全工作在nil值的map上，它们的行为和一个空的map类似。但向一个nil值的map存入元素将导致一个panic异常：</p>
+
+<pre><code class="language-go">ages[&quot;carol&quot;] = 21 // panic: assignment to entry in nil map
+</code></pre>
+
+<p>⛔️在向map存数据前必须先创建map。</p>
+
+<p>通过key作为索引下标来访问map将产生一个value。如果key在map中是存在的，那么将得到与key对应的value；如果key不存在，那么将得到value对应类型的零值，有时候可能需要知道对应的元素是否真的是在map之中。</p>
+
+<pre><code class="language-go">age, ok := ages[&quot;zxy&quot;]
+if !ok { /* todo */ }
+</code></pre>
+
+<p>变成一行</p>
+
+<pre><code class="language-go">if age, ok := ages[&quot;bob&quot;]; !ok { /* ... */ }
+</code></pre>
+
+<p>map的下标语法将产生两个值；第二个是一个布尔值，用于报告元素是否真的存在。</p>
+
+<h2 id="结构体">结构体</h2>
+
+<ul>
+<li>结构体是一种聚合的数据类型，是由零个或多个任意类型的值聚合成的实体。</li>
+
+<li><p>每个值称为结构体的成员。</p>
+
+<pre><code class="language-go">// Person 结构体 描述人
+type Person struct {
+	Name     string    //姓名
+	Age      int       //年龄
+	Addr     string    //地址
+	Birthday time.Time //生日
+}
+
+var zxy Person
+</code></pre></li>
+</ul>
+
+<p>声明了一个叫<code>Person</code>的<strong>命名</strong>的结构体类型，并且声明了一个<code>Person</code>类型的变量<code>zxy</code>。
+<code>zxy</code>结构体变量的成员可以通过点操作符访问。</p>
+
+<pre><code class="language-Go">zxy.Name = &quot;曾祥银&quot;
+fmt.Println(zxy.Name)
+</code></pre>
+
+<p>对成员取地址，然后通过指针访问。</p>
+
+<pre><code class="language-go">age := &amp;zxy.Age
+*age = 24
+fmt.Println(zxy.Age)
+</code></pre>
+
+<p>指向结构体的<strong>指针</strong>也可用点操作符。</p>
+
+<pre><code class="language-go">alias := &amp;zxy
+alias.Age = 24
+fmt.Println(zxy.Age)
+(*alias).Age = 24
+fmt.Println(zxy.Age)
+</code></pre>
+
+<p>一个命名为<code>S</code>的结构体类型将不能再包含<code>S</code>类型的成员但可以包含<code>*S</code>指针类型的成员。</p>
+
+<pre><code class="language-go">type tree struct {
+	data interface{}
+	left  *tree
+	right *tree
+}
+</code></pre>
+
+<h3 id="结构体字面值">结构体字面值</h3>
+
+<p>结构体值也可以用结构体字面值表示，结构体字面值可以指定每个成员的值。</p>
+
+<p>两种形式的结构体字面值语法：
+1. 以结构体成员定义的顺序为每个结构体成员指定一个字面值。
+2. 以成员名字和相应的值来初始化，可以包含部分或全部的成员，顺序并不重要❗️。</p>
+
+<pre><code class="language-go">type Point struct {
+	X int
+	Y int
+}
+
+func main() {
+	p := Point{1, 2}
+	p1 := Point{
+		Y: 10,
+		X: 3,
+	}
+}
+</code></pre>
+
+<p>结构体可以作为函数的参数和返回值。</p>
+
+<pre><code class="language-go">func Scale(p Point, f int) Point {
+	return Point{p.X * f, p.Y * f}
+}
+fmt.Println(Scale(Point{1, 2}, 5)) // &quot;{5 10}&quot;
+</code></pre>
+
+<p>较大的结构体通常会用指针的方式传入和返回，
+要在函数内部修改结构体成员的话，用指针传入是必须的⛵️(值传递)。</p>
+
+<p>创建并初始化一个结构体变量，并返回结构体的地址。</p>
+
+<pre><code class="language-go">p := &amp;Point{1, 2}
+</code></pre>
+
+<p>等价于</p>
+
+<pre><code class="language-go">p := new(Point)
+*p = Point{1, 2}
+</code></pre>
+
+<ul>
+<li>结构体类型的零值是每个成员都是零值。</li>
+<li>结构体没有任何成员的话就是空结构体，写作struct{}。</li>
+</ul>
+
+<h3 id="结构体高级操作">结构体高级操作</h3>
+
+<pre><code>//Point 一个点
+type Point struct {
+	X int
+	Y int
+}
+
+//Circle 圆
+type Circle struct {
+	Point      //圆心//嵌套结构体匿名成员
+	Radius int //半径
+}
+
+func main() {
+	c := Circle{
+		Point:  Point{0, 0},
+		Radius: 10,
+	}
+	c1 := Circle{Point{0, 0}, 10}
+	c1.X
+	c1.Point.X
+}
+</code></pre>
+
+<h2 id="json">JSON</h2>
+
+<ul>
+<li><p><code>JavaScript</code>对象表示法（<code>JSON</code>）是一种用于发送和接收结构化信息的标准协议。
+还有 <code>XML</code>、<code>Protocol Buffers</code>等。</p></li>
+
+<li><p>标准库支持 <code>encoding/json</code> ✴️</p></li>
+</ul>
+
+<p>序列化/编码 <code>Marshal</code><br />
+&gt; Go语言的数据结构数据转换为<code>json</code>字符串</p>
+
+<pre><code class="language-go">//Point 一个点
+type Point struct {
+	X int
+	Y int
+}
+
+//Circle 圆
+type Circle struct {
+	Point      //圆心
+	Radius int //半径
+}
+
+func main() {
+	c := Circle{
+		Point:  Point{1, 2},
+		Radius: 10,
+	}
+	//序列化
+	buf, _ := json.Marshal(c)
+	fmt.Println(buf)         //[123 34 88 34 58 49 44 34 89 34 58 50 44 34 82 97 100 105 117 115 34 58 49 48 125]
+	fmt.Println(string(buf)) //{&quot;X&quot;:1,&quot;Y&quot;:2,&quot;Radius&quot;:10}
+}
+</code></pre>
+
+<p>在编码时，默认使用Go语言结构体的成员名字作为JSON的对象。
+一个结构体成员标签<code>Tag</code>可以修改映射关系</p>
+
+<pre><code>//Circle 圆
+type Circle struct {
+	Point      //圆心
+	Radius int `json:&quot;半径&quot;` //半径
+}
+
+c := Circle{
+	Point:  Point{1, 2},
+	Radius: 10,
+}
+//序列化
+buf, _ := json.Marshal(c)
+fmt.Println(string(buf)) //{&quot;X&quot;:1,&quot;Y&quot;:2,&quot;半径&quot;:10}
+</code></pre>
+
+<p>反序列化/解码 <code>Unmarshal</code><br />
+&gt; <code>json</code>字符串转换为Go语言的数据结构</p>
+
+<pre><code class="language-go">s := `{&quot;X&quot;:1,&quot;Y&quot;:2,&quot;半径&quot;:10}`
+	c := Circle{}
+	json.Unmarshal([]byte(s), &amp;c)
+	fmt.Println(c)//{{1 2} 10}
+</code></pre>
+
+<h2 id="文本和html模板">文本和HTML模板</h2>
+
+<ul>
+<li>Go语言提供了对模板的支持(数据驱动模板）在&rdquo;text/template&rdquo;和&rdquo;html/template&rdquo;两个包下。</li>
+
+<li><p>使用方式类似，<code>html/template</code>主要针对<code>html</code> 而<code>text/template</code> 主要针对文本。</p>
+
+<pre><code>package main
+
+import (
+	&quot;html/template&quot;
+	&quot;os&quot;
+)
+
+// Person 结构体 描述人
+type Person struct {
+	Name string   //姓名
+	Age  int      //年龄
+	Addr string   //地址
+	Arr  []string //oth
+}
+
+const str = `
+	&lt;html&gt;
+	&lt;head&gt;
+		&lt;title&gt;template&lt;/title&gt;
+	&lt;/head&gt;
+	&lt;body&gt;
+		&lt;h2&gt;{{.Name}}&lt;/h2&gt;
+		&lt;ul&gt;
+			{{range $k,$v := .Arr}}
+				&lt;li&gt;{{$v}}&lt;/li&gt;
+			{{end}}
+		&lt;/ul&gt;
+	&lt;/body&gt;
+	&lt;/html&gt;
+`
+
+func main() {
+	z := Person{
+		Name: &quot;曾祥银&quot;,
+		Age:  24,
+		Arr:  []string{&quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;D&quot;},
+	}
+	t, _ := template.New(&quot;模板名称&quot;).Parse(str) //.ParseFiles 读取文件
+	t.Execute(os.Stdout, z)                 //os.Stdout 标准输出流 相当于 fmt.Ptintln
+}
+</code></pre></li>
+</ul>
+
+<p><img src="/imgs/post/20180718/upload_e303d556ef4d21630148c18102b4a006.png" alt="alt" /></p>
+
+<p>官方文档
+<a href="https://golang.google.cn/pkg/html/template/">https://golang.google.cn/pkg/html/template/</a></p>
+                    </div>
+                    <p>本文链接：<a href="/posts/goweb-032/">/posts/goweb-032/</a></p>
+                    <p>-- <acronym title="End of File">EOF</acronym> --</p>
+                    <div class="post-info">
+                        <p>
+                            <code class="notebook">zxysilent</code>发表于<i> 2018-07-17 11:51:12</i>，
+                            
+                            
+                                添加「
+                                    
+                                        
+                                            <a href="http://example.org/tags/golang" data-tag="golang"><code class="notebook">golang</code></a>
+                                        
+                                            <a href="http://example.org/tags/goweb" data-tag="goweb"><code class="notebook">goweb</code></a>
+                                        
+                                    
+                                」标签，
+                            
+                            最后修改于<i> 2018-09-25 15:13:24</i>
+                        </p>
+                    </div>
+                </article>
+                <nav class="pagination">
+                    
+                        <a class="prev" href="http://example.org/posts/goweb-031/">«  goweb-031-golang-基础数据类型</a>
+                    
+                    
+                        <a class="next" href="http://example.org/posts/goweb-033/"> goweb-033-golang-函数  »</a>
+                    
+                </nav>
+                
+            </div>
+                        
+<footer id="footer" class="inner">
+                &copy; 2019&nbsp;-&nbsp; zxysilent&nbsp;-&nbsp;<a target="_blank" rel="nofollow" class="external beian" href="http://www.miitbeian.gov.cn/">蜀ICP备16011344号-2</a
+                ><br />Powered by&nbsp;ThinkJS&nbsp;&amp;&nbsp;FireKyli<a target="_blank" rel="nofollow" class="external" href="https://zxysilent.org">n</a>
+                <span id="busuanzi_container_site_pv"
+                    >total:<span id="busuanzi_value_site_pv"></span><span id="busuanzi_container_page_pv">&nbsp;page:<span id="busuanzi_value_page_pv"></span></span
+                ></span>
+            </footer>
+        </div>
+        <script src="/js/theme.js" data-ls="js_zxysilent"></script>
+
+
+<script>
+    console.info("https://blog.zxysilent.com");
+</script>
+
+    </body>
+</html>

@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <title>zxysilent</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+        <meta name="msvalidate.01" content="BA6009DC1D95902AC43052D430AA822D" />
+        <meta name="keywords" content="zxysilent,zxyslt,zxy" />
+        <meta name="description" content="zxysilent;zxysilent blog;zxyslt;zxyslt blog;" />
+        <meta name="google-site-verification" content="51J555Z28axR2us4ULmrJuBCizGyxgSMhhL2QGz0XOE" />
+        <link rel="icon" href="/imgs/logo.png" />
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="/index.xml" />
+<link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="zxysilent" />
+<link rel="canonical" href="https://blog.zxysilent.com/" />
+<link href="/css/all.css?v=1566365206" rel="stylesheet" type="text/css" data-ls="css_zxysilent" >
+    </head>
+    <body>
+        <nav id="sidebar">
+    <div class="wrap">
+        <div class="profile">
+            <a href="/"><img src="/imgs/logo.png" alt="zxysilent"/></a><span>zxysilent</span>
+        </div>
+        <ul class="naver">
+            
+                <li>
+                <a href="/" title=""><i class="iconfont icon-home"></i><span>首页</span></a> 
+            </li>
+            
+                <li>
+                <a href="/archives" title=""><i class="iconfont icon-archive"></i><span>归档</span></a> 
+            </li>
+            
+                <li>
+                <a href="/tags" title=""><i class="iconfont icon-tags"></i><span>标签</span></a> 
+            </li>
+            
+                <li>
+                <a href="/about" title=""><i class="iconfont icon-user"></i><span>关于</span></a> 
+            </li>
+            
+                <li>
+                <a href="/links" title=""><i class="iconfont icon-link"></i><span>友链</span></a> 
+            </li>
+            
+        </ul>
+        <div class="footer">
+            <a class="inline" rel="nofollow" target="_blank" href="https://github.com/zxysilent"><i class="iconfont icon-github-v" title="GitHub"></i></a>
+            <a class="inline" rel="nofollow" target="_blank" href="https://weibo.com/u/7072792903"><i class="iconfont icon-weibo" title="weibo"></i></a>
+            <a class="inline" href="/index.xml"><i class="iconfont icon-rss-v" title="RSS"></i></a>
+            <a class="inline" href="/search.html"><i class="iconfont icon-search" title="Search"></i></a>
+        </div>
+    </div>
+</nav>
+<div id="header">
+    <div class="btn-bar"><i></i></div>
+    <h1>
+        <a href="/">goweb-038-常用包net&#43;http</a>
+    </h1>
+    <a class="me" href="/about/"><img src="/imgs/logo.png" alt="zxysilent"/></a>
+</div>
+<div id="sidebar-mask"></div>
+
+        <div id="main">
+            <div id="page-post">
+                <article class="post detail">
+                    <div class="meta">
+                        <div class="date">07月20日, 2018</div>
+                        <div class="comment"><a href="#comments">388 Words</a></div>
+                    </div>
+                    <h1 class="title">goweb-038-常用包net&#43;http</h1>
+                    <div class="entry-content">
+                        
+                            <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#net">net</a></li>
+<li><a href="#http">http</a>
+<ul>
+<li><a href="#web">web</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+                        
+                        
+                        <p>网络操作(计算机网络相关知识可以利用此包实践)</p>
+
+<h2 id="net">net</h2>
+
+<ul>
+<li><code>net</code>包提供了可移植的网络<code>I/O</code>接口，包括<code>TCP/IP</code>、<code>UDP</code>、域名解析和<code>Unix</code>域<code>socket</code>。</li>
+<li>本包提供了对网络原语的访问，大部分使用者只需要<code>Dial</code>、<code>Listen</code>和<code>Accept</code>函数提供的基本接口；以及相关的<code>Conn</code>和<code>Listener</code>接口。</li>
+</ul>
+
+<blockquote>
+<p>过程</p>
+</blockquote>
+
+<ol>
+<li>服务端程序 <code>Listen</code> 监听某个端口，等待客户端程序的连接请求<code>Accept</code>。</li>
+<li>客户端程序 <code>Dial</code> 申请连接。</li>
+<li>服务端程序 处理连接请求并建立网络连接 <code>Conn</code></li>
+<li>双方在<code>Conn</code> 进行读<code>Read</code>/写<code>Write</code>操作传递数据。</li>
+</ol>
+
+<p>代码示例<br />
+server</p>
+
+<pre><code class="language-go">package main
+import (
+	&quot;net&quot;
+)
+func main() {
+	//监听端口
+	listen, _ := net.Listen(&quot;tcp&quot;, `:88`)
+	for {
+		//等待连接连接并建立连接
+		conn, _ := listen.Accept()
+		//通过连接发送数据
+		conn.Write([]byte(`hello 我是服务端`))
+	}
+}
+</code></pre>
+
+<p>client</p>
+
+<pre><code class="language-go">package main
+import (
+	&quot;fmt&quot;
+	&quot;net&quot;
+)
+func main() {
+	//请求建立连接
+	conn, _ := net.Dial(&quot;tcp&quot;, &quot;:88&quot;)
+	//数据容器
+	buf := make([]byte, 1024)
+	//读取数据到容器
+	l, _ := conn.Read(buf)
+	//打印输出
+	fmt.Println(string(buf[:l]))
+}
+</code></pre>
+
+<p>模拟http<br />
+浏览器访问 <a href="http://127.0.0.1:86/">http://127.0.0.1:86/</a>查看效果</p>
+
+<p><img src="/imgs/post/20180720/upload_d58bc21f7065acf2ef93d82e6441e987.png" alt="alt" /></p>
+
+<pre><code class="language-go">package main
+import (
+	&quot;fmt&quot;
+	&quot;net&quot;
+)
+func main() {
+	//监听端口
+	listen, _ := net.Listen(&quot;tcp&quot;, `:86`)
+	//等待连接连接并建立连接
+	conn, _ := listen.Accept()
+	//http半双工需要先读取里面的数据
+	buf := make([]byte, 1024)
+	l, _ := conn.Read(buf)
+	fmt.Println(string(buf[:l]))
+	//通过连接发送数据
+	//http 协议格式
+	conn.Write([]byte(&quot;HTTP/1.1 200 OK\r\nContent-Type: text/plain;charset=UTF-8\r\n\r\n数据开始：net模拟http&quot;))
+	conn.Close()
+}
+</code></pre>
+
+<p>浏览器<br />
+<img src="/imgs/post/20180720/upload_b9253304b8a4d505971937522cfc4514.png" alt="alt" /><br />
+控制台<br />
+<img src="/imgs/post/20180720/upload_32194fa03d531311b67b797aba4909f1.png" alt="alt" /></p>
+
+<h2 id="http">http</h2>
+
+<p><a href="https://golang.google.cn/pkg/net/http/">官方文档</a><br />
+net的上层封装<br />
+- <code>http</code>包提供了<code>HTTP</code>客户端和服务端的实现。</p>
+
+<p>Get, Head, Post, and PostForm make HTTP (or HTTPS) requests:</p>
+
+<pre><code class="language-go">//普通get请求
+resp, err := http.Get(&quot;http://example.com/&quot;)
+//上传文件
+bodyBuf := &amp;bytes.Buffer{}
+bodyWriter := multipart.NewWriter(bodyBuf)
+fileWriter, _ := bodyWriter.CreateFormFile(&quot;file&quot;, &quot;main.go&quot;)
+fh, _ := os.Open(&quot;main.go&quot;)
+defer fh.Close()
+io.Copy(fileWriter, fh)
+ctype := bodyWriter.FormDataContentType()
+bodyWriter.Close()
+http.Post(&quot;http://127.0.0.1/up&quot;, ctype, bodyBuf)
+
+//提交数据
+resp, err := http.PostForm(&quot;http://example.com/form&quot;,
+	url.Values{&quot;key&quot;: {&quot;Value&quot;}, &quot;id&quot;: {&quot;123&quot;}})
+</code></pre>
+
+<p>The client must close the response body when finished with it:</p>
+
+<pre><code class="language-go">resp, err := http.Get(&quot;http://example.com/&quot;)
+if err != nil {
+	// handle error
+}
+defer resp.Body.Close()
+body, err := ioutil.ReadAll(resp.Body)
+// ...
+</code></pre>
+
+<p>For control over HTTP client headers, redirect policy, and other settings, create a Client:</p>
+
+<pre><code class="language-go">client := &amp;http.Client{
+}
+
+resp, err := client.Get(&quot;http://example.com&quot;)
+// ...
+
+req, err := http.NewRequest(&quot;GET&quot;, &quot;http://example.com&quot;, nil)
+// ...
+req.Header.Add(&quot;If-None-Match&quot;, `W/&quot;wyzzy&quot;`)
+resp, err := client.Do(req)
+</code></pre>
+
+<p>爬取页面</p>
+
+<pre><code class="language-go">package main
+import (
+	&quot;fmt&quot;
+	&quot;io/ioutil&quot;
+	&quot;net/http&quot;
+	&quot;regexp&quot;
+)
+func main() {
+	//发送http请求
+	resp, err := http.Get(&quot;http://www.cwnu.edu.cn/&quot;)
+	if err != nil {
+		panic(err)
+	}
+	defer resp.Body.Close()
+	//读取响应数据
+	body, err := ioutil.ReadAll(resp.Body)
+	//解析 a标签里面的 href数据
+	reg, _ := regexp.Compile(`&lt;a.+href=&quot;(http.+?)&quot;`)
+	res := reg.FindAllStringSubmatch(string(body), -1)
+	for idx := range res {
+		fmt.Println(res[idx][1])
+		//后续数据处理
+	}
+}
+</code></pre>
+
+<h3 id="web">web</h3>
+
+<p>版本1</p>
+
+<pre><code>package main
+
+import (
+	&quot;net/http&quot;
+)
+
+func index(w http.ResponseWriter, r *http.Request) {
+	w.Write([]byte(`hello`))
+}
+func main() {
+	http.HandleFunc(`/first`, index)
+	http.ListenAndServe(&quot;:8080&quot;, nil)
+}
+</code></pre>
+
+<p><img src="/imgs/post/20180720/upload_a1a517c639d3d67122045e4195b95631.png" alt="alt" /></p>
+
+<p><strong>巴拉巴拉。。。✍</strong></p>
+
+<p>版本2</p>
+
+<pre><code class="language-go">package main
+import (
+	&quot;io/ioutil&quot;
+	&quot;net/http&quot;
+	&quot;os&quot;
+)
+func index(w http.ResponseWriter, r *http.Request) {
+	//读取html文件
+	f, _ := os.Open(`./index.html`)
+	//读取数据
+	buf, _ := ioutil.ReadAll(f)
+	//写入到响应
+	w.Write(buf)
+
+}
+func main() {
+	http.HandleFunc(`/first`, index)
+	//静态文件访问 css img js 等
+	http.Handle(&quot;/res/&quot;, http.StripPrefix(&quot;/res/&quot;, http.FileServer(http.Dir(&quot;./res&quot;))))
+	http.ListenAndServe(&quot;:8080&quot;, nil)
+}
+</code></pre>
+
+<p>html文件</p>
+
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;hello&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div&gt;index.html&lt;/div&gt;
+    &lt;script src=&quot;/res/js.js&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>js 文件</p>
+
+<pre><code class="language-js">alert(&quot;res js&quot;)
+</code></pre>
+                    </div>
+                    <p>本文链接：<a href="/posts/goweb-038/">/posts/goweb-038/</a></p>
+                    <p>-- <acronym title="End of File">EOF</acronym> --</p>
+                    <div class="post-info">
+                        <p>
+                            <code class="notebook">zxysilent</code>发表于<i> 2018-07-20 11:50:06</i>，
+                            
+                            
+                                添加「
+                                    
+                                        
+                                            <a href="http://example.org/tags/golang" data-tag="golang"><code class="notebook">golang</code></a>
+                                        
+                                            <a href="http://example.org/tags/goweb" data-tag="goweb"><code class="notebook">goweb</code></a>
+                                        
+                                    
+                                」标签，
+                            
+                            最后修改于<i> 2018-11-12 14:38:20</i>
+                        </p>
+                    </div>
+                </article>
+                <nav class="pagination">
+                    
+                        <a class="prev" href="http://example.org/posts/goweb-037/">«  goweb-037-golang-常用包</a>
+                    
+                    
+                        <a class="next" href="http://example.org/posts/goweb-04/"> goweb-04-数据库  »</a>
+                    
+                </nav>
+                
+            </div>
+                        
+<footer id="footer" class="inner">
+                &copy; 2019&nbsp;-&nbsp; zxysilent&nbsp;-&nbsp;<a target="_blank" rel="nofollow" class="external beian" href="http://www.miitbeian.gov.cn/">蜀ICP备16011344号-2</a
+                ><br />Powered by&nbsp;ThinkJS&nbsp;&amp;&nbsp;FireKyli<a target="_blank" rel="nofollow" class="external" href="https://zxysilent.org">n</a>
+                <span id="busuanzi_container_site_pv"
+                    >total:<span id="busuanzi_value_site_pv"></span><span id="busuanzi_container_page_pv">&nbsp;page:<span id="busuanzi_value_page_pv"></span></span
+                ></span>
+            </footer>
+        </div>
+        <script src="/js/theme.js" data-ls="js_zxysilent"></script>
+
+
+<script>
+    console.info("https://blog.zxysilent.com");
+</script>
+
+    </body>
+</html>

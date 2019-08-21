@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <title>zxysilent</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+        <meta name="msvalidate.01" content="BA6009DC1D95902AC43052D430AA822D" />
+        <meta name="keywords" content="zxysilent,zxyslt,zxy" />
+        <meta name="description" content="zxysilent;zxysilent blog;zxyslt;zxyslt blog;" />
+        <meta name="google-site-verification" content="51J555Z28axR2us4ULmrJuBCizGyxgSMhhL2QGz0XOE" />
+        <link rel="icon" href="/imgs/logo.png" />
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="/index.xml" />
+<link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="zxysilent" />
+<link rel="canonical" href="https://blog.zxysilent.com/" />
+<link href="/css/all.css?v=1566365206" rel="stylesheet" type="text/css" data-ls="css_zxysilent" >
+    </head>
+    <body>
+        <nav id="sidebar">
+    <div class="wrap">
+        <div class="profile">
+            <a href="/"><img src="/imgs/logo.png" alt="zxysilent"/></a><span>zxysilent</span>
+        </div>
+        <ul class="naver">
+            
+                <li>
+                <a href="/" title=""><i class="iconfont icon-home"></i><span>首页</span></a> 
+            </li>
+            
+                <li>
+                <a href="/archives" title=""><i class="iconfont icon-archive"></i><span>归档</span></a> 
+            </li>
+            
+                <li>
+                <a href="/tags" title=""><i class="iconfont icon-tags"></i><span>标签</span></a> 
+            </li>
+            
+                <li>
+                <a href="/about" title=""><i class="iconfont icon-user"></i><span>关于</span></a> 
+            </li>
+            
+                <li>
+                <a href="/links" title=""><i class="iconfont icon-link"></i><span>友链</span></a> 
+            </li>
+            
+        </ul>
+        <div class="footer">
+            <a class="inline" rel="nofollow" target="_blank" href="https://github.com/zxysilent"><i class="iconfont icon-github-v" title="GitHub"></i></a>
+            <a class="inline" rel="nofollow" target="_blank" href="https://weibo.com/u/7072792903"><i class="iconfont icon-weibo" title="weibo"></i></a>
+            <a class="inline" href="/index.xml"><i class="iconfont icon-rss-v" title="RSS"></i></a>
+            <a class="inline" href="/search.html"><i class="iconfont icon-search" title="Search"></i></a>
+        </div>
+    </div>
+</nav>
+<div id="header">
+    <div class="btn-bar"><i></i></div>
+    <h1>
+        <a href="/">goweb-02-环境搭建</a>
+    </h1>
+    <a class="me" href="/about/"><img src="/imgs/logo.png" alt="zxysilent"/></a>
+</div>
+<div id="sidebar-mask"></div>
+
+        <div id="main">
+            <div id="page-post">
+                <article class="post detail">
+                    <div class="meta">
+                        <div class="date">07月12日, 2018</div>
+                        <div class="comment"><a href="#comments">154 Words</a></div>
+                    </div>
+                    <h1 class="title">goweb-02-环境搭建</h1>
+                    <div class="entry-content">
+                        
+                            <nav id="TableOfContents">
+<ul>
+<li><a href="#golang">golang</a>
+<ul>
+<li><a href="#安装go1-10-3">安装go1.10.3</a></li>
+<li><a href="#安装ide">安装IDE</a></li>
+</ul></li>
+<li><a href="#git">Git</a>
+<ul>
+<li><a href="#命令">命令</a></li>
+</ul></li>
+<li><a href="#数据库">数据库</a>
+<ul>
+<li><a href="#mysql-mariadb">MySql(MariaDB)</a></li>
+<li><a href="#navicat-mysql">Navicat Mysql</a></li>
+</ul></li>
+</ul>
+</nav>
+                        
+                        
+                        <h1 id="golang">golang</h1>
+
+<h2 id="安装go1-10-3">安装go1.10.3</h2>
+
+<p>图片上的字不重要请忽略</p>
+
+<blockquote>
+<p>根据自己电脑的配置 选择版本<br />
+ <a href="https://golang.org/dl/">官方下载地址 墙外 https://golang.org/dl/</a><br />
+<a href="https://golang.google.cn/dl/">镜像下载地址  https://golang.google.cn/dl/</a></p>
+</blockquote>
+
+<ol>
+<li>点击安装程序<br /></li>
+</ol>
+
+<p><img src="/imgs/post/20180712/upload_68f4d8bf14057375a91fab23dda71607.png" alt="alt" />
+2. 同意许可协议(Next)<br />
+<img src="/imgs/post/20180712/upload_dd857789db7965d17c2c62a971809ea8.png" alt="alt" />
+3. 修改安装路径(Next)<br />
+<img src="/imgs/post/20180712/screenshot_1500005905680.png" alt="" />
+4. 执行安装程序(Install)<br />
+<img src="/imgs/post/20180712/screenshot_1500005946369.png" alt="" />
+5. 等待安装完成(Ffinish)<br />
+<img src="/imgs/post/20180712/screenshot_1500005979454.png" alt="" />
+6. 测试安装结果( <code>Win + R =&gt; cmd  =&gt;go version</code>)<br />
+<img src="/imgs/post/20180712/screenshot_1500006072376.png" alt="" />
+7. 配置GOPATH<br />
+* 在电脑上新建一个文件夹如<code>D:\GoPath</code><br />
+* 把自己生成的用户环境变量 <code>GOPATH</code>删掉<br />
+<img src="/imgs/post/20180712/screenshot_1500006389713.png" alt="" />
+* 添加系统环境变量(GOPATH)<br />
+<img src="/imgs/post/20180712/screenshot_1500006367060.png" alt="" /></p>
+
+<h2 id="安装ide">安装IDE</h2>
+
+<blockquote>
+<p>liteide<br />
+<a href="http://liteide.org/cn/download/">liteide下载地址 http://liteide.org/cn/download/</a></p>
+</blockquote>
+
+<ol>
+<li>复制liteide到某个目录如<code>D:\liteide</code><br /></li>
+<li>创建运行程序快捷方式到桌面<br />
+<img src="/imgs/post/20180712/screenshot_1500006685052.png" alt="" /></li>
+<li>桌面打开liteide<br />
+<img src="/imgs/post/20180712/screenshot_1500006725601.png" alt="" /></li>
+<li>新建<code>helloword</code><br /></li>
+<li>文件-&gt;新建<br />
+<img src="/imgs/post/20180712/screenshot_1500006773264.png" alt="" /></li>
+<li>注意选择顺序<br />
+<img src="/imgs/post/20180712/screenshot_1500006817054.png" alt="" /></li>
+<li>加载项目<br />
+<img src="/imgs/post/20180712/screenshot_1500006884590.png" alt="" /></li>
+<li>点击<code>BR</code>运行项目<br />
+<img src="/imgs/post/20180712/screenshot_1500006952260.png" alt="" /></li>
+</ol>
+
+<h1 id="git">Git</h1>
+
+<blockquote>
+<p>git 版本管理工具，这里我们主要用来管理go的package<br />
+<a href="https://git-for-windows.github.io/">git下载地址 https://git-for-windows.github.io/</a></p>
+</blockquote>
+
+<ol>
+<li>点击安装程序(Next)<br />
+<img src="/imgs/post/20180712/screenshot_1500017564549.png" alt="" /></li>
+<li>修改安装路径(Next)<br />
+<img src="/imgs/post/20180712/screenshot_1500017600540.png" alt="" /></li>
+<li>差不多一直下一步下一步(Next)请自己选择<br />
+<img src="/imgs/post/20180712/screenshot_1500018406146.png" alt="" />
+<img src="/imgs/post/20180712/screenshot_1500018439247.png" alt="" />
+<img src="/imgs/post/20180712/screenshot_1500018469841.png" alt="" />
+<img src="/imgs/post/20180712/screenshot_1500018480593.png" alt="" /></li>
+<li>选择 <code>Use Windows default console window</code><br />
+<img src="/imgs/post/20180712/screenshot_1500018493188.png" alt="" /></li>
+<li>执行安装(Install)<br />
+<img src="/imgs/post/20180712/screenshot_1500018506952.png" alt="" /></li>
+<li>安装完成(Finish)<br />
+<img src="/imgs/post/20180712/screenshot_1500018600346.png" alt="" /></li>
+</ol>
+
+<h2 id="命令">命令</h2>
+
+<p><code>go</code> 安装第三方包的命令 依赖于 <code>git</code>版本控制
+<img src="/imgs/post/20180806/upload_2f400e2fcf4ca3f7a4dad7481f37597f.png" alt="alt" /></p>
+
+<p>常用命令
+ - build       compile packages and dependencies
+ - get         download and install packages and dependencies
+ - install     compile and install packages and dependencies
+ - run         compile and run Go program
+ - version     print Go version
+主要使用 <code>ide</code>
+eg
+<code>go get github.com/go-sql-driver/mysql</code>
+<code>go get github.com/jmoiron/sqlx</code></p>
+
+<h1 id="数据库">数据库</h1>
+
+<h2 id="mysql-mariadb">MySql(MariaDB)</h2>
+
+<blockquote>
+<p>MariaDB 和MySql属于不同的分支，这个安装方便很多<br />
+<a href="https://downloads.mariadb.org/">MariaDB下载地址 https://downloads.mariadb.org/</a></p>
+</blockquote>
+
+<ol>
+<li>点击安装程序(Next)<br />
+<img src="/imgs/post/20180712/screenshot_1500019795618.png" alt="" /></li>
+<li>同意许可协议(Next)<br />
+<img src="/imgs/post/20180712/screenshot_1500019844633.png" alt="" /></li>
+<li>修改安装路径(Browse -&gt; Next)<br />
+<img src="/imgs/post/20180712/screenshot_1500019936732.png" alt="" /><br />
+<img src="/imgs/post/20180712/screenshot_1500019913628.png" alt="" /><br />
+<img src="/imgs/post/20180712/screenshot_1500019952707.png" alt="" /><br /></li>
+<li>设置密码和字符打勾(Next)<br />
+<img src="/imgs/post/20180712/screenshot_1500020048497.png" alt="" /></li>
+<li>设置Service名称和其他信息,一般不用修改(Next)<br />
+<img src="/imgs/post/20180712/screenshot_1500020105350.png" alt="" /></li>
+<li>看需要打勾,一般不用(Next)<br />
+<img src="/imgs/post/20180712/screenshot_1500020158392.png" alt="" /></li>
+<li>等待安装并完成(Finish)
+<img src="/imgs/post/20180712/screenshot_1500020248798.png" alt="" /></li>
+<li>添加到环境变量
+<img src="/imgs/post/20190314/upload_8580d0d9e7336c4b46fa223d6c60a189.png" alt="alt" /></li>
+<li>验证安装成功( <code>Win + R =&gt; cmd  =&gt;mysql -V</code>)显示版本号就成功了<br />
+<img src="/imgs/post/20180712/screenshot_1500020325738.png" alt="" /></li>
+</ol>
+
+<h2 id="navicat-mysql">Navicat Mysql</h2>
+
+<blockquote>
+<p>Mysql可视化管理工具</p>
+</blockquote>
+
+<ol>
+<li>点击安装程序(Next)<br />
+<img src="/imgs/post/20180712/screenshot_1500020376988.png" alt="" /></li>
+<li>同意许可协议(Next)<br />
+<img src="/imgs/post/20180712/screenshot_1500020412826.png" alt="" /></li>
+<li>修改安装路径(Next)<br />
+<img src="/imgs/post/20180712/screenshot_1500020436858.png" alt="" /></li>
+<li>一直下一步(Next)<br />
+<img src="/imgs/post/20180712/screenshot_1500020513423.png" alt="" /><br />
+<img src="/imgs/post/20180712/screenshot_1500020530949.png" alt="" /></li>
+<li>执行安装程序(安装)<br />
+<img src="/imgs/post/20180712/screenshot_1500020562387.png" alt="" /></li>
+<li>安装完成(完成)<br />
+<img src="/imgs/post/20180712/screenshot_1500020587281.png" alt="" /></li>
+<li>激活破解<br /></li>
+<li>破解程序<br />
+<img src="/imgs/post/20180712/screenshot_1500020623591.png" alt="" /></li>
+<li>找到<code>Navicat</code>并选择打开<br />
+<img src="/imgs/post/20180712/screenshot_1500020660802.png" alt="" /></li>
+<li>破解成功<br />
+<img src="/imgs/post/20180712/screenshot_1500020694784.png" alt="" /></li>
+<li>运行<code>Navicat</code>并选择创建<code>MariaDB</code>连接<br />
+<img src="/imgs/post/20180712/screenshot_1500020794969.png" alt="" /></li>
+<li>填写链接信息并测试连接<br />
+<img src="/imgs/post/20180712/screenshot_1500020830884.png" alt="" /><br />
+<img src="/imgs/post/20180712/screenshot_1500020846172.png" alt="" /><br /></li>
+<li>点击<strong>连接名</strong>可连接数据库进行操作<br />
+<img src="/imgs/post/20180712/screenshot_1500020938945.png" alt="" /></li>
+</ol>
+                    </div>
+                    <p>本文链接：<a href="/posts/goweb-02/">/posts/goweb-02/</a></p>
+                    <p>-- <acronym title="End of File">EOF</acronym> --</p>
+                    <div class="post-info">
+                        <p>
+                            <code class="notebook">zxysilent</code>发表于<i> 2018-07-12 12:00:20</i>，
+                            
+                            
+                                添加「
+                                    
+                                        
+                                            <a href="http://example.org/tags/golang" data-tag="golang"><code class="notebook">golang</code></a>
+                                        
+                                            <a href="http://example.org/tags/goweb" data-tag="goweb"><code class="notebook">goweb</code></a>
+                                        
+                                    
+                                」标签，
+                            
+                            最后修改于<i> 2019-03-14 09:11:42</i>
+                        </p>
+                    </div>
+                </article>
+                <nav class="pagination">
+                    
+                        <a class="prev" href="http://example.org/posts/goweb-01/">«  goweb-01-基础知识</a>
+                    
+                    
+                        <a class="next" href="http://example.org/posts/goweb-03/"> goweb-03-golang  »</a>
+                    
+                </nav>
+                
+            </div>
+                        
+<footer id="footer" class="inner">
+                &copy; 2019&nbsp;-&nbsp; zxysilent&nbsp;-&nbsp;<a target="_blank" rel="nofollow" class="external beian" href="http://www.miitbeian.gov.cn/">蜀ICP备16011344号-2</a
+                ><br />Powered by&nbsp;ThinkJS&nbsp;&amp;&nbsp;FireKyli<a target="_blank" rel="nofollow" class="external" href="https://zxysilent.org">n</a>
+                <span id="busuanzi_container_site_pv"
+                    >total:<span id="busuanzi_value_site_pv"></span><span id="busuanzi_container_page_pv">&nbsp;page:<span id="busuanzi_value_page_pv"></span></span
+                ></span>
+            </footer>
+        </div>
+        <script src="/js/theme.js" data-ls="js_zxysilent"></script>
+
+
+<script>
+    console.info("https://blog.zxysilent.com");
+</script>
+
+    </body>
+</html>

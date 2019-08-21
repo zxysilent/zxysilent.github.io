@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <title>zxysilent</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+        <meta name="msvalidate.01" content="BA6009DC1D95902AC43052D430AA822D" />
+        <meta name="keywords" content="zxysilent,zxyslt,zxy" />
+        <meta name="description" content="zxysilent;zxysilent blog;zxyslt;zxyslt blog;" />
+        <meta name="google-site-verification" content="51J555Z28axR2us4ULmrJuBCizGyxgSMhhL2QGz0XOE" />
+        <link rel="icon" href="/imgs/logo.png" />
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="/index.xml" />
+<link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="zxysilent" />
+<link rel="canonical" href="https://blog.zxysilent.com/" />
+<link href="/css/all.css?v=1566365206" rel="stylesheet" type="text/css" data-ls="css_zxysilent" >
+    </head>
+    <body>
+        <nav id="sidebar">
+    <div class="wrap">
+        <div class="profile">
+            <a href="/"><img src="/imgs/logo.png" alt="zxysilent"/></a><span>zxysilent</span>
+        </div>
+        <ul class="naver">
+            
+                <li>
+                <a href="/" title=""><i class="iconfont icon-home"></i><span>首页</span></a> 
+            </li>
+            
+                <li>
+                <a href="/archives" title=""><i class="iconfont icon-archive"></i><span>归档</span></a> 
+            </li>
+            
+                <li>
+                <a href="/tags" title=""><i class="iconfont icon-tags"></i><span>标签</span></a> 
+            </li>
+            
+                <li>
+                <a href="/about" title=""><i class="iconfont icon-user"></i><span>关于</span></a> 
+            </li>
+            
+                <li>
+                <a href="/links" title=""><i class="iconfont icon-link"></i><span>友链</span></a> 
+            </li>
+            
+        </ul>
+        <div class="footer">
+            <a class="inline" rel="nofollow" target="_blank" href="https://github.com/zxysilent"><i class="iconfont icon-github-v" title="GitHub"></i></a>
+            <a class="inline" rel="nofollow" target="_blank" href="https://weibo.com/u/7072792903"><i class="iconfont icon-weibo" title="weibo"></i></a>
+            <a class="inline" href="/index.xml"><i class="iconfont icon-rss-v" title="RSS"></i></a>
+            <a class="inline" href="/search.html"><i class="iconfont icon-search" title="Search"></i></a>
+        </div>
+    </div>
+</nav>
+<div id="header">
+    <div class="btn-bar"><i></i></div>
+    <h1>
+        <a href="/">goweb-033-golang-函数</a>
+    </h1>
+    <a class="me" href="/about/"><img src="/imgs/logo.png" alt="zxysilent"/></a>
+</div>
+<div id="sidebar-mask"></div>
+
+        <div id="main">
+            <div id="page-post">
+                <article class="post detail">
+                    <div class="meta">
+                        <div class="date">07月19日, 2018</div>
+                        <div class="comment"><a href="#comments">597 Words</a></div>
+                    </div>
+                    <h1 class="title">goweb-033-golang-函数</h1>
+                    <div class="entry-content">
+                        
+                            <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#函数声明">函数声明</a></li>
+<li><a href="#递归">递归</a></li>
+<li><a href="#多返回值">多返回值</a></li>
+<li><a href="#函数值">函数值</a></li>
+<li><a href="#可变参数">可变参数</a></li>
+<li><a href="#defer">defer</a></li>
+<li><a href="#panic异常">panic异常</a></li>
+<li><a href="#recover捕获异常">recover捕获异常</a></li>
+</ul></li>
+</ul>
+</nav>
+                        
+                        
+                        <h2 id="函数声明">函数声明</h2>
+
+<ul>
+<li>函数声明包括函数名、形式参数列表、返回值列表（可省略）以及函数体。</li>
+<li>形式参数列表描述了函数的参数名以及参数类型。</li>
+<li>返回值列表描述了函数返回值的变量名以及类型。</li>
+<li>若函数返回一个无名变量或者没有返回值，返回值列表的括号是可以省略的。</li>
+<li>若函数声明不包括返回值列表，那么函数体执行完毕后，不会返回任何值。</li>
+</ul>
+
+<pre><code class="language-go">func name(parameter-list) (result-list) {
+	body
+}
+
+func add(a int ,b int) int{
+	return a+b
+}
+// 命名返回值
+func min(a, b int) (min int) {
+	if a &gt; b {
+		min = b
+	} else {
+		min = a
+	}
+	return
+}
+</code></pre>
+
+<p>一组形参或返回值有相同的类型，不必为每个形参都写出参数类型。</p>
+
+<pre><code class="language-go">func f(i, j, k int, s, t string)                 { /* ... */ }
+func f(i int, j int, k int,  s string, t string) { /* ... */ }
+</code></pre>
+
+<ul>
+<li>函数的类型被称为函数的签名☝️如果两个函数<strong>形式参数列表</strong>和<strong>返回值列表</strong>中的变量<strong>类型</strong>一一对应，那么这两个函数被认为有相同的类型或签名。<br /></li>
+<li>函数调用都必须按照声明顺序为所有参数提供实参。</li>
+<li>实参通过值的方式传递，对形参进行修改不会影响实参。</li>
+<li>实参包括引用类型，如指针，<code>slice</code>、<code>map</code>等类型，实参可能会由于函数的间接引用被修改。</li>
+</ul>
+
+<p>没有函数体的函数声明，这表示该函数不是以<code>Go</code>实现的，只有函数签名。</p>
+
+<pre><code class="language-go">package math
+
+func Sin(x float64) float //implemented in assembly language
+</code></pre>
+
+<h2 id="递归">递归</h2>
+
+<p>函数可以是递归的，函数可以直接或间接的调用自身。</p>
+
+<pre><code class="language-go">func fib(n int) int {
+	if n &lt;= 1 {
+		return 1
+	}
+	return fib(n-1) + fib(n-2)
+}
+func main() {
+	for i := 0; i &lt; 10; i++ {
+		fmt.Printf(&quot;\t%d&quot;, fib(i))
+	}
+}
+</code></pre>
+
+<h2 id="多返回值">多返回值</h2>
+
+<ul>
+<li>在<code>Go</code>语言中，一个函数可以返回多个值。</li>
+
+<li><p>标准库中的许多函数返回<code>2</code>个值，一个是期望得到的返回值，另一个是函数<strong>出错时</strong>的错误信息。</p>
+
+<pre><code class="language-go">func f(a, b int) (max, min int) {
+	if a &gt; b {
+		max = a
+		min = b
+	} else {
+		max = b
+		min = a
+	}
+	return
+}
+
+func main() {
+	max, min := f(10, 100)
+	fmt.Println(max, min)
+}
+
+</code></pre></li>
+</ul>
+
+<p>http请求</p>
+
+<pre><code class="language-go">package main
+
+import (
+	&quot;fmt&quot;
+	&quot;net/http&quot;
+)
+
+func main() {
+	// resp 服务器响应内容
+	// err http请求出错时候的信息
+	resp, err := http.Get(`https://blog.zxysilent.com`)
+	if err != nil { // 不等于nil 表示有错误
+		panic(err) //抛出异常
+	}
+	// 准备容器
+	buf := make([]byte, 1024*10) //1kb*10
+	// 读取响应内容到 数据容器中
+	l, err := resp.Body.Read(buf) //读取长度和错误
+	fmt.Println(l, err)
+	// 字节转换为字符串
+	fmt.Println(string(buf[:l]))
+}
+</code></pre>
+
+<h2 id="函数值">函数值</h2>
+
+<p>在Go语言中，函数被看作第一类值（first-class values）：函数像其他值一样，拥有类型，可以被赋值给其他变量，传递给函数，从函数返回。</p>
+
+<pre><code class="language-go">func add(a, b int) int {
+	return a + b
+}
+func fn() func(int, int) int {
+        // 产生了一个不知名的函数
+        // 匿名函数
+	return func(a, b int) int {
+		return a + b
+	}
+}
+func main() {
+	f := add
+	fmt.Println(f(10, 20))
+        //插播内容
+        func() {
+		fmt.Println(&quot;匿名函数自执行&quot;)
+	}()
+	fmt.Println(fn()(100, 200))
+}
+</code></pre>
+
+<p>函数类型的零值是<code>nil</code>，调用值为<code>nil</code>的函数值会引起<code>panic</code>。</p>
+
+<pre><code class="language-go">	var fn func(int) int
+	fn(10) // 此处f的值为nil, 会引起panic错误
+</code></pre>
+
+<p>函数值可以与nil比较。</p>
+
+<pre><code class="language-go">	var fn func(int) int
+	if fn != nil {
+		fn(10)
+	}
+</code></pre>
+
+<p>✍️函数值<strong>之间</strong>是不可比较的，也不能用函数值作为<code>map</code>的<code>key</code>。</p>
+
+<h2 id="可变参数">可变参数</h2>
+
+<ul>
+<li>参数数量可变的函数称为可变参数函数。
+<code>fmt.Printf</code>首先接收一个必备的参数，之后接收任意个数的后续参数。</li>
+
+<li><p>在声明可变参数函数时，需要在参数列表的最后一个参数类型之前加上省略符号<code>..</code>，这表示该函数会接收任意数量的该类型参数。</p>
+
+<pre><code class="language-go">func sum(vals...int) int {
+	total := 0
+	for _, val := range vals {
+		total += val
+	}
+	return total
+}
+</code></pre></li>
+</ul>
+
+<p><code>sum</code>函数返回任意个<code>int</code>型参数的和。在函数体中，<code>vals</code>被看作是类型为<code>[] int</code>的切片。</p>
+
+<pre><code class="language-go">fmt.Println(sum())       
+fmt.Println(sum(3))  
+fmt.Println(sum(1, 2, 3, 4)) 
+</code></pre>
+
+<p>原始参数已经是切片类型，我们该如何传递给sum❓。</p>
+
+<pre><code class="language-go">values := []int{1, 2, 3}
+fmt.Println(sum(values...)) 
+</code></pre>
+
+<p><code>...int</code> 型参数的行为看起来很像切片类型，但实可变参数函数和以切片作为参数的函数是不同的。</p>
+
+<pre><code class="language-go">func f(...int) {}
+func g([]int) {}
+fmt.Printf(&quot;%T\n&quot;, f) // &quot;func(...int)&quot;
+fmt.Printf(&quot;%T\n&quot;, g) // &quot;func([]int)&quot;
+</code></pre>
+
+<h2 id="defer">defer</h2>
+
+<p>函数返回前执行的函数⛲️</p>
+
+<ul>
+<li>在调用普通函数或方法前加上关键字<code>defer</code>，就完成了<code>defer</code>所需要的语法。</li>
+<li>可以在一个函数中执行多条<code>defer</code>语句，它们的执行顺序与声明顺序相反。</li>
+<li>无论包含<code>defer</code>语句的函数是通过<code>return</code>正常结束，还是由于<code>panic</code>导致的异常结束<code>defer</code>后的函数都会被执行。</li>
+
+<li><p>函数体内某个变量作为<code>defer</code>时匿名函数的参数，则在定义<code>defer</code>时即已经获得了拷贝，否则则是引用某个变量的地址。</p>
+
+<pre><code class="language-go">package main
+import (
+	&quot;fmt&quot;
+)
+func main() {
+	//函数返回前执行
+	defer fmt.Println(&quot;defer1&quot;)
+	defer fmt.Println(&quot;defer2&quot;)
+	fmt.Println(&quot;exit&quot;)
+}
+</code></pre></li>
+</ul>
+
+<p><img src="/imgs/post/20180719/upload_8b86de51b01a66688df58dd21bcbaecb.png" alt="alt" /></p>
+
+<pre><code class="language-go">import (
+	&quot;fmt&quot;
+)
+func fn() {
+	defer fmt.Println(&quot;异常也会执行&quot;)
+	fmt.Println(&quot;exit&quot;)
+	panic(&quot;手动异常&quot;)
+}
+func main() {
+	fn()
+}
+</code></pre>
+
+<p>拷贝还是引用</p>
+
+<pre><code class="language-go">package main
+import &quot;fmt&quot;
+func main() {
+	defer fmt.Println(&quot;hello defer&quot;)
+	// 拷贝还是引用
+	for i := 0; i &lt; 5; i++ {
+		//普通匿名函数
+		func() {
+			fmt.Println(i)
+		}()
+		// defer 引用
+		defer func() {
+			fmt.Println(&quot;defer:&quot;, i)
+		}()
+		// defer 拷贝
+		defer func(x int) {
+			fmt.Println(&quot;defer-:&quot;, x)
+		}(i)
+	}
+}
+</code></pre>
+
+<p>函数返回前⌛️</p>
+
+<pre><code class="language-go">package main
+
+import &quot;fmt&quot;
+
+func main() {
+	res := test(10)
+	fmt.Println(res) //100
+
+	res1 := test1(10)
+	fmt.Println(res1) //101
+}
+
+func test(i int) int {
+	defer func() {
+		i++
+	}()
+	return i * 10
+}
+func test1(i int) (r int) {
+	defer func() {
+		r++
+	}()
+	r = i * 10
+	return
+}
+
+</code></pre>
+
+<h2 id="panic异常">panic异常</h2>
+
+<p>Go的类型系统会在编译时捕获很多错误，但有些错误只能在运行时检查，如数组访问越界、空指针引用等。这些运行时错误会引起painc异常。</p>
+
+<ul>
+<li>当panic异常发生时，程序会中断运行，并立即执行在该goroutine中被延迟的函数（<code>defer</code>）。</li>
+<li>随后程序崩溃并输出日志信息。日志信息包括panic value和函数调用的堆栈跟踪信息。
+-直接调用内置的panic函数也会引发<code>panic</code>异常。<code>panic</code>函数接受任何值<code>interface{}</code>作为参数。</li>
+</ul>
+
+<h2 id="recover捕获异常">recover捕获异常</h2>
+
+<p>当异常发生的时候程序会停止运行。当一个<code>web</code>服务（教学管理系统）某一个模块出现问题（登陆）但其他模块应该可以正常提供服务（抢课）。</p>
+
+<ul>
+<li>在<code>defer</code>中调用了内置函数<code>recover</code>，<code>recover</code>会使程序从<code>panic</code>中恢复，并返回<code>panic value</code>。</li>
+<li>导致<code>panic</code>异常的函数不会继续运行，但能正常返回。</li>
+
+<li><p>在未发生<code>panic</code>时调用<code>recover</code>，<code>recove</code>r会返回<code>nil</code>。</p>
+
+<pre><code class="language-go">package main
+
+import &quot;fmt&quot;
+
+func main() {
+	defer func() {
+		if err := recover(); err != nil {
+			fmt.Println(&quot;defer:&quot;, err)
+		}
+	}()
+	panic(&quot;提前终止程序&quot;)
+}
+</code></pre></li>
+</ul>
+
+<p>不影响其他功能</p>
+
+<pre><code class="language-go">package main
+import &quot;fmt&quot;
+func fn1() {
+	// defer func() {
+	// 	if err := recover(); err != nil {
+	// 		fmt.Println(&quot;defer:&quot;, err)
+	// 	}
+	// }()
+	panic(&quot;panic&quot;)
+}
+func fn2() {
+	defer func() {
+		if err := recover(); err != nil {
+			fmt.Println(&quot;defer:&quot;, err)
+		}
+	}()
+	fmt.Println(&quot;zxysilent&quot;)
+}
+func main() {
+	for i := 0; i &lt; 3; i++ {
+		fn1()
+		fn2()
+	}
+}
+</code></pre>
+                    </div>
+                    <p>本文链接：<a href="/posts/goweb-033/">/posts/goweb-033/</a></p>
+                    <p>-- <acronym title="End of File">EOF</acronym> --</p>
+                    <div class="post-info">
+                        <p>
+                            <code class="notebook">zxysilent</code>发表于<i> 2018-07-19 09:27:42</i>，
+                            
+                            
+                                添加「
+                                    
+                                        
+                                            <a href="http://example.org/tags/golang" data-tag="golang"><code class="notebook">golang</code></a>
+                                        
+                                            <a href="http://example.org/tags/goweb" data-tag="goweb"><code class="notebook">goweb</code></a>
+                                        
+                                    
+                                」标签，
+                            
+                            最后修改于<i> 2018-10-30 15:25:31</i>
+                        </p>
+                    </div>
+                </article>
+                <nav class="pagination">
+                    
+                        <a class="prev" href="http://example.org/posts/goweb-032/">«  goweb-032-golang-复合数据类型</a>
+                    
+                    
+                        <a class="next" href="http://example.org/posts/goweb-034/"> goweb-034-golang-方法  »</a>
+                    
+                </nav>
+                
+            </div>
+                        
+<footer id="footer" class="inner">
+                &copy; 2019&nbsp;-&nbsp; zxysilent&nbsp;-&nbsp;<a target="_blank" rel="nofollow" class="external beian" href="http://www.miitbeian.gov.cn/">蜀ICP备16011344号-2</a
+                ><br />Powered by&nbsp;ThinkJS&nbsp;&amp;&nbsp;FireKyli<a target="_blank" rel="nofollow" class="external" href="https://zxysilent.org">n</a>
+                <span id="busuanzi_container_site_pv"
+                    >total:<span id="busuanzi_value_site_pv"></span><span id="busuanzi_container_page_pv">&nbsp;page:<span id="busuanzi_value_page_pv"></span></span
+                ></span>
+            </footer>
+        </div>
+        <script src="/js/theme.js" data-ls="js_zxysilent"></script>
+
+
+<script>
+    console.info("https://blog.zxysilent.com");
+</script>
+
+    </body>
+</html>

@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <title>zxysilent</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+        <meta name="msvalidate.01" content="BA6009DC1D95902AC43052D430AA822D" />
+        <meta name="keywords" content="zxysilent,zxyslt,zxy" />
+        <meta name="description" content="zxysilent;zxysilent blog;zxyslt;zxyslt blog;" />
+        <meta name="google-site-verification" content="51J555Z28axR2us4ULmrJuBCizGyxgSMhhL2QGz0XOE" />
+        <link rel="icon" href="/imgs/logo.png" />
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="/index.xml" />
+<link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="zxysilent" />
+<link rel="canonical" href="https://blog.zxysilent.com/" />
+<link href="/css/all.css?v=1566365206" rel="stylesheet" type="text/css" data-ls="css_zxysilent" >
+    </head>
+    <body>
+        <nav id="sidebar">
+    <div class="wrap">
+        <div class="profile">
+            <a href="/"><img src="/imgs/logo.png" alt="zxysilent"/></a><span>zxysilent</span>
+        </div>
+        <ul class="naver">
+            
+                <li>
+                <a href="/" title=""><i class="iconfont icon-home"></i><span>首页</span></a> 
+            </li>
+            
+                <li>
+                <a href="/archives" title=""><i class="iconfont icon-archive"></i><span>归档</span></a> 
+            </li>
+            
+                <li>
+                <a href="/tags" title=""><i class="iconfont icon-tags"></i><span>标签</span></a> 
+            </li>
+            
+                <li>
+                <a href="/about" title=""><i class="iconfont icon-user"></i><span>关于</span></a> 
+            </li>
+            
+                <li>
+                <a href="/links" title=""><i class="iconfont icon-link"></i><span>友链</span></a> 
+            </li>
+            
+        </ul>
+        <div class="footer">
+            <a class="inline" rel="nofollow" target="_blank" href="https://github.com/zxysilent"><i class="iconfont icon-github-v" title="GitHub"></i></a>
+            <a class="inline" rel="nofollow" target="_blank" href="https://weibo.com/u/7072792903"><i class="iconfont icon-weibo" title="weibo"></i></a>
+            <a class="inline" href="/index.xml"><i class="iconfont icon-rss-v" title="RSS"></i></a>
+            <a class="inline" href="/search.html"><i class="iconfont icon-search" title="Search"></i></a>
+        </div>
+    </div>
+</nav>
+<div id="header">
+    <div class="btn-bar"><i></i></div>
+    <h1>
+        <a href="/">goweb-034-golang-方法</a>
+    </h1>
+    <a class="me" href="/about/"><img src="/imgs/logo.png" alt="zxysilent"/></a>
+</div>
+<div id="sidebar-mask"></div>
+
+        <div id="main">
+            <div id="page-post">
+                <article class="post detail">
+                    <div class="meta">
+                        <div class="date">07月19日, 2018</div>
+                        <div class="comment"><a href="#comments">256 Words</a></div>
+                    </div>
+                    <h1 class="title">goweb-034-golang-方法</h1>
+                    <div class="entry-content">
+                        
+                            <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#方法声明">方法声明</a></li>
+<li><a href="#指针接收者">指针接收者</a></li>
+<li><a href="#综合示例">综合示例</a></li>
+</ul></li>
+</ul>
+</nav>
+                        
+                        
+                        <p>面向对象编程(OOP)的三大特征分别为封装、继承和多态。
+封装，是指利用抽象数据类型对数据信息以及对数据。。。。。。。此处省略3万字<br />
+<img src="/imgs/post/20180719/upload_17ce2c733b1cb9b4b3a410756c4765fd.png" alt="alt" /></p>
+
+<h2 id="方法声明">方法声明</h2>
+
+<ul>
+<li>在函数声明时，在其名字之前放上一个变量，即是一个方法。</li>
+
+<li><p>这个附加的参数会将该函数附加到这种类型上，即相当于为这种类型定义了一个独占的方法。</p>
+
+<pre><code class="language-go">package main
+
+import (
+	&quot;fmt&quot;
+)
+
+//Point 一个点
+type Point struct {
+	X, Y float64
+}
+
+//Format 格式化输出
+func (p Point) Format() {
+	fmt.Println(&quot;x:&quot;, p.X, &quot;y:&quot;, p.Y)
+}
+func main() {
+	var p Point
+	p.Format()
+}
+</code></pre></li>
+</ul>
+
+<p>附加的参数<code>p</code>，叫做方法的接收器（<code>receiver</code>）,可以任意的选择接收器的名字。
+&gt; 本质类似于其他OOP绑定方法到<code>this</code>需要额外的成本。</p>
+
+<pre><code class="language-go">//Point 一个点
+type Point struct {
+	X, Y float64
+}
+//Format 格式化输出
+func Format(p Point) {
+	fmt.Println(&quot;x:&quot;, p.X, &quot;y:&quot;, p.Y)
+}
+func main() {
+	var p Point
+	Format(p)
+}
+</code></pre>
+
+<h2 id="指针接收者">指针接收者</h2>
+
+<p>当需要改变接收者时或者接收者变量本身比较大时可使用指针作为接收者。</p>
+
+<pre><code class="language-go">func (p *Point) Scale(rate float64) {
+	p.X *= rate
+	p.Y *= rate
+}
+</code></pre>
+
+<p>无论<code>method</code>的<code>receiver</code>是指针类型还是非指针类型，都是可以通过指针/非指针类型进行调用的，编译器会帮你做类型转换。</p>
+
+<pre><code class="language-go">//Point 一个点
+type Point struct {
+	X, Y float64
+}
+
+//Format 格式化输出
+func (p Point) Format() {
+	fmt.Println(&quot;x:&quot;, p.X, &quot;y:&quot;, p.Y)
+}
+
+//Scale 缩放
+func (p *Point) Scale(rate float64) {
+	p.X *= rate
+	p.Y = p.Y * rate
+}
+func main() {
+	var p = Point{1, 2}
+	var ptr = &amp;Point{3, 4}
+	p.Scale(2)
+	p.Format()
+
+	ptr.Scale(2)
+	ptr.Format()
+}
+</code></pre>
+
+<p><img src="/imgs/post/20180719/upload_6c241e891082e746747ff7f37b4a8ef3.png" alt="alt" /></p>
+
+<h2 id="综合示例">综合示例</h2>
+
+<pre><code>package main
+
+import (
+	&quot;fmt&quot;
+)
+
+//Point 一个点
+type Point struct {
+	X, Y float64
+}
+
+//Format 格式化输出
+func (p Point) Format() {
+	fmt.Println(&quot;x:&quot;, p.X, &quot;y:&quot;, p.Y)
+}
+
+//Print 打印
+func (p *Point) Print() {
+	fmt.Println(&quot;x:&quot;, p.X, &quot;y:&quot;, p.Y)
+}
+
+//Circle 一个圆
+type Circle struct {
+	Point  
+	Radius float64 //半径
+}
+
+//Print 打印
+func (c *Circle) Print() {
+	fmt.Println(&quot;x:&quot;, c.X, &quot;y:&quot;, c.Y, &quot;r:&quot;, c.Radius)
+}
+
+func main() {
+	var c = Circle{
+		Point{1, 2},
+		10,
+	}
+	// 调用 Point的方法
+	c.Format() //x: 1 y: 2
+	// Circle的Print 方法
+	// 覆盖
+	// Point的Print方法
+	c.Print()
+	// 调用Point的Print方法
+	c.Point.Print()
+	Circle{}.Format() //x: 0 y: 0
+        //不能在一个不能寻址的对象上调用指针接收者的方法
+	//Circle{}.Print()//cannot call pointer method on Circle literal
+}
+</code></pre>
+                    </div>
+                    <p>本文链接：<a href="/posts/goweb-034/">/posts/goweb-034/</a></p>
+                    <p>-- <acronym title="End of File">EOF</acronym> --</p>
+                    <div class="post-info">
+                        <p>
+                            <code class="notebook">zxysilent</code>发表于<i> 2018-07-19 11:38:47</i>，
+                            
+                            
+                                添加「
+                                    
+                                        
+                                            <a href="http://example.org/tags/golang" data-tag="golang"><code class="notebook">golang</code></a>
+                                        
+                                            <a href="http://example.org/tags/goweb" data-tag="goweb"><code class="notebook">goweb</code></a>
+                                        
+                                    
+                                」标签，
+                            
+                            最后修改于<i> 2018-07-23 16:39:52</i>
+                        </p>
+                    </div>
+                </article>
+                <nav class="pagination">
+                    
+                        <a class="prev" href="http://example.org/posts/goweb-033/">«  goweb-033-golang-函数</a>
+                    
+                    
+                        <a class="next" href="http://example.org/posts/goweb-035/"> goweb-035-golang-接口  »</a>
+                    
+                </nav>
+                
+            </div>
+                        
+<footer id="footer" class="inner">
+                &copy; 2019&nbsp;-&nbsp; zxysilent&nbsp;-&nbsp;<a target="_blank" rel="nofollow" class="external beian" href="http://www.miitbeian.gov.cn/">蜀ICP备16011344号-2</a
+                ><br />Powered by&nbsp;ThinkJS&nbsp;&amp;&nbsp;FireKyli<a target="_blank" rel="nofollow" class="external" href="https://zxysilent.org">n</a>
+                <span id="busuanzi_container_site_pv"
+                    >total:<span id="busuanzi_value_site_pv"></span><span id="busuanzi_container_page_pv">&nbsp;page:<span id="busuanzi_value_page_pv"></span></span
+                ></span>
+            </footer>
+        </div>
+        <script src="/js/theme.js" data-ls="js_zxysilent"></script>
+
+
+<script>
+    console.info("https://blog.zxysilent.com");
+</script>
+
+    </body>
+</html>

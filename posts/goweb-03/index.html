@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <title>zxysilent</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+        <meta name="msvalidate.01" content="BA6009DC1D95902AC43052D430AA822D" />
+        <meta name="keywords" content="zxysilent,zxyslt,zxy" />
+        <meta name="description" content="zxysilent;zxysilent blog;zxyslt;zxyslt blog;" />
+        <meta name="google-site-verification" content="51J555Z28axR2us4ULmrJuBCizGyxgSMhhL2QGz0XOE" />
+        <link rel="icon" href="/imgs/logo.png" />
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="/index.xml" />
+<link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="zxysilent" />
+<link rel="canonical" href="https://blog.zxysilent.com/" />
+<link href="/css/all.css?v=1566365206" rel="stylesheet" type="text/css" data-ls="css_zxysilent" >
+    </head>
+    <body>
+        <nav id="sidebar">
+    <div class="wrap">
+        <div class="profile">
+            <a href="/"><img src="/imgs/logo.png" alt="zxysilent"/></a><span>zxysilent</span>
+        </div>
+        <ul class="naver">
+            
+                <li>
+                <a href="/" title=""><i class="iconfont icon-home"></i><span>首页</span></a> 
+            </li>
+            
+                <li>
+                <a href="/archives" title=""><i class="iconfont icon-archive"></i><span>归档</span></a> 
+            </li>
+            
+                <li>
+                <a href="/tags" title=""><i class="iconfont icon-tags"></i><span>标签</span></a> 
+            </li>
+            
+                <li>
+                <a href="/about" title=""><i class="iconfont icon-user"></i><span>关于</span></a> 
+            </li>
+            
+                <li>
+                <a href="/links" title=""><i class="iconfont icon-link"></i><span>友链</span></a> 
+            </li>
+            
+        </ul>
+        <div class="footer">
+            <a class="inline" rel="nofollow" target="_blank" href="https://github.com/zxysilent"><i class="iconfont icon-github-v" title="GitHub"></i></a>
+            <a class="inline" rel="nofollow" target="_blank" href="https://weibo.com/u/7072792903"><i class="iconfont icon-weibo" title="weibo"></i></a>
+            <a class="inline" href="/index.xml"><i class="iconfont icon-rss-v" title="RSS"></i></a>
+            <a class="inline" href="/search.html"><i class="iconfont icon-search" title="Search"></i></a>
+        </div>
+    </div>
+</nav>
+<div id="header">
+    <div class="btn-bar"><i></i></div>
+    <h1>
+        <a href="/">goweb-03-golang</a>
+    </h1>
+    <a class="me" href="/about/"><img src="/imgs/logo.png" alt="zxysilent"/></a>
+</div>
+<div id="sidebar-mask"></div>
+
+        <div id="main">
+            <div id="page-post">
+                <article class="post detail">
+                    <div class="meta">
+                        <div class="date">07月12日, 2018</div>
+                        <div class="comment"><a href="#comments">112 Words</a></div>
+                    </div>
+                    <h1 class="title">goweb-03-golang</h1>
+                    <div class="entry-content">
+                        
+                            <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#qaq">QAQ</a></li>
+<li><a href="#toc_1">- 。。。</a></li>
+<li><a href="#正文">正文</a>
+<ul>
+<li><a href="#课程目标">课程目标</a>
+<ul>
+<li><a href="#ui">ui</a></li>
+<li><a href="#api">api</a></li>
+</ul></li>
+<li><a href="#内容">内容</a>
+<ul>
+<li><a href="#程序结构">程序结构</a></li>
+<li><a href="#基础数据类型">基础数据类型</a></li>
+<li><a href="#符合数据类型">符合数据类型</a></li>
+<li><a href="#函数">函数</a></li>
+<li><a href="#方法">方法</a></li>
+<li><a href="#接口">接口</a></li>
+<li><a href="#goroutines-channels">goroutines channels</a></li>
+<li><a href="#常用包">常用包</a></li>
+</ul></li>
+<li><a href="#helloworld">helloworld</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+                        
+                        
+                        <h2 id="qaq">QAQ</h2>
+
+<p>本应该长篇大论介绍<code>golang</code>的 but</p>
+
+<p><img src="/imgs/post/20180716/upload_d7ba285d3e106edd139688f7287fef92.png" alt="alt" /></p>
+
+<p><a href="https://golang.org/">https://golang.org/</a> 官方网站<strong>墙外</strong><br />
+<a href="https://golang.google.cn/">https://golang.google.cn/</a>  镜像网站<br />
+<a href="https://golang.google.cn/pkg/">https://golang.google.cn/pkg/</a> 标准库文档<br />
+很多例子可以在线练习</p>
+
+<p><strong>特点</strong>
+　简洁 快速 安全 并行 有趣 开源 支持泛型编程，内存管理，数组安全，编译迅速 balabala&hellip;</p>
+
+<p>** 开发成员**
+- Thompson：1983年图灵奖（Turing Award）和1998年美国国家技术奖（National Medal of Technology）得主。他与Dennis Ritchie是Unix的原创者。Thompson也发明了后来衍生出C语言的B程序语言。
+- Pike：曾是贝尔实验室（Bell Labs）的Unix团队，和Plan 9操作系统计划的成员。他与Thompson共事多年，并共创出广泛使用的UTF-8 字元编码。
+-  Robert Griesemer：曾协助制作Java的HotSpot编译器，和Chrome浏览器的JavaScript引擎V8</p>
+
+<h2 id="toc_1">- 。。。</h2>
+
+<h2 id="正文">正文</h2>
+
+<h3 id="课程目标">课程目标</h3>
+
+<p>学会开发动态网站
+&gt; 展示ui + 数据api</p>
+
+<h4 id="ui">ui</h4>
+
+<ul>
+<li>html+css+js</li>
+<li>安卓</li>
+<li>苹果</li>
+<li>&hellip;<br />
+html+css+js 的组合可以用在 pc+移动端<br /></li>
+</ul>
+
+<h4 id="api">api</h4>
+
+<ul>
+<li>c</li>
+<li>c++</li>
+<li>java
+-.net</li>
+<li>php ☃️</li>
+<li>nodejs</li>
+<li>python</li>
+<li>go</li>
+<li>&hellip;</li>
+</ul>
+
+<h3 id="内容">内容</h3>
+
+<h4 id="程序结构">程序结构</h4>
+
+<p><a href="/post/goweb-03-0.html">去学习</a><br />
+命名、声明、赋值、类型、包文件、作用域</p>
+
+<h4 id="基础数据类型">基础数据类型</h4>
+
+<p><a href="/post/goweb-03-1.html">去学习</a><br />
+ 整型、浮点、布尔、字符串、常量</p>
+
+<h4 id="符合数据类型">符合数据类型</h4>
+
+<p><a href="/post/goweb-03-2.html">去学习</a><br />
+数组 、 slice、map、结构体、json</p>
+
+<h4 id="函数">函数</h4>
+
+<p><a href="/post/goweb-03-3.html">去学习</a></p>
+
+<h4 id="方法">方法</h4>
+
+<p><a href="/post/goweb-03-4.html">去学习</a></p>
+
+<h4 id="接口">接口</h4>
+
+<p><a href="/post/goweb-03-5.html">去学习</a></p>
+
+<h4 id="goroutines-channels">goroutines channels</h4>
+
+<p><a href="/post/goweb-03-6.html">去学习</a></p>
+
+<h4 id="常用包">常用包</h4>
+
+<p><a href="/post/goweb-03-7.html">去学习</a><br />
+ os、io、strings、bytes、<a href="/post/regular-expression.html">正则</a>、net、http</p>
+
+<h3 id="helloworld">helloworld</h3>
+
+<ul>
+<li>新建文件 <code>main.go</code></li>
+
+<li><p>写入代码</p>
+
+<pre><code class="language-go">package main
+
+import &quot;fmt&quot;
+
+func main() {
+    fmt.Println(&quot;Hello world&quot;)
+}
+</code></pre></li>
+
+<li><p><code>go run main.go</code> 直接输出结果</p></li>
+
+<li><p><code>go build main.go</code>  编译链接&gt;生成exe可执行程序
+&gt; 介绍此程序</p></li>
+</ul>
+                    </div>
+                    <p>本文链接：<a href="/posts/goweb-03/">/posts/goweb-03/</a></p>
+                    <p>-- <acronym title="End of File">EOF</acronym> --</p>
+                    <div class="post-info">
+                        <p>
+                            <code class="notebook">zxysilent</code>发表于<i> 2018-07-12 16:58:33</i>，
+                            
+                            
+                                添加「
+                                    
+                                        
+                                            <a href="http://example.org/tags/golang" data-tag="golang"><code class="notebook">golang</code></a>
+                                        
+                                            <a href="http://example.org/tags/goweb" data-tag="goweb"><code class="notebook">goweb</code></a>
+                                        
+                                    
+                                」标签，
+                            
+                            最后修改于<i> 2018-07-23 16:38:14</i>
+                        </p>
+                    </div>
+                </article>
+                <nav class="pagination">
+                    
+                        <a class="prev" href="http://example.org/posts/goweb-02/">«  goweb-02-环境搭建</a>
+                    
+                    
+                        <a class="next" href="http://example.org/posts/goweb-030/"> goweb-030-golang-程序结构  »</a>
+                    
+                </nav>
+                
+            </div>
+                        
+<footer id="footer" class="inner">
+                &copy; 2019&nbsp;-&nbsp; zxysilent&nbsp;-&nbsp;<a target="_blank" rel="nofollow" class="external beian" href="http://www.miitbeian.gov.cn/">蜀ICP备16011344号-2</a
+                ><br />Powered by&nbsp;ThinkJS&nbsp;&amp;&nbsp;FireKyli<a target="_blank" rel="nofollow" class="external" href="https://zxysilent.org">n</a>
+                <span id="busuanzi_container_site_pv"
+                    >total:<span id="busuanzi_value_site_pv"></span><span id="busuanzi_container_page_pv">&nbsp;page:<span id="busuanzi_value_page_pv"></span></span
+                ></span>
+            </footer>
+        </div>
+        <script src="/js/theme.js" data-ls="js_zxysilent"></script>
+
+
+<script>
+    console.info("https://blog.zxysilent.com");
+</script>
+
+    </body>
+</html>

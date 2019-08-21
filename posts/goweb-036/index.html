@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <title>zxysilent</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+        <meta name="msvalidate.01" content="BA6009DC1D95902AC43052D430AA822D" />
+        <meta name="keywords" content="zxysilent,zxyslt,zxy" />
+        <meta name="description" content="zxysilent;zxysilent blog;zxyslt;zxyslt blog;" />
+        <meta name="google-site-verification" content="51J555Z28axR2us4ULmrJuBCizGyxgSMhhL2QGz0XOE" />
+        <link rel="icon" href="/imgs/logo.png" />
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="/index.xml" />
+<link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="zxysilent" />
+<link rel="canonical" href="https://blog.zxysilent.com/" />
+<link href="/css/all.css?v=1566365206" rel="stylesheet" type="text/css" data-ls="css_zxysilent" >
+    </head>
+    <body>
+        <nav id="sidebar">
+    <div class="wrap">
+        <div class="profile">
+            <a href="/"><img src="/imgs/logo.png" alt="zxysilent"/></a><span>zxysilent</span>
+        </div>
+        <ul class="naver">
+            
+                <li>
+                <a href="/" title=""><i class="iconfont icon-home"></i><span>首页</span></a> 
+            </li>
+            
+                <li>
+                <a href="/archives" title=""><i class="iconfont icon-archive"></i><span>归档</span></a> 
+            </li>
+            
+                <li>
+                <a href="/tags" title=""><i class="iconfont icon-tags"></i><span>标签</span></a> 
+            </li>
+            
+                <li>
+                <a href="/about" title=""><i class="iconfont icon-user"></i><span>关于</span></a> 
+            </li>
+            
+                <li>
+                <a href="/links" title=""><i class="iconfont icon-link"></i><span>友链</span></a> 
+            </li>
+            
+        </ul>
+        <div class="footer">
+            <a class="inline" rel="nofollow" target="_blank" href="https://github.com/zxysilent"><i class="iconfont icon-github-v" title="GitHub"></i></a>
+            <a class="inline" rel="nofollow" target="_blank" href="https://weibo.com/u/7072792903"><i class="iconfont icon-weibo" title="weibo"></i></a>
+            <a class="inline" href="/index.xml"><i class="iconfont icon-rss-v" title="RSS"></i></a>
+            <a class="inline" href="/search.html"><i class="iconfont icon-search" title="Search"></i></a>
+        </div>
+    </div>
+</nav>
+<div id="header">
+    <div class="btn-bar"><i></i></div>
+    <h1>
+        <a href="/">goweb-036-golang-Goroutines和Channels</a>
+    </h1>
+    <a class="me" href="/about/"><img src="/imgs/logo.png" alt="zxysilent"/></a>
+</div>
+<div id="sidebar-mask"></div>
+
+        <div id="main">
+            <div id="page-post">
+                <article class="post detail">
+                    <div class="meta">
+                        <div class="date">07月19日, 2018</div>
+                        <div class="comment"><a href="#comments">323 Words</a></div>
+                    </div>
+                    <h1 class="title">goweb-036-golang-Goroutines和Channels</h1>
+                    <div class="entry-content">
+                        
+                            <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#goroutines-协程">Goroutines 协程</a></li>
+<li><a href="#channels">Channels</a>
+<ul>
+<li><a href="#不带缓存的channels">不带缓存的Channels</a></li>
+<li><a href="#带缓存的channels">带缓存的Channels</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+                        
+                        
+                        <ul>
+<li><strong>并行</strong>同时做不同事。<br />
+<img src="/imgs/post/20180719/upload_637d666569fc53940d0de76a3f6987b0.png" alt="alt" /></li>
+<li><strong>并发</strong>交替做不同事。<br />
+<img src="/imgs/post/20180719/upload_f5b7c9457b34b935a0d61a822ac573c9.png" alt="alt" /></li>
+</ul>
+
+<p>假设你需要洗衣服和做饭
+1. ** 串行**：先洗完衣服再做饭，或者先做完饭再洗衣服。</p>
+
+<ol>
+<li><strong>并发</strong>：一会洗衣一会做饭。</li>
+<li><strong>并行</strong>：把洗衣盆拿到灶边，一只手做饭另一只手洗衣。<br />
+为啥快 ⁉️</li>
+</ol>
+
+<h2 id="goroutines-协程">Goroutines 协程</h2>
+
+<ul>
+<li>传统的多线程模型中创建一个新的线程代价高昂<strong>8M</strong>。</li>
+<li>Go语言中，每一个并发的执行单元叫作一个<code>goroutine</code>（协程）。类比轻量级的线程<strong>2kb</strong>  。</li>
+<li>通过在普通函数前添加<code>go</code>直接启动新的协程执行。
+更多细节请 <a href="https://golang.google.cn/ref/mem">https://golang.google.cn/ref/mem</a> 官网走一波</li>
+</ul>
+
+<p>用示例说明<br />
+传统模式</p>
+
+<pre><code class="language-go">package main
+
+import (
+	&quot;fmt&quot;
+	&quot;time&quot;
+)
+
+func fn1() {
+	time.Sleep(1 * time.Second)
+	fmt.Println(&quot;暂停 1 s&quot;)
+}
+func fn2() {
+	time.Sleep(2 * time.Second)
+	fmt.Println(&quot;暂停 2 s&quot;)
+}
+func main() {
+	//开始时间
+	begin := time.Now()
+	for i := 0; i &lt; 5; i++ {
+		fn1()
+		fn2()
+	}
+	//获取运行结束时间
+	end := time.Now()
+	//输出时间差
+	fmt.Println(&quot;总共用时:&quot;, end.Sub(begin)) //总共用时: 15.0871782s
+}
+</code></pre>
+
+<p>并发模式</p>
+
+<p>直接添加<code>go</code>开启新的协程 <code>main</code>函数的主协程并不会等待子协程结束<strong>需改造</strong></p>
+
+<pre><code class="language-go">package main
+
+import (
+	&quot;fmt&quot;
+	&quot;sync&quot;
+	&quot;time&quot;
+)
+
+func fn1() {
+	time.Sleep(1 * time.Second)
+	fmt.Println(&quot;暂停 1 s&quot;)
+	// 执行完成就关闭一个等待
+	wg.Done()
+}
+func fn2() {
+	time.Sleep(2 * time.Second)
+	fmt.Println(&quot;暂停 2 s&quot;)
+	// 执行完成就关闭一个等待
+	wg.Done()
+}
+
+//WaitGroup 可以用来等待协程执行完成
+var wg sync.WaitGroup
+
+func main() {
+	//开始时间
+	begin := time.Now()
+	for i := 0; i &lt; 5; i++ {
+		go fn1()
+		// 每次启动一个 协程
+		wg.Add(1)
+		go fn2()
+		wg.Add(1)
+	}
+	//等待所有子协程执行完成
+	wg.Wait()
+	//获取运行结束时间
+	end := time.Now()
+	//输出时间差
+	fmt.Println(&quot;总共用时:&quot;, end.Sub(begin)) //总共用时: 2.015722s
+}
+</code></pre>
+
+<p>时间就是金钱☢️</p>
+
+<h2 id="channels">Channels</h2>
+
+<ul>
+<li><code>channels</code>则是<code>goroutine</code>之间的通信机制。一个<code>channel</code>是一个通信机制，它可以让一个<code>goroutine</code>通过它给另一个<code>goroutine</code>发送值信息。</li>
+<li>每个<code>channel</code>都有一个特殊的类型，也就是<code>channel</code>可发送数据的类型。</li>
+<li>一个可以发送int类型数据的<code>channel</code>一般写为<code>chan int</code>。
+&gt; 抽象的东西往往不好理解，可以理解为一个队列的引用。</li>
+</ul>
+
+<p>内置的<code>make</code>函数，我们可以创建一个channel：</p>
+
+<pre><code class="language-go">ch := make(chan int) 
+</code></pre>
+
+<p>复制一个<code>channe</code>l或用于函数参数传递时，只是拷贝了一个<code>channel</code>引用，因此调用者和被调用者将引用同一个<code>channel</code>对象。<br />
+和其它的引用类型一样，<code>channel</code>的零值也是nil。</p>
+
+<ul>
+<li>一个<code>channel</code>有发送和接受两个主要操作(入队✍️出队)。</li>
+<li>发送和接收两个操作都使用<code>&lt;-</code>运算符。</li>
+<li>在发送语句中，<code>&lt;-</code>运算符分割channel和要发送的值。</li>
+
+<li><p>在接收语句中，<code>&lt;-</code>运算符写在channel对象之前。</p>
+
+<pre><code class="language-go">ch &lt;- 10  // 发送
+x := &lt;-ch // 接收
+&lt;-ch
+</code></pre></li>
+</ul>
+
+<p><code>Channel</code>支持<code>close</code>操作，用于关闭<code>channel</code>，随后对基于该<code>channel</code>的任何发送操作都将导致<code>panic</code>异常。对一个已经被<code>close</code>的<code>channel</code>进行接收操作依然可以接受到之前已经成功发送的数据；如果<code>channel中</code>已经没有数据的话将产生一个零值的数据。</p>
+
+<pre><code class="language-go">ch := make(chan int)
+ch &lt;- 10 // 发送
+close(ch)
+x := &lt;-ch
+// val, ok:= &lt;- ch
+fmt.Println(x)
+</code></pre>
+
+<p>以最简单方式调用<code>make</code>函数创建的是一个无缓存的<code>channel</code>，也可以指定第二个整型参数，对应<code>channel</code>的容量。如果大于零，那么该<code>channel</code>就是带缓存的<code>channel</code>。</p>
+
+<pre><code class="language-Go">ch = make(chan int)    
+ch = make(chan int, 0) //0 也没有缓冲
+ch = make(chan int, 3) 
+</code></pre>
+
+<h3 id="不带缓存的channels">不带缓存的Channels</h3>
+
+<ul>
+<li>无缓存<code>Channels</code>的发送操作将导致发送者<code>goroutine</code>阻塞，直到另一个<code>goroutine</code>在相同的<code>Channels</code>上执行接收操作。</li>
+<li>如果接收操作先发生，那么接收者<code>goroutine</code>也将阻塞，直到有另一个<code>goroutine</code>在相同的<code>Channels</code>上执行发送操作。</li>
+<li>当发送的值通过<code>Channels</code>成功传输之后，两个<code>goroutine</code>可以继续执行后面的语句。</li>
+</ul>
+
+<p>case1 <strong>阻塞</strong></p>
+
+<pre><code class="language-go">ch := make(chan int)
+x := &lt;-ch
+fmt.Println(x)//fatal error: all goroutines are asleep - deadlock!
+</code></pre>
+
+<p>case2 <strong>阻塞</strong></p>
+
+<pre><code>ch := make(chan int)
+ch &lt;- 100
+x := &lt;-ch
+fmt.Println(x)//fatal error: all goroutines are asleep - deadlock!
+</code></pre>
+
+<p>case3 <strong>不阻塞</strong></p>
+
+<pre><code class="language-go">ch := make(chan int)
+go func() {
+	ch &lt;- 100
+}()
+x := &lt;-ch
+fmt.Println(x)
+</code></pre>
+
+<h3 id="带缓存的channels">带缓存的Channels</h3>
+
+<ul>
+<li>带缓存的<code>Channel</code>内部持有一个元素队列。</li>
+
+<li><p>队列的最大容量是在调用<code>make</code>函数创建<code>channel</code>时通过第二个参数指定的。</p>
+
+<pre><code class="language-go">ch = make(chan string, 3)
+</code></pre></li>
+</ul>
+
+<p>在无阻塞的情况下连续向新创建的<code>channel</code>发送三个值 <strong>不阻塞</strong>。</p>
+
+<pre><code class="language-go">ch &lt;- &quot;A&quot;
+ch &lt;- &quot;B&quot;
+ch &lt;- &quot;C&quot;
+</code></pre>
+
+<p>现在<code>channel</code>的内部缓存队列将是满的，如果现在有第四个发送操作将发生阻塞。</p>
+
+<p><img src="/imgs/post/20180719/upload_d638a20ac55a4aee829a0cc1afb94772.png" alt="alt" /></p>
+
+<p>接收一个值，</p>
+
+<pre><code class="language-go">fmt.Println(&lt;-ch) // &quot;A&quot;
+</code></pre>
+
+<p><img src="/imgs/post/20180719/upload_50ae7db62360924ce0e0379a9d7bdf01.png" alt="alt" /><br />
+此时对<code>channel</code>执行的发送或接收操作都不会发生阻塞。</p>
+
+<p><img src="../images/ch8-04.png" alt="" /></p>
+
+<p>内置的cap函数获取<code>channel</code>内部缓存的容量。</p>
+
+<pre><code class="language-go">fmt.Println(cap(ch)) // &quot;3&quot;
+</code></pre>
+
+<p>内置的<code>len</code>函数，获取<code>channel</code>内部缓存队列中有效元素的个数。</p>
+
+<pre><code class="language-go">fmt.Println(len(ch)) // &quot;2&quot;
+</code></pre>
+
+<p>类比饭馆吃饭<br />
+要吃饭的人 &lt;-<br />
+空位 chan<br />
+&lt;-厨师<br />
+更多的使用更多的理解✋(充分利用<code>cpu</code>性能)。</p>
+
+<blockquote>
+<p>到此我需要讲的语法都已经完成</p>
+</blockquote>
+                    </div>
+                    <p>本文链接：<a href="/posts/goweb-036/">/posts/goweb-036/</a></p>
+                    <p>-- <acronym title="End of File">EOF</acronym> --</p>
+                    <div class="post-info">
+                        <p>
+                            <code class="notebook">zxysilent</code>发表于<i> 2018-07-19 17:16:40</i>，
+                            
+                            
+                                添加「
+                                    
+                                        
+                                            <a href="http://example.org/tags/golang" data-tag="golang"><code class="notebook">golang</code></a>
+                                        
+                                            <a href="http://example.org/tags/goweb" data-tag="goweb"><code class="notebook">goweb</code></a>
+                                        
+                                    
+                                」标签，
+                            
+                            最后修改于<i> 2018-10-21 17:23:14</i>
+                        </p>
+                    </div>
+                </article>
+                <nav class="pagination">
+                    
+                        <a class="prev" href="http://example.org/posts/goweb-035/">«  goweb-035-golang-接口</a>
+                    
+                    
+                        <a class="next" href="http://example.org/posts/goweb-037/"> goweb-037-golang-常用包  »</a>
+                    
+                </nav>
+                
+            </div>
+                        
+<footer id="footer" class="inner">
+                &copy; 2019&nbsp;-&nbsp; zxysilent&nbsp;-&nbsp;<a target="_blank" rel="nofollow" class="external beian" href="http://www.miitbeian.gov.cn/">蜀ICP备16011344号-2</a
+                ><br />Powered by&nbsp;ThinkJS&nbsp;&amp;&nbsp;FireKyli<a target="_blank" rel="nofollow" class="external" href="https://zxysilent.org">n</a>
+                <span id="busuanzi_container_site_pv"
+                    >total:<span id="busuanzi_value_site_pv"></span><span id="busuanzi_container_page_pv">&nbsp;page:<span id="busuanzi_value_page_pv"></span></span
+                ></span>
+            </footer>
+        </div>
+        <script src="/js/theme.js" data-ls="js_zxysilent"></script>
+
+
+<script>
+    console.info("https://blog.zxysilent.com");
+</script>
+
+    </body>
+</html>

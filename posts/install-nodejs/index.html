@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <title>zxysilent</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+        <meta name="msvalidate.01" content="BA6009DC1D95902AC43052D430AA822D" />
+        <meta name="keywords" content="zxysilent,zxyslt,zxy" />
+        <meta name="description" content="zxysilent;zxysilent blog;zxyslt;zxyslt blog;" />
+        <meta name="google-site-verification" content="51J555Z28axR2us4ULmrJuBCizGyxgSMhhL2QGz0XOE" />
+        <link rel="icon" href="/imgs/logo.png" />
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="/index.xml" />
+<link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="zxysilent" />
+<link rel="canonical" href="https://blog.zxysilent.com/" />
+<link href="/css/all.css?v=1566365206" rel="stylesheet" type="text/css" data-ls="css_zxysilent" >
+    </head>
+    <body>
+        <nav id="sidebar">
+    <div class="wrap">
+        <div class="profile">
+            <a href="/"><img src="/imgs/logo.png" alt="zxysilent"/></a><span>zxysilent</span>
+        </div>
+        <ul class="naver">
+            
+                <li>
+                <a href="/" title=""><i class="iconfont icon-home"></i><span>首页</span></a> 
+            </li>
+            
+                <li>
+                <a href="/archives" title=""><i class="iconfont icon-archive"></i><span>归档</span></a> 
+            </li>
+            
+                <li>
+                <a href="/tags" title=""><i class="iconfont icon-tags"></i><span>标签</span></a> 
+            </li>
+            
+                <li>
+                <a href="/about" title=""><i class="iconfont icon-user"></i><span>关于</span></a> 
+            </li>
+            
+                <li>
+                <a href="/links" title=""><i class="iconfont icon-link"></i><span>友链</span></a> 
+            </li>
+            
+        </ul>
+        <div class="footer">
+            <a class="inline" rel="nofollow" target="_blank" href="https://github.com/zxysilent"><i class="iconfont icon-github-v" title="GitHub"></i></a>
+            <a class="inline" rel="nofollow" target="_blank" href="https://weibo.com/u/7072792903"><i class="iconfont icon-weibo" title="weibo"></i></a>
+            <a class="inline" href="/index.xml"><i class="iconfont icon-rss-v" title="RSS"></i></a>
+            <a class="inline" href="/search.html"><i class="iconfont icon-search" title="Search"></i></a>
+        </div>
+    </div>
+</nav>
+<div id="header">
+    <div class="btn-bar"><i></i></div>
+    <h1>
+        <a href="/">安装nodejs</a>
+    </h1>
+    <a class="me" href="/about/"><img src="/imgs/logo.png" alt="zxysilent"/></a>
+</div>
+<div id="sidebar-mask"></div>
+
+        <div id="main">
+            <div id="page-post">
+                <article class="post detail">
+                    <div class="meta">
+                        <div class="date">03月03日, 2019</div>
+                        <div class="comment"><a href="#comments">167 Words</a></div>
+                    </div>
+                    <h1 class="title">安装nodejs</h1>
+                    <div class="entry-content">
+                        
+                            <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#nodejs">NodeJs</a></li>
+<li><a href="#下载安装">下载安装</a></li>
+<li><a href="#配置">配置</a>
+<ul>
+<li><a href="#全局下载路径和缓存路径">全局下载路径和缓存路径</a></li>
+<li><a href="#环境变量">环境变量</a>
+<ul>
+<li><a href="#自定义环境变量">自定义环境变量</a></li>
+<li><a href="#path环境变量">PATH环境变量</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#基本使用">基本使用</a>
+<ul>
+<li><a href="#常见命令">常见命令</a></li>
+<li><a href="#其他">其他</a></li>
+<li><a href="#下载慢">下载慢</a></li>
+<li><a href="#执行js">执行js</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+                        
+                        
+                        <h2 id="nodejs">NodeJs</h2>
+
+<p><code>Node.js</code> 是一个基于 <code>Chrome V8</code> 引擎的 <code>JavaScript</code> 运行环境。Node.js 使用了一个事件驱动、非阻塞式<code>I/O</code> 的模型，使其轻量又高效。<code>Node.js</code>的包管理器 <code>npm</code>，是全球最大的开源库生态系统。</p>
+
+<h2 id="下载安装">下载安装</h2>
+
+<p><a href="https://nodejs.org/en/">官网</a><br />
+<a href="https://nodejs.org/zh-cn/">中文官网</a></p>
+
+<p>推荐安装在 <code>D:\Program Files\nodejs</code> 则以下配置完全一样</p>
+
+<h2 id="配置">配置</h2>
+
+<h3 id="全局下载路径和缓存路径">全局下载路径和缓存路径</h3>
+
+<p><code>nodejs</code>的安装目录中找到<code>node_modules\npm.npmrc</code>文件修改如下</p>
+
+<pre><code>prefix = D:\Program Files\nodejs\node_global
+cache = D:\Program Files\nodejs\node_cache
+</code></pre>
+
+<h3 id="环境变量">环境变量</h3>
+
+<p>方便后期安装包可以直接使用</p>
+
+<h4 id="自定义环境变量">自定义环境变量</h4>
+
+<pre><code>NODE_PATH
+D:\Program Files\nodejs\node_global\node_modules
+</code></pre>
+
+<p><img src="/imgs/post/20190303/upload_95f7645ea8ed8d61ea6f2a018809ca3e.png" alt="alt" /></p>
+
+<h4 id="path环境变量">PATH环境变量</h4>
+
+<pre><code>D:\Program Files\nodejs\node_global
+</code></pre>
+
+<p><img src="/imgs/post/20190303/upload_53bc29989d5f19a25dff7a9570fab3ac.png" alt="alt" /></p>
+
+<h2 id="基本使用">基本使用</h2>
+
+<h3 id="常见命令">常见命令</h3>
+
+<pre><code>npm help：查看帮助命令
+
+npm -v：查看npm安装的版本
+
+npm install &lt;name&gt; --save 
+</code></pre>
+
+<p>安装的同时，将信息写入<code>package.json</code>中,项目路径中如果<code>有package.json</code>文件时直接使用<code>npm install</code>方法就可以根据<code>dependencies</code>配置安装所有的依赖包，这样代码提交到<code>github</code>时，就不用提交<code>node_modules</code>这个文件夹了。<br />
+将包安装到全局环境中</p>
+
+<pre><code>npm install &lt;name&gt; -g
+</code></pre>
+
+<ul>
+<li><code>npm update moduleName</code>更新node模块</li>
+<li><code>npm config ls -l</code>  可以查看当前的目录设置</li>
+<li>针对某一项设置，可以通过 <code>npm config set</code> 属性名 属性值</li>
+<li>读取某一项配置 <code>npm config get prefix</code></li>
+</ul>
+
+<h3 id="其他">其他</h3>
+
+<pre><code>npm install xxx 安装模块
+npm install xxx@1.1.1   安装1.1.1版本的xxx
+npm install xxx -g 将模块安装到全局环境中。
+npm ls 查看安装的模块及依赖
+npm ls -g 查看全局安装的模块及依赖
+npm uninstall xxx  (-g) 卸载模块
+npm cache clean 清理缓存
+npm help xxx  查看帮助
+npm view moudleName dependencies  查看包的依赖关系
+npm view moduleNames  查看node模块的package.json文件夹
+npm view moduleName labelName  查看package.json文件夹下某个标签的内容
+npm view moduleName repository.url  查看包的源文件地址
+npm view moduleName engines   查看包所依赖的Node的版本
+npm help folders   查看npm使用的所有文件夹
+npm rebuild moduleName    用于更改包内容后进行重建
+npm outdated   检查包是否已经过时，此命令会列出所有已经过时的包，可以及时进行包的更新
+npm update moduleName   更新node模块
+npm uninstall moudleName：卸载node模块
+</code></pre>
+
+<h3 id="下载慢">下载慢</h3>
+
+<ul>
+<li><p>设置为国内淘宝镜像</p>
+
+<pre><code>npm config set registry http://registry.cnpmjs.org 
+</code></pre></li>
+
+<li><p>验证配置是否成功</p>
+
+<pre><code>npm info underscore （如果上面配置正确这个命令会有字符串response）
+</code></pre></li>
+</ul>
+
+<h3 id="执行js">执行js</h3>
+
+<ul>
+<li>交互模式, 直接输入 <code>node</code><br />
+<img src="/imgs/post/20190303/upload_1afb359df34f914b90aa2234fcd0731e.png" alt="alt" /></li>
+<li>运行某个<code>js</code>文件<br />
+<img src="/imgs/post/20190303/upload_2044576b1d95d53e6156e4190aeaf4aa.png" alt="alt" /></li>
+</ul>
+                    </div>
+                    <p>本文链接：<a href="/posts/install-nodejs/">/posts/install-nodejs/</a></p>
+                    <p>-- <acronym title="End of File">EOF</acronym> --</p>
+                    <div class="post-info">
+                        <p>
+                            <code class="notebook">zxysilent</code>发表于<i> 2019-03-03 18:19:06</i>，
+                            
+                            
+                                添加「
+                                    
+                                        
+                                            <a href="http://example.org/tags/nodejs" data-tag="nodejs"><code class="notebook">nodejs</code></a>
+                                        
+                                            <a href="http://example.org/tags/env" data-tag="env"><code class="notebook">env</code></a>
+                                        
+                                    
+                                」标签，
+                            
+                            最后修改于<i> 2019-03-03 20:06:47</i>
+                        </p>
+                    </div>
+                </article>
+                <nav class="pagination">
+                    
+                        <a class="prev" href="http://example.org/posts/vs-code-c/">«  使用visual studio code 写c语言</a>
+                    
+                    
+                </nav>
+                
+            </div>
+                        
+<footer id="footer" class="inner">
+                &copy; 2019&nbsp;-&nbsp; zxysilent&nbsp;-&nbsp;<a target="_blank" rel="nofollow" class="external beian" href="http://www.miitbeian.gov.cn/">蜀ICP备16011344号-2</a
+                ><br />Powered by&nbsp;ThinkJS&nbsp;&amp;&nbsp;FireKyli<a target="_blank" rel="nofollow" class="external" href="https://zxysilent.org">n</a>
+                <span id="busuanzi_container_site_pv"
+                    >total:<span id="busuanzi_value_site_pv"></span><span id="busuanzi_container_page_pv">&nbsp;page:<span id="busuanzi_value_page_pv"></span></span
+                ></span>
+            </footer>
+        </div>
+        <script src="/js/theme.js" data-ls="js_zxysilent"></script>
+
+
+<script>
+    console.info("https://blog.zxysilent.com");
+</script>
+
+    </body>
+</html>
