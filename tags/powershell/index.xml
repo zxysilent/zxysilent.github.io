@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>powershell on zxysilent</title>
-    <link>http://example.org/tags/powershell/</link>
+    <link>https://zxysilent.github.io/tags/powershell/</link>
     <description>Recent content in powershell on zxysilent</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Thu, 15 Nov 2018 16:47:17 +0000</lastBuildDate>
     
-	<atom:link href="http://example.org/tags/powershell/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://zxysilent.github.io/tags/powershell/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>还原window自带app</title>
-      <link>http://example.org/posts/restore-win10-apps/</link>
+      <link>https://zxysilent.github.io/posts/restore-win10-apps/</link>
       <pubDate>Thu, 15 Nov 2018 16:47:17 +0000</pubDate>
       
-      <guid>http://example.org/posts/restore-win10-apps/</guid>
+      <guid>https://zxysilent.github.io/posts/restore-win10-apps/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;复制以下代码再&lt;code&gt;powershell&lt;/code&gt;运行&lt;/p&gt;
 &lt;/blockquote&gt;</description>

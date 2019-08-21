@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>python on zxysilent</title>
-    <link>http://example.org/tags/python/</link>
+    <link>https://zxysilent.github.io/tags/python/</link>
     <description>Recent content in python on zxysilent</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Tue, 21 Aug 2018 16:53:44 +0000</lastBuildDate>
     
-	<atom:link href="http://example.org/tags/python/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://zxysilent.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>matplotlib</title>
-      <link>http://example.org/posts/python-matplotlib/</link>
+      <link>https://zxysilent.github.io/posts/python-matplotlib/</link>
       <pubDate>Tue, 21 Aug 2018 16:53:44 +0000</pubDate>
       
-      <guid>http://example.org/posts/python-matplotlib/</guid>
+      <guid>https://zxysilent.github.io/posts/python-matplotlib/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;Matplotlib 是 Python 的一个绘图库。
 它包含了大量的工具，你可以使用这些工具创建各种图形，包括简单的散点图，正弦曲线，三维图形。&lt;/p&gt;
@@ -29,10 +29,10 @@
     
     <item>
       <title>python-02</title>
-      <link>http://example.org/posts/python-02/</link>
+      <link>https://zxysilent.github.io/posts/python-02/</link>
       <pubDate>Mon, 06 Aug 2018 11:04:59 +0000</pubDate>
       
-      <guid>http://example.org/posts/python-02/</guid>
+      <guid>https://zxysilent.github.io/posts/python-02/</guid>
       <description>&lt;h2 id=&#34;运行python&#34;&gt;运行python&lt;/h2&gt;
 
 &lt;ul&gt;
@@ -43,10 +43,10 @@
     
     <item>
       <title>python-01-环境搭建</title>
-      <link>http://example.org/posts/python-01/</link>
+      <link>https://zxysilent.github.io/posts/python-01/</link>
       <pubDate>Mon, 06 Aug 2018 09:50:47 +0000</pubDate>
       
-      <guid>http://example.org/posts/python-01/</guid>
+      <guid>https://zxysilent.github.io/posts/python-01/</guid>
       <description>&lt;h2 id=&#34;python&#34;&gt;python&lt;/h2&gt;
 
 &lt;p&gt;安装 python
@@ -58,10 +58,10 @@
     
     <item>
       <title>python-00-前言</title>
-      <link>http://example.org/posts/python-00/</link>
+      <link>https://zxysilent.github.io/posts/python-00/</link>
       <pubDate>Mon, 23 Jul 2018 16:37:12 +0000</pubDate>
       
-      <guid>http://example.org/posts/python-00/</guid>
+      <guid>https://zxysilent.github.io/posts/python-00/</guid>
       <description>&lt;h3 id=&#34;目标&#34;&gt;目标&lt;/h3&gt;
 
 &lt;p&gt;通过完成&lt;code&gt;python&lt;/code&gt;语言基础的学习为后面数据分析机器学习打下坚实的基础。&lt;br /&gt;
@@ -72,10 +72,10 @@
     
     <item>
       <title>numpy</title>
-      <link>http://example.org/posts/numpy/</link>
+      <link>https://zxysilent.github.io/posts/numpy/</link>
       <pubDate>Fri, 07 Apr 2017 21:10:29 +0800</pubDate>
       
-      <guid>http://example.org/posts/numpy/</guid>
+      <guid>https://zxysilent.github.io/posts/numpy/</guid>
       <description>&lt;h2 id=&#34;基本概念&#34;&gt;基本概念&lt;/h2&gt;
 
 &lt;p&gt;官网 &lt;a href=&#34;https://docs.scipy.org/doc/&#34;&gt;https://docs.scipy.org/doc/&lt;/a&gt;&lt;br /&gt;

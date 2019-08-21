@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>jwt on zxysilent</title>
-    <link>http://example.org/tags/jwt/</link>
+    <link>https://zxysilent.github.io/tags/jwt/</link>
     <description>Recent content in jwt on zxysilent</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Fri, 16 Nov 2018 16:16:52 +0000</lastBuildDate>
     
-	<atom:link href="http://example.org/tags/jwt/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://zxysilent.github.io/tags/jwt/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>json web token</title>
-      <link>http://example.org/posts/jwt/</link>
+      <link>https://zxysilent.github.io/posts/jwt/</link>
       <pubDate>Fri, 16 Nov 2018 16:16:52 +0000</pubDate>
       
-      <guid>http://example.org/posts/jwt/</guid>
+      <guid>https://zxysilent.github.io/posts/jwt/</guid>
       <description>&lt;p&gt;JWT是&lt;code&gt;json web token&lt;/code&gt;缩写。&lt;br /&gt;
 &lt;a href=&#34;https://jwt.io/&#34;&gt;官网&lt;/a&gt;
 它将用户信息加密到token里，服务器不保存任何用户信息。服务器通过使用保存的密钥验证token的正确性，只要正确即通过验证。&lt;/p&gt;

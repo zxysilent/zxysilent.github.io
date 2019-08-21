@@ -2,26 +2,26 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>clang on zxysilent</title>
-    <link>http://example.org/tags/clang/</link>
+    <link>https://zxysilent.github.io/tags/clang/</link>
     <description>Recent content in clang on zxysilent</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Sun, 24 Feb 2019 13:45:34 +0000</lastBuildDate>
     
-	<atom:link href="http://example.org/tags/clang/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://zxysilent.github.io/tags/clang/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>使用visual studio code 写c语言</title>
-      <link>http://example.org/posts/vs-code-c/</link>
+      <link>https://zxysilent.github.io/posts/vs-code-c/</link>
       <pubDate>Sun, 24 Feb 2019 13:45:34 +0000</pubDate>
       
-      <guid>http://example.org/posts/vs-code-c/</guid>
+      <guid>https://zxysilent.github.io/posts/vs-code-c/</guid>
       <description>&lt;h3 id=&#34;所需软件&#34;&gt;所需软件&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://code.visualstudio.com/#alt-downloads&#34;&gt;vscode&lt;/a&gt;
-推荐下载 &lt;img src=&#34;http://example.org/imgs/post/20190224/upload_d5c0164b43ed052f150a8a0086059ad5.png&#34; alt=&#34;alt&#34; /&gt;&lt;/li&gt;
+推荐下载 &lt;img src=&#34;https://zxysilent.github.io/imgs/post/20190224/upload_d5c0164b43ed052f150a8a0086059ad5.png&#34; alt=&#34;alt&#34; /&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://mingw-w64.org&#34;&gt;gcc(mingw64)&lt;/a&gt; 官网下载略微复杂&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://pan.baidu.com/s/10rwyP_21nKeVN00aZXObKw&#34;&gt;百度网盘下载gcc(mingw64)&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;</description>

@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>golang on zxysilent</title>
-    <link>http://example.org/tags/golang/</link>
+    <link>https://zxysilent.github.io/tags/golang/</link>
     <description>Recent content in golang on zxysilent</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Fri, 16 Nov 2018 16:16:52 +0000</lastBuildDate>
     
-	<atom:link href="http://example.org/tags/golang/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://zxysilent.github.io/tags/golang/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>json web token</title>
-      <link>http://example.org/posts/jwt/</link>
+      <link>https://zxysilent.github.io/posts/jwt/</link>
       <pubDate>Fri, 16 Nov 2018 16:16:52 +0000</pubDate>
       
-      <guid>http://example.org/posts/jwt/</guid>
+      <guid>https://zxysilent.github.io/posts/jwt/</guid>
       <description>&lt;p&gt;JWT是&lt;code&gt;json web token&lt;/code&gt;缩写。&lt;br /&gt;
 &lt;a href=&#34;https://jwt.io/&#34;&gt;官网&lt;/a&gt;
 它将用户信息加密到token里，服务器不保存任何用户信息。服务器通过使用保存的密钥验证token的正确性，只要正确即通过验证。&lt;/p&gt;
@@ -29,20 +29,20 @@
     
     <item>
       <title>goweb-06-综合示例</title>
-      <link>http://example.org/posts/goweb-06/</link>
+      <link>https://zxysilent.github.io/posts/goweb-06/</link>
       <pubDate>Mon, 23 Jul 2018 09:09:26 +0000</pubDate>
       
-      <guid>http://example.org/posts/goweb-06/</guid>
+      <guid>https://zxysilent.github.io/posts/goweb-06/</guid>
       <description> goweb-06-综合示例
 实践操作 </description>
     </item>
     
     <item>
       <title>goweb-05-golang-操作数据库</title>
-      <link>http://example.org/posts/goweb-05/</link>
+      <link>https://zxysilent.github.io/posts/goweb-05/</link>
       <pubDate>Sun, 22 Jul 2018 17:35:10 +0000</pubDate>
       
-      <guid>http://example.org/posts/goweb-05/</guid>
+      <guid>https://zxysilent.github.io/posts/goweb-05/</guid>
       <description>&lt;h2 id=&#34;使用数据库的一般步骤&#34;&gt;使用数据库的一般步骤&lt;/h2&gt;
 
 &lt;blockquote&gt;
@@ -59,24 +59,24 @@
     
     <item>
       <title>goweb-04-数据库</title>
-      <link>http://example.org/posts/goweb-04/</link>
+      <link>https://zxysilent.github.io/posts/goweb-04/</link>
       <pubDate>Sun, 22 Jul 2018 17:04:05 +0000</pubDate>
       
-      <guid>http://example.org/posts/goweb-04/</guid>
+      <guid>https://zxysilent.github.io/posts/goweb-04/</guid>
       <description>&lt;h2 id=&#34;测试数据库&#34;&gt;测试数据库&lt;/h2&gt;
 
 &lt;p&gt;&lt;code&gt;mysql -V&lt;/code&gt;&lt;br /&gt;
-&lt;img src=&#34;http://example.org/imgs/post/20180712/screenshot_1502450228763.png&#34; alt=&#34;&#34; /&gt;&lt;br /&gt;
+&lt;img src=&#34;https://zxysilent.github.io/imgs/post/20180712/screenshot_1502450228763.png&#34; alt=&#34;&#34; /&gt;&lt;br /&gt;
 &lt;a href=&#34;http://pan.baidu.com/s/1kUAXwgv&#34;&gt;测试数据&lt;/a&gt;
 tip&lt;code&gt;source D:/news.sql;&lt;/code&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>goweb-038-常用包net&#43;http</title>
-      <link>http://example.org/posts/goweb-038/</link>
+      <link>https://zxysilent.github.io/posts/goweb-038/</link>
       <pubDate>Fri, 20 Jul 2018 11:50:06 +0000</pubDate>
       
-      <guid>http://example.org/posts/goweb-038/</guid>
+      <guid>https://zxysilent.github.io/posts/goweb-038/</guid>
       <description>&lt;p&gt;网络操作(计算机网络相关知识可以利用此包实践)&lt;/p&gt;
 
 &lt;h2 id=&#34;net&#34;&gt;net&lt;/h2&gt;
@@ -89,12 +89,12 @@ tip&lt;code&gt;source D:/news.sql;&lt;/code&gt;&lt;/p&gt;</description>
     
     <item>
       <title>goweb-037-golang-常用包</title>
-      <link>http://example.org/posts/goweb-037/</link>
+      <link>https://zxysilent.github.io/posts/goweb-037/</link>
       <pubDate>Fri, 20 Jul 2018 08:22:37 +0000</pubDate>
       
-      <guid>http://example.org/posts/goweb-037/</guid>
+      <guid>https://zxysilent.github.io/posts/goweb-037/</guid>
       <description>&lt;p&gt;以示例的方式演示常用包的用法，更详细深入的信息请参考 &lt;a href=&#34;https://golang.google.cn/pkg/&#34;&gt;https://golang.google.cn/pkg/&lt;/a&gt;标准库&lt;br /&gt;
-&lt;img src=&#34;http://example.org/imgs/post/20180720/upload_a2a95976a5f1c377cd1244e720deeeea.png&#34; alt=&#34;alt&#34; /&gt;&lt;/p&gt;
+&lt;img src=&#34;https://zxysilent.github.io/imgs/post/20180720/upload_a2a95976a5f1c377cd1244e720deeeea.png&#34; alt=&#34;alt&#34; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&#34;os&#34;&gt;os&lt;/h2&gt;
 
@@ -108,15 +108,15 @@ tip&lt;code&gt;source D:/news.sql;&lt;/code&gt;&lt;/p&gt;</description>
     
     <item>
       <title>goweb-036-golang-Goroutines和Channels</title>
-      <link>http://example.org/posts/goweb-036/</link>
+      <link>https://zxysilent.github.io/posts/goweb-036/</link>
       <pubDate>Thu, 19 Jul 2018 17:16:40 +0000</pubDate>
       
-      <guid>http://example.org/posts/goweb-036/</guid>
+      <guid>https://zxysilent.github.io/posts/goweb-036/</guid>
       <description>&lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;并行&lt;/strong&gt;同时做不同事。&lt;br /&gt;
-&lt;img src=&#34;http://example.org/imgs/post/20180719/upload_637d666569fc53940d0de76a3f6987b0.png&#34; alt=&#34;alt&#34; /&gt;&lt;/li&gt;
+&lt;img src=&#34;https://zxysilent.github.io/imgs/post/20180719/upload_637d666569fc53940d0de76a3f6987b0.png&#34; alt=&#34;alt&#34; /&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;并发&lt;/strong&gt;交替做不同事。&lt;br /&gt;
-&lt;img src=&#34;http://example.org/imgs/post/20180719/upload_f5b7c9457b34b935a0d61a822ac573c9.png&#34; alt=&#34;alt&#34; /&gt;&lt;/li&gt;
+&lt;img src=&#34;https://zxysilent.github.io/imgs/post/20180719/upload_f5b7c9457b34b935a0d61a822ac573c9.png&#34; alt=&#34;alt&#34; /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;假设你需要洗衣服和做饭
@@ -125,10 +125,10 @@ tip&lt;code&gt;source D:/news.sql;&lt;/code&gt;&lt;/p&gt;</description>
     
     <item>
       <title>goweb-035-golang-接口</title>
-      <link>http://example.org/posts/goweb-035/</link>
+      <link>https://zxysilent.github.io/posts/goweb-035/</link>
       <pubDate>Thu, 19 Jul 2018 15:37:41 +0000</pubDate>
       
-      <guid>http://example.org/posts/goweb-035/</guid>
+      <guid>https://zxysilent.github.io/posts/goweb-035/</guid>
       <description>&lt;p&gt;接口类型是对其它类型行为的抽象和概括；因为接口类型不会和特定的实现细节绑定在一起，通过这种抽象的方式我们可以让我们的函数更加灵活和更具有适应能力。&lt;/p&gt;
 
 &lt;h2 id=&#34;接口类型&#34;&gt;接口类型&lt;/h2&gt;
@@ -140,21 +140,21 @@ tip&lt;code&gt;source D:/news.sql;&lt;/code&gt;&lt;/p&gt;</description>
     
     <item>
       <title>goweb-034-golang-方法</title>
-      <link>http://example.org/posts/goweb-034/</link>
+      <link>https://zxysilent.github.io/posts/goweb-034/</link>
       <pubDate>Thu, 19 Jul 2018 11:38:47 +0000</pubDate>
       
-      <guid>http://example.org/posts/goweb-034/</guid>
+      <guid>https://zxysilent.github.io/posts/goweb-034/</guid>
       <description>&lt;p&gt;面向对象编程(OOP)的三大特征分别为封装、继承和多态。
 封装，是指利用抽象数据类型对数据信息以及对数据。。。。。。。此处省略3万字&lt;br /&gt;
-&lt;img src=&#34;http://example.org/imgs/post/20180719/upload_17ce2c733b1cb9b4b3a410756c4765fd.png&#34; alt=&#34;alt&#34; /&gt;&lt;/p&gt;</description>
+&lt;img src=&#34;https://zxysilent.github.io/imgs/post/20180719/upload_17ce2c733b1cb9b4b3a410756c4765fd.png&#34; alt=&#34;alt&#34; /&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>goweb-033-golang-函数</title>
-      <link>http://example.org/posts/goweb-033/</link>
+      <link>https://zxysilent.github.io/posts/goweb-033/</link>
       <pubDate>Thu, 19 Jul 2018 09:27:42 +0000</pubDate>
       
-      <guid>http://example.org/posts/goweb-033/</guid>
+      <guid>https://zxysilent.github.io/posts/goweb-033/</guid>
       <description>&lt;h2 id=&#34;函数声明&#34;&gt;函数声明&lt;/h2&gt;
 
 &lt;ul&gt;
@@ -168,10 +168,10 @@ tip&lt;code&gt;source D:/news.sql;&lt;/code&gt;&lt;/p&gt;</description>
     
     <item>
       <title>goweb-032-golang-复合数据类型</title>
-      <link>http://example.org/posts/goweb-032/</link>
+      <link>https://zxysilent.github.io/posts/goweb-032/</link>
       <pubDate>Tue, 17 Jul 2018 11:51:12 +0000</pubDate>
       
-      <guid>http://example.org/posts/goweb-032/</guid>
+      <guid>https://zxysilent.github.io/posts/goweb-032/</guid>
       <description>&lt;h2 id=&#34;流程控制&#34;&gt;流程控制&lt;/h2&gt;
 
 &lt;p&gt;类比 &lt;code&gt;clang&lt;/code&gt;&lt;/p&gt;
@@ -186,10 +186,10 @@ tip&lt;code&gt;source D:/news.sql;&lt;/code&gt;&lt;/p&gt;</description>
     
     <item>
       <title>goweb-031-golang-基础数据类型</title>
-      <link>http://example.org/posts/goweb-031/</link>
+      <link>https://zxysilent.github.io/posts/goweb-031/</link>
       <pubDate>Mon, 16 Jul 2018 16:40:28 +0000</pubDate>
       
-      <guid>http://example.org/posts/goweb-031/</guid>
+      <guid>https://zxysilent.github.io/posts/goweb-031/</guid>
       <description>&lt;p&gt;所有的数据都是由比特组成&lt;/p&gt;
 
 &lt;h2 id=&#34;整型&#34;&gt;整型&lt;/h2&gt;
@@ -203,10 +203,10 @@ tip&lt;code&gt;source D:/news.sql;&lt;/code&gt;&lt;/p&gt;</description>
     
     <item>
       <title>goweb-030-golang-程序结构</title>
-      <link>http://example.org/posts/goweb-030/</link>
+      <link>https://zxysilent.github.io/posts/goweb-030/</link>
       <pubDate>Mon, 16 Jul 2018 11:41:45 +0000</pubDate>
       
-      <guid>http://example.org/posts/goweb-030/</guid>
+      <guid>https://zxysilent.github.io/posts/goweb-030/</guid>
       <description>&lt;h2 id=&#34;命名&#34;&gt;命名&lt;/h2&gt;
 
 &lt;p&gt;Go语言中的函数名、变量名、常量名、类型名、语句标号和包名等所有的命名，都遵循一个
@@ -217,15 +217,15 @@ tip&lt;code&gt;source D:/news.sql;&lt;/code&gt;&lt;/p&gt;</description>
     
     <item>
       <title>goweb-03-golang</title>
-      <link>http://example.org/posts/goweb-03/</link>
+      <link>https://zxysilent.github.io/posts/goweb-03/</link>
       <pubDate>Thu, 12 Jul 2018 16:58:33 +0000</pubDate>
       
-      <guid>http://example.org/posts/goweb-03/</guid>
+      <guid>https://zxysilent.github.io/posts/goweb-03/</guid>
       <description>&lt;h2 id=&#34;qaq&#34;&gt;QAQ&lt;/h2&gt;
 
 &lt;p&gt;本应该长篇大论介绍&lt;code&gt;golang&lt;/code&gt;的 but&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://example.org/imgs/post/20180716/upload_d7ba285d3e106edd139688f7287fef92.png&#34; alt=&#34;alt&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://zxysilent.github.io/imgs/post/20180716/upload_d7ba285d3e106edd139688f7287fef92.png&#34; alt=&#34;alt&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://golang.org/&#34;&gt;https://golang.org/&lt;/a&gt; 官方网站&lt;strong&gt;墙外&lt;/strong&gt;&lt;br /&gt;
 &lt;a href=&#34;https://golang.google.cn/&#34;&gt;https://golang.google.cn/&lt;/a&gt;  镜像网站&lt;br /&gt;
@@ -238,10 +238,10 @@ tip&lt;code&gt;source D:/news.sql;&lt;/code&gt;&lt;/p&gt;</description>
     
     <item>
       <title>goweb-02-环境搭建</title>
-      <link>http://example.org/posts/goweb-02/</link>
+      <link>https://zxysilent.github.io/posts/goweb-02/</link>
       <pubDate>Thu, 12 Jul 2018 12:00:20 +0000</pubDate>
       
-      <guid>http://example.org/posts/goweb-02/</guid>
+      <guid>https://zxysilent.github.io/posts/goweb-02/</guid>
       <description>&lt;h1 id=&#34;golang&#34;&gt;golang&lt;/h1&gt;
 
 &lt;h2 id=&#34;安装go1-10-3&#34;&gt;安装go1.10.3&lt;/h2&gt;
@@ -261,10 +261,10 @@ tip&lt;code&gt;source D:/news.sql;&lt;/code&gt;&lt;/p&gt;</description>
     
     <item>
       <title>goweb-01-基础知识</title>
-      <link>http://example.org/posts/goweb-01/</link>
+      <link>https://zxysilent.github.io/posts/goweb-01/</link>
       <pubDate>Thu, 12 Jul 2018 11:58:58 +0000</pubDate>
       
-      <guid>http://example.org/posts/goweb-01/</guid>
+      <guid>https://zxysilent.github.io/posts/goweb-01/</guid>
       <description>&lt;h2 id=&#34;网站运作流程&#34;&gt;网站运作流程&lt;/h2&gt;
 
 &lt;p&gt;当我们在浏览器地址栏输入
@@ -274,10 +274,10 @@ tip&lt;code&gt;source D:/news.sql;&lt;/code&gt;&lt;/p&gt;</description>
     
     <item>
       <title>goweb-00-前言</title>
-      <link>http://example.org/posts/goweb-00/</link>
+      <link>https://zxysilent.github.io/posts/goweb-00/</link>
       <pubDate>Thu, 12 Jul 2018 11:57:15 +0000</pubDate>
       
-      <guid>http://example.org/posts/goweb-00/</guid>
+      <guid>https://zxysilent.github.io/posts/goweb-00/</guid>
       <description>&lt;h3 id=&#34;目标&#34;&gt;目标&lt;/h3&gt;
 
 &lt;p&gt;通过完成&lt;code&gt;go&lt;/code&gt;语言 &lt;code&gt;mysql&lt;/code&gt; 等相关内容的学习使自己独立完成一般网站。&lt;/p&gt;

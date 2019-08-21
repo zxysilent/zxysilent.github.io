@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>numpy on zxysilent</title>
-    <link>http://example.org/tags/numpy/</link>
+    <link>https://zxysilent.github.io/tags/numpy/</link>
     <description>Recent content in numpy on zxysilent</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Fri, 07 Apr 2017 21:10:29 +0800</lastBuildDate>
     
-	<atom:link href="http://example.org/tags/numpy/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://zxysilent.github.io/tags/numpy/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>numpy</title>
-      <link>http://example.org/posts/numpy/</link>
+      <link>https://zxysilent.github.io/posts/numpy/</link>
       <pubDate>Fri, 07 Apr 2017 21:10:29 +0800</pubDate>
       
-      <guid>http://example.org/posts/numpy/</guid>
+      <guid>https://zxysilent.github.io/posts/numpy/</guid>
       <description>&lt;h2 id=&#34;基本概念&#34;&gt;基本概念&lt;/h2&gt;
 
 &lt;p&gt;官网 &lt;a href=&#34;https://docs.scipy.org/doc/&#34;&gt;https://docs.scipy.org/doc/&lt;/a&gt;&lt;br /&gt;
